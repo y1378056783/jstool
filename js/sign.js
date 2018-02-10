@@ -3,6 +3,28 @@
  * @authors Your Name (you@example.org)
  * @date    2018-02-10 10:08:52
  * @version $Id$
+消息提示
+ #tip{
+    position: fixed;
+    border-radius:.092593rem;
+    font-size:.407407rem;
+    width: 60%;
+    padding:.277778rem 0;
+    background-color:rgba(0,0,0,.8);
+    top:20%;
+    left: 50%;
+    margin-left:-30%;
+    color:#ffffff;
+}
+<div id="tip"></div>
+<form onsubmit="return false;" id="signForm">
+    <input type="text" hidden name="fromflag" value="6">
+    <p><input class="t-font" type="number" name="mobile" id="phone" oninput="if(value.length>11)value=value.slice(0,11)" placeholder="请输入手机号"></p>
+    <p><input class="t-font" type="password" name="password" id="pwd" placeholder="请输入密码"></p>
+    <p><input class="t-font" type="number" name="mobilecode" id="code" placeholder="请输入验证密码"><input class="text-center" type="button" id="verify" value="点击获取"></p>
+    <button id="send" class="t-font text-center">确认</button>
+</form>
+<div id="tip" class="visHide"></div>
  调用案例：
  $('#verify').on('touchstart',function(){
     var self = $(this);
@@ -30,6 +52,7 @@ $("#send").on('touchstart',function(){
         });
     })
 });
+
  */
 
 function errMsg(txt){
