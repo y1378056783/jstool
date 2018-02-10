@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据绑定</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li,ol{
+            list-style-type: none;
+        }
+        #forkme{
+            position: fixed;
+            right: 0;
+            top: 0;
+            width:149px;
+            height: 149px;
+        }
+        .blue{
+            color:#79ccff;
+        }
+        .pink{
+            color: #eca5de;
+        }
+        body{
+            background: #1a1a1a;
+            color: #fff;
+            font-size: 14px;
+        }
+        h1{
+            text-align: center;
+            margin: 20px 0 0 0;
+        }
+
+        .wrap{
+            width: 670px;
+            margin: 40px auto;
+            border:2px solid #121212;
+            padding: 20px;
+            background: #2a2a2a;
+        }
+        .wrap>div{
+            clear: both;
+            margin: 30px 0;
+            vertical-align: top;
+        }
+        .wrap>div>div{
+            line-height: 30px;
+            float: left;
+        }
+        .wrap>div>div ul{
+            line-height: 30px;
+            margin:10px 0;
+            padding: 0 10px;
+            background: #505050;
+            border:1px solid #ccc;
+        }
+        .wrap>div>div ul li .span_2{
+            margin-right: 20px;
+        }
+        .wrap>div>div ul li{
+            height: 30px;
+            line-height: 30px;
+        }
+        .wrap>div>div ul li em.remove_item{
+            font-style: normal;
+            float: right;
+            cursor: pointer;
+            background: #fc6b6b;
+            border-radius: 50%;
+            display: none;
+            width: 16px;
+            height: 16px;
+            line-height: 16px;
+            text-align: center;
+            margin-top: 7px;
+            font-size: 12px;
+            font-family: Arial;
+        }
+        .wrap>div>div ul li:hover em.remove_item{
+            display: inline-block;
+        }
+        .wrap p{
+            color: #ccc;
+            margin: 10px 0;
+        }
+
+        .wrap input[type='text']{
+            background: #505050;
+            height: 30px;
+            line-height: 30px;
+            border:0;
+            color:#fff;
+            width: 200px;
+        }
+        .wrap input[type='text'].short{
+            width: 120px;
+        }
+
+        .wrap label{
+            margin-right: 10px;
+        }
+        .wrap label.tit{
+            float: left;
+            width: 90px;
+            height: 40px;
+            line-height: 30px;
+            display: block;
+            text-align: right;
+        }
+        .wrap textarea{
+            vertical-align: top;
+            background: #505050;
+            color:#fff;
+            border:0;
+            resize : none;
+        }
+        .wrap #info{
+            word-break:break-all;
+        }
+        .wrap button{
+            background: #505050;
+            height: 30px;
+            line-height: 30px;
+            border:0;
+            color:#fff;
+            padding: 0 20px;
+        }
+        .wrap button:hover{
+            background: #373737;
+        }
+
+        .documents{
+            width: 674px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #2a2a2a;
+        }
+
+        .documents dl{
+            padding: 20px;
+            border-bottom: 1px dashed #ccc;
+            line-height: 2;
+        }
+        .documents dt{
+            font-size: 18px;
+        }
+        .documents dd{
+            padding-left: 20px;
+        }
+
+        pre{
+            white-space:pre-line;
+        }
+
+
+        footer{
+            text-align: center;
+            margin: 30px auto;
+        }
+        footer a{
+            color: white
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <h1>Easy Data Binder</h1>
+    <a href="https://github.com/lancer07/EasyDataBinder" target="_blank" id="forkme"></a>
+    <div class="wrap">
+        <h2>Example</h2>
+        <div>
+            <label class="tit">Name: </label><input type="text" data-binder="name" />
+        </div>
+        <div>
+            <label class="tit">Old: </label><input type="text" data-binder="old" />
+        </div>
+        <div>
+            <label class="tit">Height: </label><input type="text" data-binder="body.height" /> CM
+        </div>
+        <div>
+            <label class="tit">Weight: </label><input type="text" data-binder="body.weight" /> KG
+        </div>
+        <div>
+            <label class="tit">Leg: </label><input type="text" data-binder="body.leg.width" /> CM
+        </div>
+        <div>
+            <label class="tit">Sex: </label>
+            <div>
+                <label><input type="radio" name="sex" value="male" data-binder="sex" /> Male</label>
+                <label><input type="radio" name="sex" value="female" data-binder="sex" /> Female</label>
+            </div>
+        </div>
+        <div>
+            <label class="tit">Apply: </label>
+            <label data-class="blue:sex==male"><input type="checkbox" data-binder="football" /> Football</label>
+            <label data-class="blue:sex==male"><input type="checkbox" data-binder="basketball" /> Basketball</label>
+            <label data-class="blue:sex==male"><input type="checkbox" data-binder="swimming" /> Swimming</label>
+            <label data-class="pink:sex==female"><input type="checkbox" data-binder="dance" /> Dance</label>
+            <label data-class="pink:sex==female"><input type="checkbox" data-binder="piano" /> Piano</label>
+            <label data-class="pink:sex==female"><input type="checkbox" data-binder="painting" /> Painting</label>
+            <p data-visible="sex==male">
+                (Boy's recommendation: Football,Basketball,Swimming)
+            </p>
+            <p data-visible="sex==female">
+                (Girls's recommendation: Dance,Piano,Painting)
+            </p>
+        </div>
+        
+        <div>
+            <label class="tit">Family: </label>
+            <div>
+                <input type="text" class="short" id="relationship" placeholder="Relationship" />
+                <input type="text" class="short" id="personName" placeholder="Name"  />
+                <input type="text" class="short" id="old" placeholder="Old"  />
+                <button id="addPerson">Add</button>
+                <ul data-repeat="family.parent"></ul>
+            </div>
+        </div>
+        <div>
+            <label class="tit">Introduction: </label>
+            <textarea cols="30" rows="10" data-binder="content"></textarea>
+        </div>
+        <div>
+            <label class="tit"></label>
+            <button id="set">Change To Female</button>
+            <button id="submit">Submit</button>
+        </div>
+        <div>
+            <pre id="info"></pre>
+        </div>
+    </div>
+    
+    <div class="documents">
+        <h2>Document API</h2>
+        <dl>
+            <dt>1. Init</dt>
+            <dd>
+                <pre>
+                    var dataBinder = DataBinder();
+                </pre>
+            </dd>
+        </dl>
+
+        <dl>
+            <dt>2. Set Multiple Data </dt>
+            <dd>
+                <pre>
+                    var initData = {
+                    &nbsp;&nbsp;name  : "Nicolas",
+                    &nbsp;&nbsp;old : "3",
+                    &nbsp;&nbsp;body:{
+                    &nbsp;&nbsp;&nbsp;&nbsp;height : "50",
+                    &nbsp;&nbsp;&nbsp;&nbsp;weight : "17"
+                    &nbsp;&nbsp;},
+                    &nbsp;&nbsp;sex : "male",
+                    &nbsp;&nbsp;content: "Tell me something"
+                    }
+                </pre>
+            </dd>
+            <dd>
+                <pre>
+                    dataBinder.set(initData);
+                </pre>
+            </dd>
+        </dl>
+        <dl>
+            <dt>3. Set Single Data</dt>
+            <dd>
+                <pre>
+                    dataBinder.set('sex','female');
+                </pre>
+            </dd>
+        </dl>
+        <dl>
+            <dt>4. Bind Data To Input</dt>
+            <dd>
+                <pre>
+                    &lt;input type="text" data-binder="name" /&gt;
+                </pre>
+            </dd>
+            <dd>
+                <pre>
+                    &lt;input type="text" data-binder="body.height" /&gt;
+                </pre>
+            </dd>
+        </dl>
+        <dl>
+            <dt>5. Toggle Visible</dt>
+            <dd>
+                <pre>
+                    &lt;p data-visible="sex==male"&gt;
+                    &nbsp;&nbsp;&nbsp;&nbsp;(Boy's recommendation: Football,Basketball,Swimming)
+                    &lt;/p&gt;
+                </pre>
+            </dd>
+        </dl>
+        <dl>
+            <dt>6. Toggle ClassName</dt>
+            <dd>
+                <pre>
+                    &lt;label data-class="blue:sex==male,pink:sex==female"&gt;&lt;/label&gt;
+                </pre>
+            </dd>
+        </dl>
+        <dl>
+            <dt>7. Add Data to Array</dt>
+            <dd>
+                <pre>
+                    dataBinder.pushArray('family.parent',{
+                    &nbsp;&nbsp;&nbsp;&nbsp;relationship : 'father',
+                    &nbsp;&nbsp;&nbsp;&nbsp;name : 'Lancer'
+                    });
+                </pre>
+            </dd>
+        </dl>
+        <dl>
+            <dt>8. Remove Data from Array</dt>
+            <dd>
+                <pre>
+                    dataBinder.removeItem('family.parent',1);
+                </pre>
+            </dd>
+        </dl>
+        <dl>
+            <dt>9. Render List</dt>
+            <dd>
+                <pre>
+                    &lt;ul data-repeat="family.parent"&gt;&lt;/ul&gt;
+                </pre>
+            </dd>
+        </dl>
+        <dl>
+            <dt>10. Get Data</dt>
+            <dd>
+                <pre>
+                    dataBinder.get();
+                </pre>
+            </dd>
+        </dl>
+        <dl>
+            <dt>11. Toggle Debug</dt>
+            <dd>
+                <pre>
+                    dataBinder.debug = true || false;
+                </pre>
+            </dd>
+        </dl>
+    </div>
+
+    <footer>
+        <p>
+            Maintained by <a href="http://www.linqing07.com/" target="_blank">Lancer Lin</a>
+        </p>
+    </footer>
+    <script type="text/javascript" src="//cdn.bootcss.com/lodash.js/4.16.0/lodash.min.js"></script>
+    <script type="text/javascript" src="binder.js"></script>
+    <script type="text/javascript">
+        var dataBinder = DataBinder();
+        dataBinder.debug = true;
+        var initData = {
+            name  : "Nicolas",
+            old : "3",
+            body:{
+                height : "50",
+                weight : "17"
+            },
+            sex : "male",
+            family : {
+                parent:[
+                    {
+                        relationship : 'father',
+                        name : 'Lancer',
+                        old : 29
+                    },
+                    {
+                        relationship : 'mother',
+                        name : 'Lara',
+                        old : 26
+                    }
+                ]
+            },
+            content: "Tell me something"
+        }
+        dataBinder.set(initData);
+        document.getElementById('set').onclick = function(){
+            dataBinder.set('sex','female');
+        }
+        document.getElementById('submit').onclick = function(){
+            document.getElementById('info').innerText = JSON.stringify(dataBinder.get())
+        }
+        document.getElementById('addPerson').onclick = function(){
+            var relationship = document.getElementById('relationship').value;
+            var name = document.getElementById('personName').value;
+            var old = document.getElementById('old').value;
+            dataBinder.pushArray('family.parent',{
+                relationship : relationship,
+                name : name,
+                old : old
+            });
+            document.getElementById('relationship').value ='';
+            document.getElementById('personName').value = '';
+            document.getElementById('old').value = '';
+        }
+    </script>
+</body>
+</html>

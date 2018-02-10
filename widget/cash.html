@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)http://ad.miduo.com/member/memberlist -->
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>米多</title>
+    <meta itemprop="name" content="米多">
+    <meta itemprop="image" content="">
+    <meta name="description" itemprop="description" content="">
+    <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="common.css">
+    <link rel="stylesheet" type="text/css" href="cpsadmin.css">
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="bootstrap.min.js"></script>
+</head>
+
+<body class="main-page">
+    <header class="main-header w-100 f-pf b-wh">
+        <p class="f-fl main-header-userinfo" id="toggleNav">
+            <a href="javascript:;" class="signup f-fl"><i class="md-icon c-icon-menu"></i></a>
+        </p>
+        <ul class="f-fr main-header-userinfo">
+            <!--<li class="signup f-fl"><i class="md-icon c-icon-signup"></i></li>-->
+            <li class="dropdown main-header-name f-fr ">
+              <a id="drop3" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                jack
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
+        </ul>
+    </header>
+    <ul class="main-sidebar f-pf h-100">
+        <a class="logo-brand f-db hidden-xs" href="http://ad.miduo.com/member/memberlist#">cps管理后台</a>
+        <li class="active">
+            <h5 class="md-icon icon-manage">游戏管理</h5>
+            <p><a href="http://ad.miduo.com/game/serverlist" class="f-db">开服列表</a></p>
+            <p><a href="http://ad.miduo.com/game/serverlist" class="f-db">开服列表</a></p>
+            <p><a href="http://ad.miduo.com/game/serverlist" class="f-db visted">开服列表</a></p>
+        </li>
+        <li>
+            <h5 class="md-icon icon-manage">游戏管理</h5>
+            <p><a href="http://ad.miduo.com/game/serverlist" class="f-db">开服列表</a></p>
+            <p><a href="http://ad.miduo.com/game/serverlist" class="f-db">开服列表</a></p>
+            <p><a href="http://ad.miduo.com/game/serverlist" class="f-db visted">开服列表</a></p>
+        </li>
+        <footer class="main-footer f-tac f-pa hidden-xs">
+            Copyright © 2014-2017
+            <br>版权所有米多科技
+        </footer>
+    </ul>
+    <p class="mask" title="wap导航遮罩层，不能删除"></p>
+    <div class="wrapper container main-wrapper">
+        <div class="row">
+            <div class="main-wrap col-md-11 cash-wrap f-tac">
+                <div class="col-md-4 cash-step on cash-step1 f-pr">
+                    <p class="cash-num on c-wh f-fs4">1</p>
+                    <p class="cash-txt f-fs3">提交资料</p>
+                </div>
+                <div class="col-md-4 cash-step cash-step2 f-pr">
+                    <p class="cash-num c-wh f-fs4">2</p>
+                    <p class="cash-txt f-fs3">等待审核</p>
+                </div>
+                <div class="col-md-4 cash-step cash-step3 f-pr">
+                    <p class="cash-num c-wh f-fs4">3</p>
+                    <p class="cash-txt f-fs3">通过审核</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="main-wrap cash-form-wrap col-md-11">
+                <h3 class="f-tac">基本信息</h3>
+                <p class="f-tac c-org f-fs2">需要补全您的个人资料，并通过总后台审核</p>
+                <p class="f-tac c-org f-fs2">才能使用所有管理功能</p>
+                <form class="form-horizontal cash-form f-oh" action="" method="post">
+                    <fieldset disabled>
+                    <div class="form-group">
+                        <label class="col-md-4 col-xs-3 control-label">真实姓名：</label>
+                        <p class="col-md-4 col-xs-7"><input type="text" class="form-control cash-valid" placeholder="必填" data-id="isChinese" required></p>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4  col-xs-3 control-label">支付宝账号：</label>
+                        <p class="col-md-4 col-xs-7"><input type="text" class="form-control cash-valid" placeholder="必填" data-id="isEmpty" required></p>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4  col-xs-3 control-label">银行卡号：</label>
+                        <p class="col-md-4 col-xs-7"><input type="number" class="form-control cash-valid" placeholder="必填" data-id="isBank" required></p>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4  col-xs-3 control-label">邮箱：</label>
+                        <p class="col-md-4 col-xs-7"><input type="email" class="form-control cash-valid" placeholder="必填" data-id="isEmail" required></p>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4  col-xs-3 control-label">手机：</label>
+                        <p class="col-md-4 col-xs-7"><input type="number" class="form-control cash-valid" placeholder="必填" data-id="isMobile" required></p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="col-md-4  col-xs-3 control-label">身份证号：</label>
+                        <p class="col-md-4 col-xs-7"><input type="number" class="form-control cash-valid" placeholder="必填" data-id="isIdcard" id="idCard" required>
+                        <!-- has-success has-feedback<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>-->
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4  col-xs-3 control-label">身份证图片：</label>
+                        <div class="col-md-4 col-xs-7">
+                            <div class="btn-default btn cash-front cash-btn">
+                                <input type="file" id="frontBtn" data-id="isFimg"  class="col-md-5 f-opn f-wac f-pa cash-valid"><span>正面</span>
+                            </div>
+                            <div class="btn-default btn cash-front cash-btn">
+                                <input type="file" id="backBtn" data-id="isBimg"  class="col-md-5 f-opn f-wac f-pa cash-valid"><span>背面</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-md-4  col-xs-3 control-label"></label><div class="col-md-4 col-xs-7">图片小于700kb，建议横向拍摄，宽550px，高420px</div></div>
+                    <div class="form-group f-dn" id="idImgWarp">
+                        <label class="col-md-4  col-xs-3 control-label"></label>
+                        <div class="col-md-4 col-xs-7 f-bd1 f-oh f-br5" id="imgWrap">
+                                <!--<canvas width="110" height="80"></canvas> --> 
+                                <!--<canvas width="110" height="80"></canvas>-->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4  col-xs-3 control-label"></label>
+                        <div class="col-md-4 col-xs-7">
+                        <input type="button" id="cashSubmit" class="btn btn-lg btn-primary btn-block" value="提交认证">
+                        </div>
+                    </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div id="download_plus_animation"></div>
+    <script type="text/javascript">
+        $(".main-sidebar li").on('click',function(){
+            $(this).toggleClass('active').siblings().removeClass('active')
+        })
+        var flag = true,sidebar=$(".main-sidebar"),mask=$(".mask");
+        $("#toggleNav").on('touchstart',toggleNav);
+        //alert($(window).width()); has-success has-feedback  has-error has-feedback
+        mask.on('click',toggleNav).on('touchmove', function (e) { e.preventDefault(); }, false);
+        function toggleNav(){
+            if(flag){
+                flag = false;
+                sidebar.addClass('navShow').removeClass('navHide');
+                mask.fadeIn('fast');
+            }else{
+                flag = true;
+                sidebar.removeClass('navShow').addClass('navHide');
+                mask.fadeOut('fast');
+            }
+        }
+        $("#frontBtn").on('change',function(){
+            var self = this;
+            imgToBase(this,'frontImg',function(files){
+                /*console.log(files);*/
+                var baseimg = files;
+                //身份证图片识别
+                $.post('/imgvalidate',{id_card_side: 'front',image:baseimg},function(res){
+                        console.log(res);
+                        if(res.image_status=='normal'){//识别成功
+                            var idCode = res.words_result['公民身份号码'].words,
+                                $card = $("#idCard"),
+                                idVal = $("#idCard").val();
+                                if(idCode != idVal){//图片与填写信息不匹配则清空身份证号一栏
+                                    errClear("#idCard",'#frontImg','图片与填写信息不符');
+                                }
+                            //console.log(res.words_result['公民身份号码'].words)
+                        }else{
+                            errClear(self,'#frontImg','请按要求上传');
+                            //alert(res.image_status);
+                        }
+                })
+            });
+        })
+        $("#backBtn").on('change',function(){
+            var self = this;
+            imgToBase(this,'backImg',function(files){
+                /*console.log(files);*/
+                var baseimg = files;
+                //身份证图片识别
+                $.post('/imgvalidate',{id_card_side: 'back',image:baseimg},function(res){
+                        //console.log(res);
+                        if(res.image_status=='normal'){//识别成功
+                            //console.log(res.words_result['失效日期'].words)
+                            var expiryDate = res.words_result['失效日期'].words,  
+                                today = formatDate();
+                                if(expiryDate<today){//身份证过期
+                                    errClear("#idCard",'#backImg','身份证已过期');
+                                }
+                        }else{
+                            errClear(self,'#backImg','请按要求上传');
+                            //alert(res.image_status);
+                        }
+                })
+            });
+        });
+        function errClear(obj,img,msg){
+            alert(msg)
+            $(img).remove();
+            $("#idImgWarp").addClass('f-dn');
+            $(obj).val('');
+        }
+        function formatDate(){//日期格式化
+            var d = new Date(),//日期
+            year = d.getFullYear(),//年
+            month = d.getMonth()+1,//月
+            mon = month < 10 ? '0'+month : month,
+            date = d.getDate(),//日
+            today = year+mon+date;
+            return today;
+        }
+        function imgToBase(file_btn,img_wrap,fn){
+            var file = file_btn.files[0],
+                filetxt=null,
+                reg=/image\/\w+/;
+                if(!reg.test(file.type)){ //判断是否为图片
+                    alert('请选择后缀为png/jpg/bmp图片文件')
+                    return false;
+                }else if(Number(file.size) > 716800){//判断图片大小
+                    alert('图片大小不得超过700kb');
+                    return false;
+                }else{
+                  var reader = new FileReader();
+                    reader.onload = function ( event ) {
+                        var imgTxt = event.target.result,
+                            filetxt = imgTxt.split(',')[1],
+                            //fileSize = (event.loaded/1024).toFixed(2),图片大小转换为kb
+                            image = new Image();//document.createElement('img')
+                            //ctx = document.getElementById(img_wrap).getContext('2d');
+                            image.src = imgTxt;   
+                            image.id = img_wrap;
+                            image.onload =function(){  
+                                var width = Number(image.width);  
+                                var height = Number(image.height);
+                                if(width<15||width>4000||height<15||height>4000){//图片大小介于15px-4000px中间
+                                    alert('图片尺寸不正确');
+                                }else{
+                                    //console.log('width:'+width+'height:'+height+'fileSize:'+fileSize);  
+                                    $("#idImgWarp").removeClass('f-dn');
+                                    document.getElementById("imgWrap").appendChild( image );
+                                    //ctx.drawImage(image, 0, 0, 110, 80)将图片显示出来
+                                    fn(filetxt);
+                                }
+                            }/**/
+                    }
+                }
+            reader.readAsDataURL(file);
+        };
+        $("#cashSubmit").on('click',function(){
+            var $this = $(this);
+            validate['init']('.cash-valid',function(){
+                $this.attr('type','submit');
+            });
+        })
+        var validate = {
+            flag:true,
+            spaceExp:/^\s*|\s*$/,//首尾空格
+            nameExp:/^[\u4E00-\u9FA5]{2,4}$/,//真实姓名
+            emptyExp:/^\S+$/,//非空验证
+            idExp:/^(\d{14}|\d{17})(\d|[xX])$/,//身份证
+            bankExp: /^([1-9]{1})(\d{14}|\d{18})$/,//银行卡
+            phoneExp:/^0*(13|14|15|17|18)\d{9}$/,//手机号
+            emailExp:/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/,//邮箱
+            msg:{
+                "nameMsg":"真实姓名不正确",
+                "emptyMsg":"支付宝账号不正确",
+                "idMsg":"身份证号不正确",
+                "phoneMsg":"手机号不正确",
+                "emailMsg":"邮箱格式不正确",
+                "bankMsg":"银行卡号不正确",
+                "frontMsg":"正面图有误",
+                "backMsg":"背面图有误"
+            },
+            isEmpty:function(ipt,str){
+                if(!this.emptyExp.test(str)){
+                    this.errMsg(ipt,this.msg["emptyMsg"]);
+                    return false;
+                }
+            },
+            isFimg:function(ipt,str){
+                if(!this.emptyExp.test(str)){
+                    this.errImg(ipt,this.msg["frontMsg"]);
+                    return false; 
+                }
+            },
+            isBimg:function(ipt,str){
+                if(!this.emptyExp.test(str)){
+                    this.errImg(ipt,this.msg["backMsg"]);
+                    return false;
+                }
+            },
+            isChinese:function(ipt,str){
+                if(!this.nameExp.test(str)){
+                    this.errMsg(ipt,this.msg["nameMsg"]);
+                    return false; 
+                }
+            },
+            isIdcard:function(ipt,str){
+                if(!this.idExp.test(str)){
+                    this.errMsg(ipt,this.msg["idMsg"]);
+                    return false; 
+                }
+            },
+            isMobile:function(ipt,str){
+                if(!this.phoneExp.test(str)){
+                    this.errMsg(ipt,this.msg["phoneMsg"]);
+                    return false; 
+                }
+            },
+            isBank:function(ipt,str){
+                if(!this.bankExp.test(str)){
+                    this.errMsg(ipt,this.msg["bankMsg"]);
+                    return false; 
+                }
+            },
+            isEmail:function(ipt,str){
+                if(!this.emailExp.test(str)){
+                    this.errMsg(ipt,this.msg["emailMsg"]);
+                    return false; 
+                }
+            },
+            errMsg:function(ipt,str){
+                var $obj = $(ipt);
+                $obj.val('').attr('placeholder',str).focus(function() {
+                    var $self = $(this);
+                    $self.attr('placeholder','').next('span').remove()
+                    $self.parent().removeClass('input-error');
+                }).after("<span class='glyphicon glyphicon-remove form-control-feedback'><span>").parent().addClass('input-error');
+            },
+            errImg:function(ipt,str){
+                var $obj = $(ipt),oldTxt=$obj.next('span').text();
+                $obj.focus(function() {
+                    var $self = $(this);
+                    $self.next('span').text(oldTxt);
+                    $self.parent().removeClass('input-error');
+                }).next('span').text(str);
+                $obj.parent().addClass('input-error');
+            },
+            init:function(obj,fn){
+                var self = this;
+                $(obj).each(function(index,element){
+                    var $this = $(this),
+                        id = $this.data('id'),
+                        $val = $this.val().replace(self.spaceExp,'');
+                    if(typeof self[id]=='function'){
+                        self.flag = self[id](this,$val);
+                    }
+                });
+                this.flag != false && fn();//校验成功回调
+            }
+        }
+    </script>
+</body>
+
+</html>
