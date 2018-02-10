@@ -1,3 +1,9 @@
+/*微信分享
+调用案例
+var title = 'test';
+var desc = 'this is wx sdk!';
+jssdk.share(title, desc, 'http://apiurl', 'http://imgurl');
+*/
 var jssdk = {
     debug : false,
     link : '',
