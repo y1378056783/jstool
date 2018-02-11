@@ -73,8 +73,8 @@ function operaNum(arg) {
         "curStyle":arg.curStyle,
         "operation":arg.operation
     },
-    maxNum = opt.$numObj.attr('data-max'),
-    minNum = opt.$numObj.attr('data-min'),
+    maxNum = opt.$numObj.data('max'),
+    minNum = opt.$numObj.data('min'),
     curNum = opt.$numObj.val();
     if (isNull(opt.operation)) {
         handler = function(i){return ++i};
@@ -89,10 +89,10 @@ function operaNum(arg) {
     console.log(curNum);
     if (curNum >= maxNum) {
         curNum = maxNum;
-        opt.$incObj.removeClass(curStyle);
+        opt.$incObj.removeClass(opt.curStyle);
     } else if (curNum <= minNum) {
         curNum = minNum; 
-        opt.$decObj.removeClass(curStyle);
+        opt.$decObj.removeClass(opt.curStyle);
     }
     opt.$numObj.val(curNum);
     return curNum;
