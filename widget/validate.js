@@ -1,6 +1,6 @@
 define("widget/validate", [],function(require, exports, module) {
 /**
-*js表单操作
+*js表单校验
 *@author  PeterYu
 *@date    2017/12/12
 *@package form
