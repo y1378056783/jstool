@@ -39,8 +39,23 @@ decObj:减按钮
 curstyle:当前点击样式
 operation:传1执行加法操作
           传-1执行减法操作
- operaNum('#timeNum','#plus','#reduce','color-red',-1);
- operaNum('#timeNum','#plus','#reduce','color-red',1);
+ operaNum({
+    "numObj":'#timeNum',
+    "incObj":'#plus',
+    "decObj":'#reduce',
+    "curStyle":'color-red',
+    "operation":-1
+});
+ operaNum({
+    "numObj":'#timeNum',
+    "incObj":'#plus',
+    "decObj":'#reduce',
+    "curStyle":'color-red',
+    "operation":1
+});
+<span id='reduce'>-</span>
+<input type='text' id='timeNum' data-max='10' data-min='1'/>
+<span id='plus'>+</span>
  调用示例：
 $('#plus').on('tap',function(){
     var price=$('#money').attr('data-def');
@@ -50,41 +65,48 @@ $('#plus').on('tap',function(){
     freetime();//请求数据
 })
  */
-function operaNum(numObj, incObj, decObj, curStyle, operation) {
-    var $numObj = $(numObj), $incObj = $(incObj), $decObj = $(decObj);
-    var maxNum = $numObj.attr('data-max'), minNum = $numObj.attr('data-min');
-    var curNum = $numObj.val();
-    if (isNull(operation)) {
+function operaNum(arg) {
+    var opt = {
+        "$numObj":$(arg.numObj),
+        "$incObj":$(arg.incObj),
+        "$decObj":$(arg.decObj),
+        "curStyle":arg.curStyle,
+        "operation":arg.operation
+    },
+    maxNum = opt.$numObj.attr('data-max'),
+    minNum = opt.$numObj.attr('data-min'),
+    curNum = opt.$numObj.val();
+    if (isNull(opt.operation)) {
         handler = function(i){return ++i};
-    } else if (! isNaN(operation)) {
-        handler = function(i){return parseInt(i) + operation};
+    } else if (! isNaN(opt.operation)) {
+        handler = function(i){return parseInt(i) + opt.operation};
     } else {
-        handler = operation;
+        handler = opt.operation;
     }
-    $incObj.addClass(curStyle);
-    $decObj.addClass(curStyle);
+    opt.$incObj.addClass(opt.curStyle);
+    opt.$decObj.addClass(opt.curStyle);
     curNum = handler(curNum);
     console.log(curNum);
     if (curNum >= maxNum) {
         curNum = maxNum;
-        $incObj.removeClass(curStyle);
+        opt.$incObj.removeClass(curStyle);
     } else if (curNum <= minNum) {
         curNum = minNum; 
-        $decObj.removeClass(curStyle);
+        opt.$decObj.removeClass(curStyle);
     }
-    $numObj.val(curNum);
+    opt.$numObj.val(curNum);
     return curNum;
 }
 /*
 下拉加载更多
 <ul>
-    <li></li>
+    <li><img src='exmple.jpg'/></li>
     <p id="loading">加载中...</p>
 </ul>
 调用案例
 new getMore('http://api.miduo.com/getcode')
 */
-function getMore(surl){
+var getMore = function (surl){
     this.page=2;
     this.stop=true;
     this.timer=null;
@@ -92,26 +114,30 @@ function getMore(surl){
     this.init();
 }
 getMore.prototype={
-    isload:function(){
-        var totalheight = parseFloat($(window).height()) + parseFloat($(window).scrollTop());
-        if(($(document).height()-$(window).height()/2)<= totalheight){//达到加载条件
-            return true
-        }else{
-            return false
-        }
+    isload:function(){//达到加载条件
+        var $win=$(window),
+            $doc=$(document),
+            totalHeight = parseFloat($win.height()) + parseFloat($win.scrollTop())
+            docHeight = $doc.height()-$win.height()/2;
+        return docHeight <= totalHeight
     },
     getList:function (){
-        var self = this;
-        $("#Loading").show();
-        if(this.stop==true && this.isload()){
+        var self = this,
+            tpl = '',
+            $load = $("#loading");
+        $load.show();
+        if(this.stop && this.isload()){
             this.stop=false;
-            $.getJSON(this.url+'&page='+page, function (data) {
-                if (data.code > 0) {
-                    $("#Loading").before(data.res);
-                    self.page ++;
+            $.getJSON(this.url+'?page='+this.page, function (res) {
+                if (res.code > 0) {
+                    res.data.forEach(function(i,e){
+                        tpl+="<li><img src='"+i.imgurl+"'/></li>";
+                    })
+                    $load.before(tpl);
+                    self.page++;
                     self.stop = true;
                }else {
-                    $("#Loading").html('没有更多了');
+                    $load.text('没有更多了');
                     self.stop = false;
                }
             })
@@ -120,11 +146,15 @@ getMore.prototype={
     dbcRefresh:function () {//函数节流
         var self = this;
         clearTimeout(self.timer);
-        self.timer = setTimeout(self.getList, 100);
+        self.timer = setTimeout(function(){
+            self.getList();
+        },200);
     },
     init:function(){
         var self = this;
-        $(window).scroll(self.dbcRefresh);
+        $(window).scroll(function(){
+            self.dbcRefresh();
+        });
     }
 }
 
