@@ -1,21 +1,22 @@
 define("widget/validate", [],function(require, exports, module) {
 /**
 *js表单校验
-*@author  PeterYu
+*@author  vitoYu
 *@date    2017/12/12
 *@package form
 调用案例
 <input type="number" class="form-control cash-valid" placeholder="必填" data-id="isMobile" required>
 <input type="number" class="form-control cash-valid" placeholder="必填" data-id="isIdcard" id="idCard" required>
 <input type="button" id="cashSubmit" class="btn btn-lg btn-primary btn-block" value="提交认证">
+var valid = new validate();
 $("#cashSubmit").on('click',function(){
     var $this = $(this);
-    new validate('.cash-valid',function(){
+    valid.init('.cash-valid',function(){
         $this.attr('type','submit');
-    });
+    })
 })
 **/
-var validate = function(o,fn){
+var validate = function(){
     this.flag = true;
     this.spaceExp = /^\s*|\s*$/;//首尾空格
     this.nameExp = /^[\u4E00-\u9FA5]{2,4}$/;//真实姓名
@@ -34,7 +35,6 @@ var validate = function(o,fn){
         "frontMsg":"正面图有误",
         "backMsg":"背面图有误"
     };
-    this.init(o,fn);
 };
 validate.prototype = {
     isEmpty:function(ipt,str){
