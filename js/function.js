@@ -206,54 +206,77 @@ basic.isInViewport = function (el) {
     <p id="loading">加载中...</p>
 </ul>
 调用案例
-basic.getMore('http://api.miduo.com/getcode')
+basic.loadMore('路径?page=')
+后端数据结构
+{
+    "data":[
+        {"imgurl":"img/2.jpg"},
+        {"imgurl":"img/3.jpg"},
+        {"imgurl":"img/4.jpg"},
+        {"imgurl":"img/5.jpg"},
+        {"imgurl":"img/6.jpg"}
+    ],
+    "code":"1"
+}
 */
-basic.getMore = function (url){
-    console.log(this);
+basic.loadMore = function (url){
+    //console.log(this);
     var page=2,
         stop=true,
         timer=null,
+        tpl = '',
+        $win=$(window),
+        $doc=$(document),
+        height=$win.height(),
+        $load=$("#loading"),
+        fire = false,// rAF 触发锁
         isload = function(){//达到加载条件
-            var $win=$(window),
-                $doc=$(document),
-                height=$win.height(),
-                totalHeight = parseFloat(height) + parseFloat($win.scrollTop())
+            var totalHeight = parseFloat(height) + parseFloat($win.scrollTop())
                 docHeight = $doc.height()-height/2;
-            return docHeight <= totalHeight
+            return docHeight <= totalHeight;
         },
         getList = function (){
-            var tpl = '',
-                $load=$("#loading");
+            fire = false;
             $load.show();
-            if(stop && isload()){//self.isInViewport(lastEle)
+            if(stop && isload()){
                 stop=false;
-                $.getJSON(url+'?page='+page,function (res) {
+                $.getJSON(url+page,function (res) {
                     if (res.code > 0) {
                         res.data.forEach(function(i,e){
                             tpl+="<li><img src='"+i.imgurl+"'/></li>";
                         })
+                        //console.log(tpl);
                         $load.before(tpl);
                         page++;
                         stop = true;
                    }else {
                         $load.text('没有更多了');
+                        setTimeout(function(){
+                            $load.hide();
+                        },400);
                         stop = false;
                    }
                 })
             }
         },
-        dbcRefresh = function () {//函数节流
+        onScroll = function(){//效率更高
+            if(!fire) {
+                requestAnimationFrame(getList);
+                fire = true;
+            }
+        },
+        throttle = function () {//函数节流，效率略低
             clearTimeout(timer);
             timer = setTimeout(function(){
                 getList();
-            },200);
-        },
-        init = function(){
-            $(window).scroll(function(){
-                dbcRefresh();
-            });
+            },300);
         };
-    init();
+    $(window).scroll(function(){
+        //console.time();
+        throttle();
+        //onScroll();
+        //console.timeEnd();
+    });
 }
 /*
 滑动到指定位置
@@ -303,7 +326,7 @@ basic.textCounter = function(field, maxlimit,textNum) {
 从数组随机抽取n个数据
 调用示例
 var items = ['1','2','4','5','6','7','8','9','10'];
-basic.getRandomArrayElements(items, 4);
+basic.getRanArrEle(items, 4);
 */
 basic.getRanArrEle = function(arr, count){
     var shuffled = arr.slice(0),
@@ -359,17 +382,14 @@ basic.city(data,false);
 */
 
 basic.city = function(strid,reorder){ 
-    var html='',self=this;
-    if(reorder){
-        strid.reverse();
-    }
+    var html='',self=this,link=[];
+    reorder && strid.reverse();
     //console.log(arr);
     for(var i=0;i<strid.length;i++){ 
-        var link=[]; 
-            link=strid[i]; 
-            if(self.diffNum(dataNum,link[0])){
-                html+='<tr><td>'+link[0]+'</td><td>'+link[1]+'</td><td>'+link[2]+'</td></tr>'
-            }
+        link=strid[i]; 
+        if(self.diffNum(dataNum,link[0])){
+            html+='<tr><td>'+link[0]+'</td><td>'+link[1]+'</td><td>'+link[2]+'</td></tr>'
+        }
     }
     return html;
     //document.getElementById('content').innerHTML = html;
@@ -377,11 +397,8 @@ basic.city = function(strid,reorder){
 
 basic.diffNum = function(num,link){
     for(var k=0;k<num.length;k++){
-        if(num[k]==link){
-            return true;
-        }
+        return (num[k]==link) ? true : false;
     }
-    return false;
 }
 
 /*
