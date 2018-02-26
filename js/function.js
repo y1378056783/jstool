@@ -189,8 +189,10 @@ basic.operaNum = function(arg) {
 参数说明：
 el 表示原生dom对象
 调用示例
-var last=$(this).find('li').last();
-isInViewport($(last)[0]);
+$('.scroll').on('touchmove',function(){
+    var last=$('ul li').last();
+    basic.isInViewport($(last)[0]) && callback();
+})
 */
 basic.isInViewport = function (el) {
     var rect = el.getBoundingClientRect();
@@ -395,10 +397,10 @@ var data=[
         [10,'韶关','苍石寨']
     ];
 var dataNum = [2,6,10,9,5,4];
-basic.city(data,false);
+basic.setValByNum(data,false);
 */
 
-basic.city = function(strid,reorder){ 
+basic.setValByNum = function(strid,reorder){ 
     var html='',self=this,link=[];
     reorder && strid.reverse();
     //console.log(arr);
@@ -439,19 +441,6 @@ basic.optOften=function(o,t){
         console.info('提交成功');
      }       
 }
-/*
-获取绝对路径
-调用示例
-basic.getAbsoluteUrl()('/shirlyzhang');  // "http://imweb.io/shirlyzhang"
-*/
-basic.getAbsoluteUrl = function() {
-    var a;
-    return function(url) {
-        if(!a) a = document.createElement('a');
-        a.href = url;
-        return a.href;
-    };
-};
 /*
 cookie操作
 */
