@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" manifest="index.appcache">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta charset="UTF-8">
     <title>数据绑定</title>
     <style type="text/css">
-        *{
+        /**{
             margin: 0;
             padding: 0;
-        }
+        }*/
         ul,li,ol{
             list-style-type: none;
         }
@@ -25,8 +26,8 @@
             color: #eca5de;
         }
         body{
-            background: #1a1a1a;
-            color: #fff;
+            /*background: #1a1a1a;
+            color: #fff;*/
             font-size: 14px;
         }
         h1{
@@ -163,15 +164,30 @@
         footer a{
             color: white
         }
+        #fixedTop{
+            background-color:red;
+        }
 
-
-
+        html,body{height:100%;}
+        #debug{
+            width: 50px;
+            height:50px;
+            border-radius:25px;
+            position: fixed;
+            top: 20%;
+            right:0;
+            opacity:.5;
+        }
     </style>
+    
 </head>
 <body>
-    <h1>Easy Data Binder</h1>
-    <a href="https://github.com/lancer07/EasyDataBinder" target="_blank" id="forkme"></a>
-    <div class="wrap">
+    <!--<img src="../img/1.jpg">
+    <img src="../img/2.jpg">
+    <button id="debug">刷新</button>
+    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.3&key=d7be1b7d16ad544e66cf851f9932c5ad"></script><h1 onclick="myFunction()">Easy Data Binder</h1><dialog id="myDialog">这是原生对话框</dialog>
+    <a href="https://github.com/lancer07/EasyDataBinder" target="_blank" id="forkme"></a>-->
+    <!--<div class="wrap">
         <h2>Example</h2>
         <div>
             <label class="tit">Name: </label><input type="text" data-binder="name" />
@@ -179,7 +195,7 @@
         <div>
             <label class="tit">Old: </label><input type="text" data-binder="old" />
         </div>
-        <div>
+        <div id="fixedTop">
             <label class="tit">Height: </label><input type="text" data-binder="body.height" /> CM
         </div>
         <div>
@@ -234,7 +250,7 @@
             <pre id="info"></pre>
         </div>
     </div>
-    
+   
     <div class="documents">
         <h2>Document API</h2>
         <dl>
@@ -351,23 +367,81 @@
             </dd>
         </dl>
     </div>
-
+    
     <footer>
         <p>
             Maintained by <a href="http://www.linqing07.com/" target="_blank">Lancer Lin</a>
         </p>
     </footer>
+    <div id="container" style="width:100%; height:100%"></div>
+
     <script type="text/javascript" src="//cdn.bootcss.com/lodash.js/4.16.0/lodash.min.js"></script>
     <script type="text/javascript" src="binder.js"></script>
+    <script type="text/javascript" src="//ad.miduo.com/js/jquery.js"></script>-->
     <script type="text/javascript">
-        var dataBinder = DataBinder();
-        dataBinder.debug = true;
+    var socket = new WebSocket('ws:127.0.0.1:8080/socket.php');
+    socket.onopen = function(event){ 
+        console.log(event); 
+        socket.send('hello world');
+    }
+    socket.onmessage = function(e){
+        var data = e.data;
+        console.log(data);
+        //处理数据
+    }
+    /*var tmp = +new Date();
+    $('#debug').on('click',function(){
+        location.href="/jstool/bind/test.html?t="+tmp;
+    })
+    window.addEventListener('load', function(e){
+        console.log(window.applicationCache.status);
+    })
+    window.applicationCache.addEventListener('updateready', function(){
+        console.log('updateready!');
+        window.applicationCache.swapCache();//应用更新后的缓存来替换原来的缓存
+    });
+    function getLocation(){
+        if (navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(function (position){
+            // 高德地图API功能position.coords.latitude,position.coords.longitude
+            var map = new AMap.Map('container', {
+                resizeEnable: true,
+                zoom:11,
+                center: [position.coords.longitude,position.coords.latitude]
+            });
+        });
+        }else{
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+    getLocation()
+    function myFunction(){
+        var x = document.getElementById("myDialog");
+        x.open = true;
+    }
+     $(function(){
+    var $body=$('body');
+    $(window).scroll(function (){
+        var $winTop=$(this).scrollTop(),
+            $fixedTop = parseFloat($("#fixedTop").offset().top);
+        if($winTop>=$fixedTop){
+            $body.css('background-color','blue');
+            $body.append($winTop+'\n'+$fixedTop);
+        }else{
+            $body.removeAttr('style');
+        }
+    })
+     var dataBinder = DataBinder();
+        //dataBinder.debug = true;
         var initData = {
             name  : "Nicolas",
             old : "3",
             body:{
                 height : "50",
-                weight : "17"
+                weight : "17",
+                leg:{
+                    width:"20"
+                }
             },
             sex : "male",
             family : {
@@ -406,6 +480,7 @@
             document.getElementById('personName').value = '';
             document.getElementById('old').value = '';
         }
+        })*/
     </script>
 </body>
 </html>

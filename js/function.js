@@ -1,4 +1,4 @@
-!(function(window,$,document){
+!(function($){
 var basic={};
 /*
 时间对比函数
@@ -299,7 +299,24 @@ basic.backTop = function(obj){
        }
     }
 };
-
+/*
+滑动固定导航
+调用示例
+basic.fixedNav("#nav")
+*/
+basic.fixedNav = function(id){
+    var $obj = $(id),$winTop,$fixedTop = $obj.offset().top;
+    //$body=$('body'),
+    $(window).scroll(function (){
+        $winTop=$(this).scrollTop();
+        if($winTop>=$fixedTop){
+            $obj.css('position','fixed')
+            //console.log($winTop+'\n'+$fixedTop);
+        }else{
+            $obj.removeAttr('style');
+        }
+    })
+}
 /* -----文本输入字数限制方法-----
 *field  表单域元素名
 *maxlimit   限制字符
@@ -483,4 +500,4 @@ basic.url = {
     }
 }
 window['basic'] = basic;
-})(window,jQuery,document)
+})(jQuery)
