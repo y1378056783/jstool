@@ -260,13 +260,12 @@ new TouchAngle({
 var TouchAngle = function (o){
     var opt = o || {};
         this.callback = opt.callback;
-        //console.log(this.callback);
         //callback = (typeof opt.fn != 'function') ? function(){} : opt.fn;
         this.startX = null;
         this.startY = null;
         this.endX = null;
         this.endY = null;
-        this.obj = $(opt.obj) || $(document);
+        this.obj = $(opt.targets) || $(document);
         this.handleInit();
 };
 TouchAngle.prototype = {
@@ -403,7 +402,7 @@ basic.loadMore = function (obj,url){
             }
         },
         init = new TouchAngle({
-            "obj":obj,
+            "targets":obj,
             "callback":{
                 up:function(dom){
                     console.log('加载更多');
