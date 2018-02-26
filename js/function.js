@@ -187,10 +187,13 @@ basic.operaNum = function(arg) {
 /*
 判断内容是否出现在可视区
 参数说明：
+<ul class="scroll">
+    <li></li>
+</ul>
 el 表示原生dom对象
 调用示例
 $('.scroll').on('touchmove',function(){
-    var last=$('ul li').last();
+    var last=$(this).find('li').last();
     basic.isInViewport($(last)[0]) && callback();
 })
 */
@@ -203,12 +206,32 @@ basic.isInViewport = function (el) {
 }
 /*
 下拉加载更多
-<ul>
+*{margin:0;padding:0;}
+ul{list-style:none;}
+.col-m{width:90%;margin:2.5% auto;position: relative;}
+.col-m li{width:50%;margin:2.5% 0;}
+.col-m li img,.loading{width:100%;}
+.col-m li:nth-child(odd){float:left;}
+.col-m li:nth-child(even){float:right;}
+.loading{text-align:center;display:none;position: absolute;left:0;}
+#refresh{top:0;}
+#loading{bottom:0;}
+.cc:after{
+    content: '.';
+    clear: both;
+    height:0;
+    display:block;
+    visibility:hidden;
+    overflow: hidden;
+}
+.cc{zoom:1;}
+<ul class="col-m cc" id="wrap">
+    <p id="refresh" class="loading">刷新数据中...</p>
     <li><img src='exmple.jpg'/></li>
-    <p id="loading">加载中...</p>
+    <p id="loading" class="loading">加载中...</p>
 </ul>
 调用案例
-basic.loadMore('路径?page=')
+basic.loadMore('接口地址')
 后端数据结构
 {
     "data":[
@@ -221,64 +244,180 @@ basic.loadMore('路径?page=')
     "code":"1"
 }
 */
-basic.loadMore = function (url){
+/*
+移动端监测用户手指滑动方向的方法
+new TouchAngle({
+    "obj":"#wrap",
+    "callback":{
+        up:function(){
+            console.log('加载更多')
+        },
+        down:function(){
+            console.log('刷新数据')
+        }
+    }
+});*/ 
+var TouchAngle = function (o){
+    var opt = o || {};
+        this.callback = opt.callback;
+        //console.log(this.callback);
+        //callback = (typeof opt.fn != 'function') ? function(){} : opt.fn;
+        this.startX = null;
+        this.startY = null;
+        this.endX = null;
+        this.endY = null;
+        this.obj = $(opt.obj) || $(document);
+        this.handleInit();
+};
+TouchAngle.prototype = {
+    handleDefault : function(){
+        console.log("默认操作");
+    },
+    handleUp : function(dom){
+        (typeof this.callback['up'] == 'function') && this.callback['up'](dom)
+        //console.log("向上");
+    },
+    handleDown : function(dom){
+        (typeof this.callback['down'] == 'function') && this.callback['down'](dom)
+        //console.log("向下");
+    },
+    handleLeft : function(){
+        console.log("向左");
+    },
+    handleRight : function(){
+        console.log("向右");
+    },
+    getSlideAngle : function(dx, dy) {
+        return Math.atan2(dy, dx) * 180 / Math.PI;
+    },
+    //根据起点和终点返回方向 1：向上，2：向下，3：向左，4：向右,0：未滑动
+    getSlideDirection : function(startX, startY, endX, endY) {
+        var dy = startY - endY,
+            dx = endX - startX,
+            result = 0;
+        //如果滑动距离太短
+        if(Math.abs(dx) < 2 && Math.abs(dy) < 2) {
+            return result;
+        }
+        var angle = this.getSlideAngle(dx, dy);
+        if(angle >= -45 && angle < 45) {
+            result = 4;
+        }else if (angle >= 45 && angle < 135) {
+            result = 1;
+        }else if (angle >= -135 && angle < -45) {
+            result = 2;
+        }
+        else if ((angle >= 135 && angle <= 180) || (angle >= -180 && angle < -135)) {
+            result = 3;
+        }
+        return result;
+    },
+    handleInit : function(){
+        //默认操作
+        //this.handleDefault();
+        var self = this;
+        this.obj.on('touchstart',function (ev) {
+            var erEv = ev.originalEvent;
+            self.startX = erEv.touches[0].pageX;
+            self.startY = erEv.touches[0].pageY;  
+        }).on('touchend',function (ev) {
+            //console.log(this);
+            var domObj=this,erEv = ev.originalEvent;
+            self.endX = erEv.changedTouches[0].pageX;
+            self.endY = erEv.changedTouches[0].pageY;
+            var direction = self.getSlideDirection(self.startX, self.startY,self.endX,self.endY);
+            switch(direction) {
+                case 0:
+                    //没有滑动
+                    break;
+                case 1:
+                    self.handleUp(domObj);
+                    break;
+                case 2:
+                    self.handleDown(domObj);
+                    break;
+                case 3:
+                    self.handleLeft();
+                    break;
+                case 4:
+                    self.handleRight();
+                    break;
+                default:         
+            }
+        });
+    }
+};
+basic.loadMore = function (obj,url){
     //console.log(this);
     var page=2,
-        stop=true,
-        timer=null,
+        loadStop=true,
+        refStop=true,
+        //timer=null,
         tpl = '',
-        $win=$(window),
-        $doc=$(document),
-        height=$win.height(),
+        self = this,
         $load=$("#loading"),
-        fire = false,// rAF 触发锁
-        isload = function(){//达到加载条件
-            var totalHeight = parseFloat(height) + parseFloat($win.scrollTop())
-                docHeight = $doc.height()-height/2;
-            return docHeight <= totalHeight;
+        $ref = $("#refresh"),
+        loadHide = function(obj,flag){
+            flag && obj.text('没有更多了');
+            setTimeout(function(){
+                obj.hide();
+            },400);
         },
-        getList = function (){
-            fire = false;
+        getMore = function (){
             $load.show();
-            if(stop && isload()){
-                stop=false;
-                $.getJSON(url+page,function (res) {
+            if(loadStop){// && isload()
+                loadStop=false;
+                $.getJSON(url+"?page="+page,function (res) {
                     if (res.code > 0) {
                         res.data.forEach(function(i,e){
                             tpl+="<li><img src='"+i.imgurl+"'/></li>";
                         })
-                        //console.log(tpl);
                         $load.before(tpl);
+                        loadHide($load,false);
                         page++;
-                        stop = true;
+                        loadStop = true;
                    }else {
-                        $load.text('没有更多了');
-                        setTimeout(function(){
-                            $load.hide();
-                        },400);
-                        stop = false;
+                        loadHide($load,true);
+                        loadStop = false;
                    }
                 })
             }
         },
-        onScroll = function(){//效率更高
-            if(!fire) {
-                requestAnimationFrame(getList);
-                fire = true;
+        reFresh = function(){
+            $ref.show();
+            if(refStop){
+                refStop=false;
+                $.getJSON(url,function (res) {
+                    if (res.code > 0) {
+                        res.data.forEach(function(i,e){
+                            tpl+="<li><img src='"+i.imgurl+"'/></li>";
+                        })
+                        $ref.after(tpl);
+                        loadHide($ref,false);
+                        refStop = true;
+                   }else {
+                        loadHide($ref,true);
+                        refStop = false;
+                   }
+                })
             }
         },
-        throttle = function () {//函数节流，效率略低
-            clearTimeout(timer);
-            timer = setTimeout(function(){
-                getList();
-            },300);
-        };
-    $(window).scroll(function(){
-        //console.time();
-        throttle();
-        //onScroll();
-        //console.timeEnd();
-    });
+        init = new TouchAngle({
+            "obj":obj,
+            "callback":{
+                up:function(dom){
+                    console.log('加载更多');
+                    var last=$(dom).find('li').last();
+                    self.isInViewport($(last)[0]) && getMore();
+                },
+                down:function(dom){
+                    console.log('刷新数据')
+                    var first=$(dom).find('li').first();
+                    self.isInViewport($(first)[0]) && reFresh();
+                }
+            }
+        }); 
+    init.callback.down(obj);//初始化加载数据
 }
 /*
 滑动到指定位置

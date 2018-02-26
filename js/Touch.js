@@ -1,11 +1,23 @@
 /*
 移动端监测用户手指滑动方向的方法
-*/ 
-define(function(require, exports, module){
-    'use strict';
+new TouchAngle({
+    "obj":"#wrap",
+    "callback":{
+        up:function(){
+            console.log('向上')
+        },
+        down:function(){
+            console.log('向下')
+        }
+    }
+});
+
+'use strict';*/ 
     var TouchAngle = function (o){
-        var opt = o || {},
-            callback = (typeof opt.fn != 'function') ? function(){} : opt.fn;
+        var opt = o || {};
+            this.callback = opt.callback;
+            //console.log(this.callback);
+            //callback = (typeof opt.fn != 'function') ? function(){} : opt.fn;
             this.startX = null;
             this.startY = null;
             this.endX = null;
@@ -18,10 +30,12 @@ define(function(require, exports, module){
             console.log("默认操作");
         },
         handleUp : function(){
-            console.log("向上");
+            (typeof this.callback['up'] == 'function') && this.callback['up']()
+            //console.log("向上");
         },
         handleDown : function(){
-            console.log("向下");
+            (typeof this.callback['down'] == 'function') && this.callback['down']()
+            //console.log("向下");
         },
         handleLeft : function(){
             console.log("向左");
@@ -59,11 +73,13 @@ define(function(require, exports, module){
             //this.handleDefault();
             var self = this;
             this.obj.on('touchstart',function (ev) {
-                self.startX = ev.touches[0].pageX;
-                self.startY = ev.touches[0].pageY;  
+                var erEv = ev.originalEvent;
+                self.startX = erEv.touches[0].pageX;
+                self.startY = erEv.touches[0].pageY;  
             }).on('touchend',function (ev) {
-                self.endX = ev.changedTouches[0].pageX;
-                self.endY = ev.changedTouches[0].pageY;
+                var erEv = ev.originalEvent;
+                self.endX = erEv.changedTouches[0].pageX;
+                self.endY = erEv.changedTouches[0].pageY;
                 var direction = self.getSlideDirection(self.startX, self.startY,self.endX,self.endY);
                 switch(direction) {
                     case 0:
@@ -86,9 +102,6 @@ define(function(require, exports, module){
             });
         }
     };
-    exports.TouchInit = function(o){
-        new TouchAngle(o);
-    };
-})
+        
 
    
