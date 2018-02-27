@@ -379,16 +379,6 @@
     <script type="text/javascript" src="binder.js"></script>
     <script type="text/javascript" src="//ad.miduo.com/js/jquery.js"></script>-->
     <script type="text/javascript">
-    var socket = new WebSocket('ws:127.0.0.1:8080/socket.php');
-    socket.onopen = function(event){ 
-        console.log(event); 
-        socket.send('hello world');
-    }
-    socket.onmessage = function(e){
-        var data = e.data;
-        console.log(data);
-        //处理数据
-    }
     /*var tmp = +new Date();
     $('#debug').on('click',function(){
         location.href="/jstool/bind/test.html?t="+tmp;
@@ -420,17 +410,7 @@
         x.open = true;
     }
      $(function(){
-    var $body=$('body');
-    $(window).scroll(function (){
-        var $winTop=$(this).scrollTop(),
-            $fixedTop = parseFloat($("#fixedTop").offset().top);
-        if($winTop>=$fixedTop){
-            $body.css('background-color','blue');
-            $body.append($winTop+'\n'+$fixedTop);
-        }else{
-            $body.removeAttr('style');
-        }
-    })
+    
      var dataBinder = DataBinder();
         //dataBinder.debug = true;
         var initData = {
