@@ -205,6 +205,56 @@ basic.isInViewport = function (el) {
         rect.top < (window.innerHeight || document.documentElement.clientHeight);
 }
 /*
+水平滑动菜单
+调用示例
+.snav{
+    width: 100%;
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+.snav li{
+    display:inline-block;
+    padding:15px 20px;
+    box-sizing:border-box;
+}
+.snav li.on{
+    border-bottom: 1px solid #ea6f5a;
+    color: #ea6f5a;
+}
+.snav::-webkit-scrollbar{
+    height: 0;
+}
+<ul id="nav" class="snav">
+    <li i="1" class="on">角色</li>
+    <li i="2">格斗</li>
+    <li i="3">休闲</li>
+    <li i="4">竞速</li>
+    <li i="5">策略</li>
+    <li i="6">射击</li>
+    <li i="7">其它</li>
+    <li i="8">回合</li>
+    <li i="9">卡牌</li>
+</ul>
+basic.scrollMenu("#nav",'on',function(index){
+    console.log(index);
+});
+*/
+basic.scrollMenu = function(obj,active,fn){
+    var $nav = $(obj);
+    $(obj+" li").on('touchstart',function(){
+        var $this=$(this),
+            data = $this.attr('i');
+            liOffset = $this.offset().left + $nav.scrollLeft(),//li元素总偏移值
+            cenLeft = ($nav.width() - $this.outerWidth()) / 2, //居中
+            sLeft = liOffset-cenLeft;
+        $this.addClass(active).siblings().removeClass(active);
+        console.log($nav.width());
+        $nav.animate({"scrollLeft":sLeft},260)
+        fn(data);
+    })
+}
+/*
 下拉加载更多
 *{margin:0;padding:0;}
 ul{list-style:none;}
@@ -406,17 +456,17 @@ basic.loadMore = function (obj,url){
             "callback":{
                 up:function(dom){
                     console.log('加载更多');
-                    var last=$(dom).find('li').last();
+                    var last=$(dom).find('li:last');
                     self.isInViewport($(last)[0]) && getMore();
                 },
                 down:function(dom){
                     console.log('刷新数据')
-                    var first=$(dom).find('li').first();
+                    var first=$(dom).find('li:first');
                     self.isInViewport($(first)[0]) && reFresh();
                 }
             }
         }); 
-    init.callback.down(obj);//初始化加载数据
+    //init.callback.down(obj);初始化加载数据
 }
 /*
 滑动到指定位置
