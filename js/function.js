@@ -225,6 +225,7 @@ basic.isInViewport = function (el) {
 .snav::-webkit-scrollbar{
     height: 0;
 }
+.empty{width:100%;height:80%;background:url('img/empty.png') no-repeat center center;background-size:40%;}
 <ul id="nav" class="snav">
     <li i="1" class="on">角色</li>
     <li i="2">格斗</li>
@@ -237,7 +238,19 @@ basic.isInViewport = function (el) {
     <li i="9">卡牌</li>
 </ul>
 basic.scrollMenu("#nav",'on',function(index){
-    console.log(index);
+    //console.log(index);
+    var typeId = index,$wrap=$('#wrap'),tpl="<p id='refresh' class='loading'>刷新数据中...</p>";
+    $.getJSON('接口地址?type='+typeId,function(res){//请求数据
+        if (res.code > 0) {
+            res.data.forEach(function(i,e){
+                tpl+="<li><img src='"+i.imgurl+"'/></li>";
+            })
+            tpl+="<p id='loading' class='loading'>加载数据中...</p>";
+            $wrap.removeClass("empty").html(tpl);
+        }else{
+            $wrap.addClass("empty").html('')//'没有该分类！'
+        }
+    })
 });
 */
 basic.scrollMenu = function(obj,active,fn){
