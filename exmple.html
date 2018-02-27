@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		ul{list-style:none;}
+		html,body{height:100%;}
+		.col-m{width:90%;margin:2.5% auto;position: relative;}
+		.col-m li{width:50%;margin:2.5% 0;}
+		.col-m li img,.loading,.fixed,.snav{width:100%;}
+		.col-m li:nth-child(odd){float:left;}
+		.col-m li:nth-child(even){float:right;}
+		.loading{text-align:center;display:none;position: absolute;left:0;}
+		#refresh{top:0;}
+		#loading{bottom:0;}
+		.cc:after{
+			content: '.';
+			clear: both;
+			height:0;
+			display:block;
+			visibility:hidden;
+			overflow: hidden;
+		}
+		.cc{zoom:1;}
+		.fixed{
+			position: fixed;
+			top: 52px;
+			left: 0;
+			z-index: 100;
+			overflow-y: scroll;
+			height:100%;
+		}
+		.snav{
+			white-space: nowrap;
+			overflow-x: scroll;
+			overflow-y: hidden;
+		}
+		.snav li{
+			display:inline-block;
+			padding:15px 20px;
+			box-sizing:border-box;
+		}
+		.snav li.on{
+			border-bottom: 1px solid #ea6f5a;
+	    	color: #ea6f5a;
+		}
+		.snav::-webkit-scrollbar{
+		    height: 0;
+		}
+	</style>
+</head>
+<body>
+	<ul id="nav" class="snav">
+		<li i="1" class="on">角色</li>
+		<li i="2">格斗</li>
+		<li i="3">休闲</li>
+		<li i="4">竞速</li>
+		<li i="5">策略</li>
+		<li i="6">射击</li>
+		<li i="7">其它</li>
+		<li i="8">回合</li>
+		<li i="9">卡牌</li>
+	</ul>
+	<div class="fixed">
+		<ul class="col-m cc" id="wrap">
+	        <p id="refresh" class="loading">刷新数据中...</p>
+	        <li first='true'><img src="img/1.jpg"></li>
+	        <li last='true'><img src="img/1.jpg"></li>
+	        <p id="loading" class="loading">加载数据中...</p>
+	    </ul>
+    </div><!---->
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/function.js"></script>
+    <script type="text/javascript">
+    	basic.loadMore('#wrap','test.json');/**/
+    	basic.scrollMenu("#nav",'on',function(index){
+			console.log(index);
+    	});
+    </script>
+</body>
+</html>

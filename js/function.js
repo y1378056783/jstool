@@ -249,7 +249,7 @@ basic.scrollMenu = function(obj,active,fn){
             cenLeft = ($nav.width() - $this.outerWidth()) / 2, //居中
             sLeft = liOffset-cenLeft;
         $this.addClass(active).siblings().removeClass(active);
-        console.log($nav.width());
+        //console.log($nav.width());
         $nav.animate({"scrollLeft":sLeft},260)
         fn(data);
     })
@@ -257,6 +257,7 @@ basic.scrollMenu = function(obj,active,fn){
 /*
 下拉加载更多
 *{margin:0;padding:0;}
+html,body{height:100%}
 ul{list-style:none;}
 .col-m{width:90%;margin:2.5% auto;position: relative;}
 .col-m li{width:50%;margin:2.5% 0;}
@@ -266,20 +267,16 @@ ul{list-style:none;}
 .loading{text-align:center;display:none;position: absolute;left:0;}
 #refresh{top:0;}
 #loading{bottom:0;}
-.cc:after{
-    content: '.';
-    clear: both;
-    height:0;
-    display:block;
-    visibility:hidden;
-    overflow: hidden;
-}
+.fixed{position: fixed;top: 52px;left: 0;z-index: 100;overflow-y: scroll;height:100%;}
+.cc:after{content: '.';clear: both;height:0;display:block;visibility:hidden;overflow: hidden;}
 .cc{zoom:1;}
+<div class="fixed">
 <ul class="col-m cc" id="wrap">
     <p id="refresh" class="loading">刷新数据中...</p>
     <li><img src='exmple.jpg'/></li>
     <p id="loading" class="loading">加载中...</p>
 </ul>
+</div>
 调用案例
 basic.loadMore('接口地址')
 后端数据结构
