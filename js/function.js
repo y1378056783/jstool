@@ -116,8 +116,7 @@ basic.countDown = function(e, t, n, a){
         self.countDown(++e, t, n, a)
     }, 1e3)
 }
-
-
+/**价格加减数字操作计算值方法*/
 function operaNum(obj) {
     var $this = obj,
         operation = +$this.data('opt'),
@@ -140,6 +139,7 @@ function operaNum(obj) {
     $input.val(curNum).data('total',curNum*price);
     basic.setMoney();
 }
+/**价格加减数字操作设置值方法*/
 basic.setMoney = function (){
     var total = 0,
         $input=$('.product'),
