@@ -117,85 +117,86 @@ basic.countDown = function(e, t, n, a){
     }, 1e3)
 }
 
-/**
- * //价格加减数字操作
-numObj:数字输入框
-incObj:加按钮
-decObj:减按钮
-curstyle:当前点击样式
-operation:传1执行加法操作
-          传-1执行减法操作
-basic.operaNum({
-    "numObj":'#timeNum',
-    "incObj":'#plus',
-    "decObj":'#reduce',
-    "curStyle":'color-red',
-    "operation":-1
-});
-basic.operaNum({
-    "numObj":'#timeNum',
-    "incObj":'#plus',
-    "decObj":'#reduce',
-    "curStyle":'color-red',
-    "operation":1
-});
-<span id='reduce'>-</span>
-<input type='text' id='timeNum' data-max='10' data-min='1'/>
-<span id='plus'>+</span>
- 调用示例：
-$('#plus').on('tap',function(){
-    var price=$('#money').attr('data-def');
-    if (! $(this).hasClass('color-red')){return false}
-    var num = basic.operaNum('#timeNum','#plus','#reduce','color-red',1);
-    $('#money').text(num*price);
-    freetime();//请求数据
-})
- */
-basic.operaNum = function(arg) {
-    var opt = {
-        "$numObj":$(arg.numObj),
-        "$incObj":$(arg.incObj),
-        "$decObj":$(arg.decObj),
-        "curStyle":arg.curStyle,
-        "operation":arg.operation
-    },
-    self = this,
-    maxNum = opt.$numObj.data('max'),
-    minNum = opt.$numObj.data('min'),
-    curNum = opt.$numObj.val();
-    if (self.isNull(opt.operation)) {
-        handler = function(i){return ++i};
-    } else if (! isNaN(opt.operation)) {
-        handler = function(i){return parseInt(i) + opt.operation};
-    } else {
-        handler = opt.operation;
-    }
-    opt.$incObj.addClass(opt.curStyle);
-    opt.$decObj.addClass(opt.curStyle);
-    curNum = handler(curNum);
-    console.log(curNum);
+
+function operaNum(obj) {
+    var $this = obj,
+        operation = +$this.data('opt'),
+        $input = $this.siblings('input'),
+        price = $input.data('def'),
+        maxNum = $input.data('max'),
+        minNum = $input.data('min'),
+        curNum = +$input.val();
+    //console.log(operation);
+    (operation==1) ? ++curNum : --curNum;
     if (curNum >= maxNum) {
         curNum = maxNum;
-        opt.$incObj.removeClass(opt.curStyle);
-    } else if (curNum <= minNum) {
+        $this.addClass('disabled');
+    }else if (curNum <= minNum) {
         curNum = minNum; 
-        opt.$decObj.removeClass(opt.curStyle);
+        $this.addClass('disabled');
+    }else{
+        $this.siblings('span').removeClass('disabled');
     }
-    opt.$numObj.val(curNum);
-    return curNum;
+    $input.val(curNum).data('total',curNum*price);
+    basic.setMoney();
 }
-/*
-判断内容是否出现在可视区
-参数说明：
+basic.setMoney = function (){
+    var total = 0,
+        $input=$('.product'),
+        $money=$("#money");
+    $input.each(function(){
+        total += +$(this).data('total');
+    })
+    $money.text(total);
+}
+/**价格加减数字操作
+ * @author yuyingping 2018-02-28
+ * @param  {string} [当前按钮类名]
+ * @param  {Function} [点击后的回调方法]
+ * 调用示例
+basic.setMoney();
+$('.plus').on('click',function(){
+    basic.getMoneyVal(this);
+    //callback();请求数据
+})
+$('.reduce').on('click',function(){
+    basic.getMoneyVal(this);
+    //callback();请求数据
+})
+ * html结构
+ * 自定义属性说明
+ * value 、data-min、data-total有依赖关系
+ * value 与 data-min 是一致的 
+ * data-total总和值
+ * data-def默认单价
+ * data-max最大值
+ * data-min最小值
+ * data-opt值为0执行减法，值为1执行加法
+<div class="plusNum">
+    <span class='reduce' data-opt='0'>-</span>
+    <input type='number' readonly class='product' value="1" data-total='100' data-def='100' data-max='5' data-min='1'/>
+    <span class='plus' data-opt='1'>+</span>
+</div>
+<p id="money"></p>
+ */
+basic.getMoneyVal = function (obj){
+    var self=$(obj);
+    !self.hasClass('disabled') && operaNum(self);
+}
+
+/**判断内容是否出现在可视区
+ * @author yuyingping 2018-02-28
+ * @param  {object} [原生dom对象]
+ * @return {Boolean} [true表示出现在可视区]
+ * 调用示例
+$('.scroll').on('touchend',function(){
+    var last=$(this).find('li:last');
+    basic.isInViewport($(last)[0]) && callback();
+})
+ * html结构
 <ul class="scroll">
     <li></li>
 </ul>
-el 表示原生dom对象
-调用示例
-$('.scroll').on('touchmove',function(){
-    var last=$(this).find('li').last();
-    basic.isInViewport($(last)[0]) && callback();
-})
 */
 basic.isInViewport = function (el) {
     var rect = el.getBoundingClientRect();
@@ -204,9 +205,28 @@ basic.isInViewport = function (el) {
         rect.left < (window.innerWidth || document.documentElement.clientWidth) &&
         rect.top < (window.innerHeight || document.documentElement.clientHeight);
 }
-/*
-水平滑动菜单
-调用示例
+/**水平滑动菜单
+ * @author yuyingping 2018-02-28
+ * @param  {string} [外层容器id]
+ * @param  {string} [当前点击的样式类]
+ * @param  {Function} [点击后的回调方法]
+ * 调用示例
+basic.scrollMenu("#nav",'on',function(index){
+    //console.log(index);
+    var typeId = index,$wrap=$('#wrap'),tpl="<p id='refresh' class='loading'>刷新数据中...</p>";
+    $.getJSON('接口地址?type='+typeId,function(res){//请求数据
+        if (res.code > 0) {
+            res.data.forEach(function(i,e){
+                tpl+="<li><img src='"+i.imgurl+"'/></li>";
+            })
+            tpl+="<p id='loading' class='loading'>加载数据中...</p>";
+            $wrap.removeClass("empty").html(tpl);
+        }else{
+            $wrap.addClass("empty").html('')//'没有该分类！'
+        }
+    })
+});
+ * html结构
 .snav{
     width: 100%;
     white-space: nowrap;
@@ -237,21 +257,6 @@ basic.isInViewport = function (el) {
     <li i="8">回合</li>
     <li i="9">卡牌</li>
 </ul>
-basic.scrollMenu("#nav",'on',function(index){
-    //console.log(index);
-    var typeId = index,$wrap=$('#wrap'),tpl="<p id='refresh' class='loading'>刷新数据中...</p>";
-    $.getJSON('接口地址?type='+typeId,function(res){//请求数据
-        if (res.code > 0) {
-            res.data.forEach(function(i,e){
-                tpl+="<li><img src='"+i.imgurl+"'/></li>";
-            })
-            tpl+="<p id='loading' class='loading'>加载数据中...</p>";
-            $wrap.removeClass("empty").html(tpl);
-        }else{
-            $wrap.addClass("empty").html('')//'没有该分类！'
-        }
-    })
-});
 */
 basic.scrollMenu = function(obj,active,fn){
     var $nav = $(obj);
@@ -267,56 +272,26 @@ basic.scrollMenu = function(obj,active,fn){
         fn(data);
     })
 }
-/*
-下拉加载更多
-*{margin:0;padding:0;}
-html,body{height:100%}
-ul{list-style:none;}
-.col-m{width:90%;margin:2.5% auto;position: relative;}
-.col-m li{width:50%;margin:2.5% 0;}
-.col-m li img,.loading{width:100%;}
-.col-m li:nth-child(odd){float:left;}
-.col-m li:nth-child(even){float:right;}
-.loading{text-align:center;display:none;position: absolute;left:0;}
-#refresh{top:0;}
-#loading{bottom:0;}
-.fixed{position: fixed;top: 52px;left: 0;z-index: 100;overflow-y: scroll;height:100%;}
-.cc:after{content: '.';clear: both;height:0;display:block;visibility:hidden;overflow: hidden;}
-.cc{zoom:1;}
-<div class="fixed">
-<ul class="col-m cc" id="wrap">
-    <p id="refresh" class="loading">刷新数据中...</p>
-    <li><img src='exmple.jpg'/></li>
-    <p id="loading" class="loading">加载中...</p>
-</ul>
-</div>
-调用案例
-basic.loadMore('接口地址')
-后端数据结构
-{
-    "data":[
-        {"imgurl":"img/2.jpg"},
-        {"imgurl":"img/3.jpg"},
-        {"imgurl":"img/4.jpg"},
-        {"imgurl":"img/5.jpg"},
-        {"imgurl":"img/6.jpg"}
-    ],
-    "code":"1"
-}
-*/
-/*
-移动端监测用户手指滑动方向的方法
-new TouchAngle({
-    "obj":"#wrap",
-    "callback":{
-        up:function(){
-            console.log('加载更多')
-        },
-        down:function(){
-            console.log('刷新数据')
+
+
+/**移动端监测用户手指滑动方向的方法
+ * @author yuyingping 2018-02-28
+ * @param  {string} [obj]   [外层容器id]
+ * @param  {Function} [callback] [回调方法]
+ * 调用案例
+    new TouchAngle({
+        "obj":"#wrap",
+        "callback":{
+            up:function(){
+                console.log('加载更多')
+            },
+            down:function(){
+                console.log('刷新数据')
+            }
         }
-    }
-});*/ 
+    });
+*/ 
+
 var TouchAngle = function (o){
     var opt = o || {};
         this.callback = opt.callback;
@@ -406,6 +381,45 @@ TouchAngle.prototype = {
         });
     }
 };
+/**下拉加载更多
+ * @author yuyingping 2018-02-28
+ * @param  {string} 接口地址
+ * 调用案例
+ * basic.loadMore('接口地址')
+ * 后端数据结构
+{
+    "data":[
+        {"imgurl":"img/2.jpg"},
+        {"imgurl":"img/3.jpg"},
+        {"imgurl":"img/4.jpg"},
+        {"imgurl":"img/5.jpg"},
+        {"imgurl":"img/6.jpg"}
+    ],
+    "code":"1"
+}
+ * html结构
+*{margin:0;padding:0;}
+html,body{height:100%}
+ul{list-style:none;}
+.col-m{width:90%;margin:2.5% auto;position: relative;}
+.col-m li{width:50%;margin:2.5% 0;}
+.col-m li img,.loading{width:100%;}
+.col-m li:nth-child(odd){float:left;}
+.col-m li:nth-child(even){float:right;}
+.loading{text-align:center;display:none;position: absolute;left:0;}
+#refresh{top:0;}
+#loading{bottom:0;}
+.fixed{position: fixed;top: 52px;left: 0;z-index: 100;overflow-y: scroll;height:100%;}
+.cc:after{content: '.';clear: both;height:0;display:block;visibility:hidden;overflow: hidden;}
+.cc{zoom:1;}
+<div class="fixed">
+<ul class="col-m cc" id="wrap">
+    <p id="refresh" class="loading">刷新数据中...</p>
+    <li><img src='exmple.jpg'/></li>
+    <p id="loading" class="loading">加载中...</p>
+</ul>
+</div>
+*/
 basic.loadMore = function (obj,url){
     //console.log(this);
     var page=2,

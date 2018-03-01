@@ -56,10 +56,30 @@
 			background:url('img/empty.png') no-repeat center center;
 			background-size:40%;
 		}
+		.plusNum{
+			text-align: center;
+			margin:1% auto;
+		}
+		.plusNum span{
+			width: 30px;
+			height:30px;
+			display:inline-block;
+			color: red;
+			font-size:18px;
+			/*border-radius:50%;*/
+			border: 1px solid #ccc;
+		}
+		.plusNum span.disabled{
+			color: gray;
+		}
 	</style>
 </head>
 <body>
-	<ul id="nav" class="snav">
+<div class="plusNum"><span class='reduce' data-opt='0'>-</span><input type='number' readonly class='product' value="1" data-total='100' data-def='100' data-max='5' data-min='1'/><span class='plus' data-opt='1'>+</span></div>
+<div class="plusNum"><span class='reduce' data-opt='0'>-</span><input type='number' readonly class='product' value="1" data-total='50' data-def='50' data-max='5' data-min='1'/><span class='plus' data-opt='1'>+</span></div>
+<p id="money"></p>
+
+	<!--<ul id="nav" class="snav">
 		<li i="1" class="on">角色</li>
 		<li i="2">格斗</li>
 		<li i="3">休闲</li>
@@ -77,11 +97,11 @@
 	        <li last='true'><img src="img/1.jpg"></li>
 	        <p id="loading" class="loading">加载数据中...</p>
 	    </ul>
-    </div><!---->
+    </div>-->
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/function.js"></script>
     <script type="text/javascript">
-    	basic.loadMore('#wrap','test.json');/**/
+    	/*basic.loadMore('#wrap','test.json');
     	basic.scrollMenu("#nav",'on',function(index){
 			var typeId = index,$wrap=$('#wrap'),tpl="<p id='refresh' class='loading'>刷新数据中...</p>";
 		    $.getJSON('test.json?v=2&type='+typeId,function(res){//请求数据
@@ -95,7 +115,18 @@
 		            $wrap.addClass("empty").html('');//没有该分类！
 		        }
 		    })
-    	});
+    	});*/
+    	basic.setMoney();
+    	$('.plus').on('click',function(){
+    		basic.getMoneyVal(this);
+		    //callback();请求数据
+		})
+		$('.reduce').on('click',function(){
+    		basic.getMoneyVal(this);
+		    //callback();请求数据
+		})
+		
+			
     </script>
 </body>
 </html>
