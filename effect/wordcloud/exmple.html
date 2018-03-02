@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta charset="UTF-8">
+	<title>字符云</title>
+	<style type="text/css">
+		.cloudContainer {
+		    margin: 0px 0 10px;
+		    padding: 0 10px;
+		    height: 200px;
+		    text-align: center;
+		    position: relative;
+		    -webkit-user-select: none;
+		    user-select: none;
+		    -webkt-tap-highlight-color: rgba(0, 0, 0, 0);
+		    background: transparent !important;
+		}
+	</style>
+</head>
+<body>
+	<div class="cloudContainer"></div>
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//auto.sina.com.cn/2017Version/0509/echarts.min.js"></script>
+    <script type="text/javascript" src="//n.sinaimg.cn/auto/style/echarts-wordcloud.min.js"></script>
+    <script type="text/javascript">
+	var data_cloud = [{"name":"\u52a8\u529b","value":2},{"name":"\u5185\u90e8\u7a7a\u95f4","value":2},{"name":"\u4e70\u8f66","value":2},{"name":"\u62c9\u98ce","value":1},{"name":"\u5168\u65b0","value":1},{"name":"\u65e5\u4ea7\u9a90\u8fbe","value":1},{"name":"\u5916\u5f62","value":1},{"name":"\u6027\u4ef7\u6bd4","value":1},{"name":"\u7ea7\u522b","value":1},{"name":"\u8bbe\u8ba1","value":1},{"name":"\u7ebf\u6761","value":1},{"name":"\u4ee3\u6b65","value":1},{"name":"\u8212\u9002\u5ea6","value":1},{"name":"\u4e2d\u8f66","value":1},{"name":"\u5e74\u8f7b","value":1},{"name":"\u7701\u6cb9","value":1}];
+	var cloudContainer = $('.cloudContainer')[0];
+    var colorArr = ['#ff2045','#5494ff','#ffb83b','#616cde','#b667cd','#60c6d2','#fe702b'],colorArrLen = colorArr.length;
+    var getRdm = function(min,max){
+        return Math.floor((max-min+1)*Math.random())+min;
+    }
+    if(cloudContainer && typeof data_cloud !== 'undefined' && typeof echarts !== 'undefined'){
+        var myChart = echarts.init(cloudContainer);
+        var option = {
+            title: {
+                text: '',
+                link: '',
+                x: 'center',
+                textStyle: {
+                    fontSize: 23
+                }
+            },
+            backgroundColor: '#fff',
+            tooltip: {
+                show: false,
+                formatter:function(params){
+                    return '提及：' + params.value + '次';
+                }
+            },
+            toolbox: {
+                feature: {
+
+                }
+            },
+            series: [{
+                name: '',
+                type: 'wordCloud',
+                width: '100%',
+                height: '100%',
+                sizeRange: [13, 39],
+                rotationRange: [-45, 90],
+                textPadding: 0,
+                autoSize: {
+                    enable: true,
+                    minSize: 6
+                },
+                textStyle: {
+                    normal: {
+                        color: function() {
+                            return colorArr[getRdm(0,colorArrLen-1)];
+                        }
+                    },
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowColor: '#ccc'
+                    }
+                },
+                animation:false,
+                addDataAnimation:false
+            }],
+            animation:false,
+            addDataAnimation:false
+        };
+
+        option.series[0].data = data_cloud;
+        if(data_cloud.length <= 18){
+            option.series[0].gridSize = 18;
+        }else if(data_cloud.length <= 23){
+            option.series[0].gridSize = 10;
+        }
+
+        myChart.setOption(option);
+    }
+    </script>
+</body>
+</html>

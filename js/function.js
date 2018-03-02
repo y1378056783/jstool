@@ -262,13 +262,13 @@ basic.scrollMenu = function(obj,active,fn){
     var $nav = $(obj);
     $(obj+" li").on('touchstart',function(){
         var $this=$(this),
-            data = $this.attr('i');
+            data = $this.attr('i'),
             liOffset = $this.offset().left + $nav.scrollLeft(),//li元素总偏移值
             cenLeft = ($nav.width() - $this.outerWidth()) / 2, //居中
             sLeft = liOffset-cenLeft;
         $this.addClass(active).siblings().removeClass(active);
-        //console.log($nav.width());
-        $nav.animate({"scrollLeft":sLeft},260)
+        //console.log(sLeft);
+        $nav.animate({scrollLeft: sLeft}, 280);
         fn(data);
     })
 }
@@ -552,6 +552,42 @@ basic.textCounter = function(field, maxlimit,textNum) {
        //在记数区文本框内显示剩余的字符数；  
        $(textNum).text(maxlimit - $val.length);  
    }
+}
+/**
+ * [unicode转译中文字符]
+ * @author yuyingping 2018-03-02
+ * @param  {[string]} v [unicode编码]
+ * 调用示例
+ * basic.unicodeToutf8('\\u52a8\\u529b')
+ */
+basic.unicodeToutf8 = function(v){
+    var r = v.match(/\\u[0-9a-fA-F]{4}/g);
+    //console.log(v);
+    for(var i = 0; i < r.length; i++){
+        v = v.replace(r[i],unescape(r[i].replace("\\u","%u")));
+    }
+    return v;
+}
+/**
+ * [中文字符转译unicode]
+ * @author yuyingping 2018-03-02
+ * @param  {[string]} str [中文字符]
+ * 
+ */
+basic.utf8Tounicode = function(str){
+    var v = str.split("");
+    var ascii = "";
+    for (var i = 0; i < v.length; i++) {
+        var code = Number(v[i].charCodeAt(0));
+        if (code > 127) {
+            var charAscii = code.toString(16);
+            charAscii = new String("0000").substring(charAscii.length, 4) + charAscii;
+            ascii += "\\u" + charAscii;
+        } else {
+            ascii += v[i];
+        }
+    }
+    return ascii;
 }
 /*
 从数组随机抽取n个数据
