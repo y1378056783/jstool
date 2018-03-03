@@ -87,7 +87,7 @@
 	        <li last='true'><img src="img/1.jpg"></li>
 	        <p id="loading" class="loading">加载数据中...</p>
 	    </ul>
-    </div>
+    </div>-->
 <ul id="nav" class="snav">
 		<li i="1" class="on">角色</li>
 		<li i="2">格斗</li>
@@ -98,12 +98,23 @@
 		<li i="7">其它</li>
 		<li i="8">回合</li>
 		<li i="9">卡牌</li>
-	</ul>-->
-	<div class="cloudContainer"></div>
+	</ul>
+	<p id="price"></p>
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/function.js"></script>
     <script type="text/javascript">
-    	//basic.loadMore('#wrap','test.json');
+	    /*var p1 = new Promise(function (resolve, reject) {
+		    setTimeout(resolve, 500, 'P1');
+		});
+		var p2 = new Promise(function (resolve, reject) {
+		    setTimeout(resolve, 600, 'P2');
+		});
+		// 同时执行p1和p2，并在它们都完成后执行then:
+		Promise.all([p1, p2]).then(function (results) {
+		    console.log(results); // 获得一个Array: ['P1', 'P2']
+		});*/
+	
+    	//basic.loadMore('#wrap','test.json');//cdn.bootcss.com/zepto/1.2.0/zepto.min.js
     	/*basic.scrollMenu("#nav",'on',function(index){
 			var typeId = index,$wrap=$('#wrap'),tpl="<p id='refresh' class='loading'>刷新数据中...</p>";
 		    $.getJSON('test.json?v=2&type='+typeId,function(res){//请求数据
@@ -128,19 +139,7 @@
 		    //callback();请求数据
 		})
 		回调计数实现异步非阻塞
-		var cnt = 0;
-		function async1(){
-		  //do sth...
-		  callback();
-		}
-		function async2(){
-		  //do sth...
-		  callback();
-		}
-		function callback(){
-		  cnt++;
-		  if(2==cnt) console.log('都已执行完毕');
-		}
+		
 		//jquery实现异步非阻塞
 		var d1 = $.Deferred();
 		var d2 = $.Deferred();
@@ -152,7 +151,34 @@
 		}
 		$.when( d1, d2 ).done(function ( v1, v2 ) {
 		  console.log( v1 + v2 + '已完成');
-		});*/	
+		});
+		var asynfun={
+			"cnt":0,
+			"queue":['async1','async2']
+		};
+		asynfun.async1 = function (){
+		  //do sth...
+		  var i = 1e3;
+		  while(i){
+		  	$.getJSON('//api.midoogame.com/auth/appversion?callback=?',function(){
+		  		console.log('one');
+			  	callback();
+		  	})
+		  	i--;
+		  }
+		}
+		asynfun.async2 = function (){
+		  //do sth...
+		  console.log('two');
+		  callback();
+		}
+		function callback(){
+		  asynfun.cnt++;
+		  2==asynfun.cnt && console.log('都已执行完毕');
+		}	
+		for(var i =0;i<asynfun.queue.length;i++){
+			asynfun[asynfun.queue[i]]()//console.log()
+		}*/
     </script>
 </body>
 </html>

@@ -116,6 +116,7 @@ basic.countDown = function(e, t, n, a){
         self.countDown(++e, t, n, a)
     }, 1e3)
 }
+
 /**价格加减数字操作计算值方法*/
 function operaNum(obj) {
     var $this = obj,
@@ -260,14 +261,15 @@ basic.scrollMenu("#nav",'on',function(index){
 */
 basic.scrollMenu = function(obj,active,fn){
     var $nav = $(obj);
-    $(obj+" li").on('touchstart',function(){
+    $(obj+" li").on('touchstart',function(e){
         var $this=$(this),
             data = $this.attr('i'),
             liOffset = $this.offset().left + $nav.scrollLeft(),//li元素总偏移值
-            cenLeft = ($nav.width() - $this.outerWidth()) / 2, //居中
+            cenLeft = ($nav.width() - $this.width()) / 2, //居中
             sLeft = liOffset-cenLeft;
         $this.addClass(active).siblings().removeClass(active);
-        //console.log(sLeft);
+        //console.log(e);
+        //$nav.scrollLeft(sLeft);
         $nav.animate({scrollLeft: sLeft}, 280);
         fn(data);
     })
@@ -588,6 +590,21 @@ basic.utf8Tounicode = function(str){
         }
     }
     return ascii;
+}
+/**
+ * [在固定范围内生成随机数]
+ * @author yuyingping 2018-03-03
+ * @param  {string} obj [dom元素的id]
+ * 调用示例：
+ * <p id="price"></p>
+ * basic.random('#price');
+ */
+basic.setRandom = function(obj){
+    /*console.log(obj);*/
+    var $obj = $(obj);
+    setInterval(function(){
+        $obj.text(Math.ceil(Math.random()*190000)+10000);
+    },200);
 }
 /*
 从数组随机抽取n个数据
