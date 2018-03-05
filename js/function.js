@@ -405,7 +405,9 @@ html,body{height:100%}
 ul{list-style:none;}
 .col-m{width:90%;margin:2.5% auto;position: relative;}
 .col-m li{width:50%;margin:2.5% 0;}
-.col-m li img,.loading{width:100%;}
+.col-m li img,.loading,.place{width:100%;}
+.place{display:block;height:600px;visibility:hidden;}
+.drop > li.place{display:none;}
 .col-m li:nth-child(odd){float:left;}
 .col-m li:nth-child(even){float:right;}
 .loading{text-align:center;display:none;position: absolute;left:0;}
@@ -417,7 +419,7 @@ ul{list-style:none;}
 <div class="fixed">
 <ul class="col-m cc" id="wrap">
     <p id="refresh" class="loading">刷新数据中...</p>
-    <li><img src='exmple.jpg'/></li>
+    <li class="place"></li>
     <p id="loading" class="loading">加载中...</p>
 </ul>
 </div>
@@ -433,19 +435,21 @@ basic.loadMore = function (obj,url){
         $load=$("#loading"),
         $ref = $("#refresh"),
         loadHide = function(obj,flag){
+            obj.show();
             flag && obj.text('没有更多了');
             setTimeout(function(){
                 obj.hide();
             },400);
         },
         getMore = function (){
-            $load.show();
+            //$load.show();
             if(loadStop){// && isload()
                 loadStop=false;
-                $.getJSON(url+"?page="+page,function (res) {
-                    if (res.code > 0) {
-                        res.data.forEach(function(i,e){
-                            tpl+="<li><img src='"+i.imgurl+"'/></li>";
+                $.getJSON(url+"?type=1&page="+page+'&callback=?',function (res) {
+                    if (res.data.length != 0) {
+                        res.data.gamelist.forEach(function(i,e){
+                            //console.log(i)
+                            tpl+="<li><img src='"+i.micon+"'/></li>";
                         })
                         $load.before(tpl);
                         loadHide($load,false);
@@ -459,13 +463,13 @@ basic.loadMore = function (obj,url){
             }
         },
         reFresh = function(){
-            $ref.show();
+            //$ref.show();
             if(refStop){
                 refStop=false;
-                $.getJSON(url,function (res) {
-                    if (res.code > 0) {
-                        res.data.forEach(function(i,e){
-                            tpl+="<li><img src='"+i.imgurl+"'/></li>";
+                $.getJSON(url+'?callback=?',function (res) {
+                    if (res.data.length != 0) {
+                        res.data.gamelist.forEach(function(i,e){
+                            tpl+="<li><img src='"+i.micon+"'/></li>";
                         })
                         $ref.after(tpl);
                         loadHide($ref,false);
@@ -482,13 +486,14 @@ basic.loadMore = function (obj,url){
             "callback":{
                 up:function(dom){
                     console.log('加载更多');
-                    var last=$(dom).find('li:last');
+                    var $dom=$(dom),last=$dom.find('li:last');
                     self.isInViewport($(last)[0]) && getMore();
+                    $dom.addClass('drop');
                 },
                 down:function(dom){
-                    console.log('刷新数据')
+                    /*console.log('刷新数据')
                     var first=$(dom).find('li:first');
-                    self.isInViewport($(first)[0]) && reFresh();
+                    self.isInViewport($(first)[0]) && reFresh();*/
                 }
             }
         }); 

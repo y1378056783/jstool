@@ -10,7 +10,9 @@
 		html,body{height:100%;}
 		.col-m{width:90%;margin:2.5% auto;position: relative;}
 		.col-m li{width:50%;margin:2.5% 0;}
-		.col-m li img,.loading,.fixed,.snav{width:100%;}
+		.col-m li img,.loading,.fixed,.snav,.place{width:100%;}
+		.place{display:block;height:600px;visibility:hidden;}
+		.drop > li.place{display:none;}
 		.col-m li:nth-child(odd){float:left;}
 		.col-m li:nth-child(even){float:right;}
 		.loading{text-align:center;display:none;position: absolute;left:0;}
@@ -76,19 +78,19 @@
 	</style>
 </head>
 <body>
-	<!--<div class="plusNum"><span class='reduce' data-opt='0'>-</span><input type='number' readonly class='product' value="1" data-total='100' data-def='100' data-max='5' data-min='1'/><span class='plus' data-opt='1'>+</span></div>
-<div class="plusNum"><span class='reduce' data-opt='0'>-</span><input type='number' readonly class='product' value="1" data-total='50' data-def='50' data-max='5' data-min='1'/><span class='plus' data-opt='1'>+</span></div>
-<p id="money"></p>
+	
 
 	<div class="fixed">
 		<ul class="col-m cc" id="wrap">
 	        <p id="refresh" class="loading">刷新数据中...</p>
-	        <li first='true'><img src="img/1.jpg"></li>
-	        <li last='true'><img src="img/1.jpg"></li>
+	        <li class="place"></li>
 	        <p id="loading" class="loading">加载数据中...</p>
 	    </ul>
-    </div>-->
-<ul id="nav" class="snav">
+    </div>
+<!--<div class="plusNum"><span class='reduce' data-opt='0'>-</span><input type='number' readonly class='product' value="1" data-total='100' data-def='100' data-max='5' data-min='1'/><span class='plus' data-opt='1'>+</span></div>
+<div class="plusNum"><span class='reduce' data-opt='0'>-</span><input type='number' readonly class='product' value="1" data-total='50' data-def='50' data-max='5' data-min='1'/><span class='plus' data-opt='1'>+</span></div>
+<p id="money"></p>
+<ul id="nav" class="snav" mark>
 		<li i="1" class="on">角色</li>
 		<li i="2">格斗</li>
 		<li i="3">休闲</li>
@@ -100,6 +102,7 @@
 		<li i="9">卡牌</li>
 	</ul>
 	<p id="price"></p>
+	<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=" title="1*1px透明占位图">-->
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/function.js"></script>
     <script type="text/javascript">
@@ -114,7 +117,7 @@
 		    console.log(results); // 获得一个Array: ['P1', 'P2']
 		});*/
 	
-    	//basic.loadMore('#wrap','test.json');//cdn.bootcss.com/zepto/1.2.0/zepto.min.js
+    	basic.loadMore('#wrap','//api.midoogame.com/stat/gamelist');//cdn.bootcss.com/zepto/1.2.0/zepto.min.js
     	/*basic.scrollMenu("#nav",'on',function(index){
 			var typeId = index,$wrap=$('#wrap'),tpl="<p id='refresh' class='loading'>刷新数据中...</p>";
 		    $.getJSON('test.json?v=2&type='+typeId,function(res){//请求数据
@@ -128,8 +131,8 @@
 		            $wrap.addClass("empty").html('');//没有该分类！
 		        }
 		    })
-    	});
-    	basic.setMoney();
+    	});*/
+    	/*basic.setMoney();
     	$('.plus').on('click',function(){
     		basic.getMoneyVal(this);
 		    //callback();请求数据
