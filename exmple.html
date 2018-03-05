@@ -9,15 +9,16 @@
 		ul{list-style:none;}
 		html,body{height:100%;}
 		.col-m{width:90%;margin:2.5% auto;position: relative;}
-		.col-m li{width:50%;margin:2.5% 0;}
-		.col-m li img,.loading,.fixed,.snav,.place{width:100%;}
+		.col-m li,.loading{width:50%;}
+		.col-m li{margin:2.5% 0;}
+		.col-m li img,.fixed,.snav,.col-m li.place{width:100%;}
 		.place{display:block;height:600px;visibility:hidden;}
 		.drop > li.place{display:none;}
 		.col-m li:nth-child(odd){float:left;}
 		.col-m li:nth-child(even){float:right;}
-		.loading{text-align:center;display:none;position: absolute;left:0;}
+		.loading{text-align:center;display:none;position: absolute;left: 50%;padding: 8px 0;margin-left: -25%;background: rgba(0,0,0,.9);color: #fff;border-radius: 5px;}
 		#refresh{top:0;}
-		#loading{bottom:0;}
+		#loading{bottom:10%;}
 		.cc:after{
 			content: '.';
 			clear: both;
