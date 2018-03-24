@@ -1,0 +1,308 @@
+{
+    "fish": [
+    {
+        "speed": 2,
+        "ClassName": "Fish1",
+        "anchorX": 0.7,
+        "grade": 2,
+        "anchorY": 0.55,
+        "id": 1,
+        "resid": "fish1",
+        "price": 45
+    },
+    {
+        "speed": 3,
+        "ClassName": "Fish2",
+        "anchorX": 0.75,
+        "grade": 2,
+        "anchorY": 0.5,
+        "id": 2,
+        "resid": "fish2",
+        "price": 45
+    },
+    {
+        "speed": 3,
+        "ClassName": "Fish3",
+        "anchorX": 0.55,
+        "grade": 2,
+        "anchorY": 0.55,
+        "id": 3,
+        "resid": "fish3",
+        "price": 45
+    },
+    {
+        "speed": 1,
+        "ClassName": "Fish4",
+        "anchorX": 0.5,
+        "grade": 2,
+        "anchorY": 0.6,
+        "id": 4,
+        "resid": "fish4",
+        "price": 180
+    },
+    {
+        "speed": 2,
+        "ClassName": "Fish5",
+        "anchorX": 0.75,
+        "grade": 2,
+        "anchorY": 0.45,
+        "id": 5,
+        "resid": "fish5",
+        "price": 45
+    },
+    {
+        "speed": 0.7,
+        "ClassName": "Fish6",
+        "anchorX": 0.6,
+        "grade": 3,
+        "anchorY": 0.33,
+        "id": 6,
+        "resid": "fish6",
+        "price": 400
+    },
+    {
+        "speed": 1,
+        "ClassName": "Fish7",
+        "anchorX": 0.5,
+        "grade": 3,
+        "anchorY": 0.6,
+        "id": 7,
+        "resid": "fish7",
+        "price": 400
+    },
+    {
+        "speed": 1,
+        "ClassName": "Fish8",
+        "anchorX": 0.55,
+        "grade": 3,
+        "anchorY": 0.5,
+        "id": 8,
+        "resid": "fish8",
+        "price": 800
+    },
+    {
+        "speed": 1,
+        "ClassName": "Fish9",
+        "anchorX": 0.7,
+        "grade": 3,
+        "anchorY": 0.5,
+        "id": 9,
+        "resid": "fish9",
+        "price": 1000
+    },
+    {
+        "speed": 1,
+        "ClassName": "Fish10",
+        "anchorX": 0.6,
+        "grade": 3,
+        "anchorY": 0.5,
+        "id": 10,
+        "resid": "fish10",
+        "price": 2500
+    },
+    {
+        "speed": 1,
+        "ClassName": "Fish11",
+        "anchorX": 0.75,
+        "grade": 4,
+        "anchorY": 0.7,
+        "id": 11,
+        "resid": "fish11",
+        "price": 0
+    },
+    {
+        "speed": 0.3,
+        "ClassName": "Fish12",
+        "anchorX": 0.6,
+        "grade": 4,
+        "anchorY": 0.8,
+        "id": 12,
+        "resid": "fish12",
+        "price": 5000
+    },
+    {
+        "speed": 1,
+        "ClassName": "Fish13",
+        "anchorX": 0.7,
+        "grade": 4,
+        "anchorY": 0.7,
+        "id": 13,
+        "resid": "fish13",
+        "price": 5000
+    },
+    {
+        "speed": 0.4,
+        "ClassName": "Fish14",
+        "anchorX": 0.5,
+        "grade": 2,
+        "anchorY": 0.5,
+        "id": 14,
+        "resid": "fish14",
+        "price": 2000
+    },
+    {
+        "speed": 0.6,
+        "ClassName": "Fish15",
+        "anchorX": 0.3,
+        "grade": 4,
+        "anchorY": 0.55,
+        "id": 15,
+        "resid": "fish15",
+        "price": 8000
+    },
+    {
+        "speed": 1,
+        "ClassName": "Fish16",
+        "anchorX": 0.5,
+        "grade": 5,
+        "anchorY": 0.5,
+        "id": 16,
+        "resid": "fish16",
+        "price": 0
+    }],
+    "fishLoc": [
+    {
+        "radius": 160,
+        "pos": [500, -40],
+        "fishCount": 3,
+        "fishAllCount": 3,
+        "id": 1,
+        "fishId": 1,
+        "descr": ""
+    },
+    {
+        "radius": 200,
+        "pos": [900, -80],
+        "fishCount": 3,
+        "fishAllCount": 3,
+        "id": 2,
+        "fishId": 2,
+        "descr": ""
+    },
+    {
+        "radius": 250,
+        "pos": [1400, -80],
+        "fishCount": 0,
+        "fishAllCount": 0,
+        "id": 3,
+        "fishId": 5,
+        "descr": ""
+    },
+    {
+        "radius": 200,
+        "pos": [1300, -200],
+        "fishCount": 3,
+        "fishAllCount": 3,
+        "id": 4,
+        "fishId": 3,
+        "descr": ""
+    },
+    {
+        "radius": 160,
+        "pos": [600, -350],
+        "fishCount": 2,
+        "fishAllCount": 2,
+        "id": 5,
+        "fishId": 4,
+        "descr": ""
+    },
+    {
+        "radius": 150,
+        "pos": [400, -500],
+        "fishCount": 1,
+        "fishAllCount": 1,
+        "id": 6,
+        "fishId": 6,
+        "descr": ""
+    },
+    {
+        "radius": 200,
+        "pos": [150, -100],
+        "fishCount": 0,
+        "fishAllCount": 0,
+        "id": 7,
+        "fishId": 7,
+        "descr": ""
+    },
+    {
+        "radius": 200,
+        "pos": [1100, -500],
+        "fishCount": 1,
+        "fishAllCount": 1,
+        "id": 8,
+        "fishId": 9,
+        "descr": "能看见掉不到"
+    },
+    {
+        "radius": 200,
+        "pos": [1000, -550],
+        "fishCount": 1,
+        "fishAllCount": 1,
+        "id": 9,
+        "fishId": 8,
+        "descr": ""
+    },
+    {
+        "radius": 160,
+        "pos": [1400, -40],
+        "fishCount": 1,
+        "fishAllCount": 1,
+        "id": 10,
+        "fishId": 10,
+        "descr": ""
+    },
+    {
+        "radius": 200,
+        "pos": [300, -750],
+        "fishCount": 1,
+        "fishAllCount": 1,
+        "id": 11,
+        "fishId": 12,
+        "descr": ""
+    },
+    {
+        "radius": 200,
+        "pos": [1400, -900],
+        "fishCount": 1,
+        "fishAllCount": 1,
+        "id": 12,
+        "fishId": 13,
+        "descr": ""
+    },
+    {
+        "radius": 200,
+        "pos": [1650, -450],
+        "fishCount": 3,
+        "fishAllCount": 3,
+        "id": 13,
+        "fishId": 3,
+        "descr": ""
+    },
+    {
+        "radius": 120,
+        "pos": [620, -850],
+        "fishCount": 3,
+        "fishAllCount": 3,
+        "id": 14,
+        "fishId": 14,
+        "descr": ""
+    },
+    {
+        "radius": 300,
+        "pos": [1750, -800],
+        "fishCount": 1,
+        "fishAllCount": 1,
+        "id": 15,
+        "fishId": 15,
+        "descr": ""
+    },
+    {
+        "radius": 300,
+        "pos": [300, -120],
+        "fishCount": 0,
+        "fishAllCount": 0,
+        "id": 16,
+        "fishId": 16,
+        "descr": ""
+    }]
+}

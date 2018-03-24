@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>小猫钓鱼</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no,target-densitydpi=device-dpi">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="full-screen" content="true">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="360-fullscreen" content="true">
+</head>
+<div  id="huhu-logo" >
+    <img src="resource/assets/258.png">
+</div>
+<body style="padding: 0px; border-width: 0px; border-style: initial; border-color: initial; margin: 0px;">
+    <style>
+    body {
+        text-align: center;
+        background: #000000;
+        padding: 0;
+        border: 0;
+        margin: 0;
+        height: 100%;
+    }
+
+    html {
+        -ms-touch-action: none;
+        /* Direct all pointer events to JavaScript code. */
+        overflow: hidden;
+    }
+
+    div,
+    canvas {
+        display: block;
+        position: absolute;
+        margin: 0 auto;
+        padding: 0;
+        border: 0;
+    }
+
+    #huhu-logo {
+        position: relative;
+        top: 140px;
+        height: 400px;
+        text-align: center;
+    }
+    </style>
+    <div style="position: relative; width: 960px; height: 640px; top: 0px;" id="gameDiv">
+        <div id="canvasDiv" style="width: 960px; height: 640px;">
+            <canvas id="egretCanvas" width="960" height="640" style="width: 960px; height: 640px;"></canvas>
+        </div>
+    </div>
+    <script>
+    var document_class = "Main";
+    </script>
+    <!--这部分内容在编译时会被替换，要修改文档类，请到工程目录下的egretProperties.json内编辑。-->
+    <script src="./launcher/egret_require.js"></script>
+    <script src="./launcher/egret_loader.js"></script>
+    <script src="./launcher/core.js"></script>
+    <script src="./launcher/p2.js"></script>
+    <script src="./launcher/creatObject.js"></script>
+    <script src="./launcher/md5.js"></script>
+    <script src="./launcher/fish.js"></script>
+    <script src="./launcher/gameModel.js"></script>
+    <script src="./launcher/tool.js"></script>
+    <script src="./launcher/fishUi.js"></script>
+    <script src="./launcher/dataManager.js"></script>
+    <script src="./launcher/itemRenderer.js"></script>
+    <script src="./launcher/gameScene.js"></script>
+    <script src="./launcher/skins.js"></script>
+    <script src="./launcher/mainUi.js"></script>
+    <script src="./launcher/enter.js"></script>
+    <!--
+    
+    
+    
+    
+    
+    -->
+
+
+    <script>
+    var support = [].map && document.createElement("canvas").getContext;
+    if (support) {
+        egret_h5.startGame();
+    } else {
+        alert("Egret 不支持您当前的浏览器")
+    }
+    </script>
+    <!--<div id="download_plus_animation"></div>-->
+</body>
+
+</html>

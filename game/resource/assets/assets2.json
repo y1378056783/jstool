@@ -1,0 +1,1040 @@
+{
+    "file": "assets2.png",
+    "frames":
+    {
+        "bg_jpg":
+        {
+            "x": 1,
+            "y": 1,
+            "w": 960,
+            "h": 640,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 960,
+            "sourceH": 640
+        },
+        "bubble_png":
+        {
+            "x": 3775,
+            "y": 649,
+            "w": 56,
+            "h": 56,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 56,
+            "sourceH": 56
+        },
+        "innersea_png":
+        {
+            "x": 963,
+            "y": 1,
+            "w": 960,
+            "h": 501,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 960,
+            "sourceH": 501
+        },
+        "leave_png":
+        {
+            "x": 1374,
+            "y": 649,
+            "w": 103,
+            "h": 269,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 103,
+            "sourceH": 269
+        },
+        "ship1_png":
+        {
+            "x": 3226,
+            "y": 1,
+            "w": 426,
+            "h": 300,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 426,
+            "sourceH": 300
+        },
+        "ship2_png":
+        {
+            "x": 3654,
+            "y": 1,
+            "w": 426,
+            "h": 300,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 426,
+            "sourceH": 300
+        },
+        "sununbra_png":
+        {
+            "x": 3839,
+            "y": 515,
+            "w": 210,
+            "h": 226,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 210,
+            "sourceH": 226
+        },
+        "tree_png":
+        {
+            "x": 2887,
+            "y": 1,
+            "w": 337,
+            "h": 589,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 337,
+            "sourceH": 589
+        },
+        "bigBoat_png":
+        {
+            "x": 3654,
+            "y": 1,
+            "w": 426,
+            "h": 300,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 426,
+            "sourceH": 300
+        },
+        "blood_png":
+        {
+            "x": 1113,
+            "y": 649,
+            "w": 259,
+            "h": 217,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 259,
+            "sourceH": 217
+        },
+        "bub_png":
+        {
+            "x": 3775,
+            "y": 649,
+            "w": 56,
+            "h": 56,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 56,
+            "sourceH": 56
+        },
+        "cloud_png":
+        {
+            "x": 2453,
+            "y": 474,
+            "w": 224,
+            "h": 98,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 224,
+            "sourceH": 98
+        },
+        "desk_png":
+        {
+            "x": 2891,
+            "y": 805,
+            "w": 80,
+            "h": 98,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 80,
+            "sourceH": 98
+        },
+        "graChange_png":
+        {
+            "x": 4064,
+            "y": 303,
+            "w": 10,
+            "h": 739,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 10,
+            "sourceH": 739
+        },
+        "grass_png":
+        {
+            "x": 3283,
+            "y": 649,
+            "w": 333,
+            "h": 51,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 333,
+            "sourceH": 51
+        },
+        "iland_png":
+        {
+            "x": 2679,
+            "y": 474,
+            "w": 193,
+            "h": 104,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 193,
+            "sourceH": 104
+        },
+        "leaf1_png":
+        {
+            "x": 1374,
+            "y": 649,
+            "w": 103,
+            "h": 269,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 103,
+            "sourceH": 269
+        },
+        "seabed_png":
+        {
+            "x": 963,
+            "y": 1,
+            "w": 960,
+            "h": 501,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 960,
+            "sourceH": 501
+        },
+        "seaColorBlue_png":
+        {
+            "x": 2022,
+            "y": 798,
+            "w": 11,
+            "h": 253,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 11,
+            "sourceH": 253
+        },
+        "seaColorDep_png":
+        {
+            "x": 4084,
+            "y": 1,
+            "w": 9,
+            "h": 948,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 9,
+            "sourceH": 948
+        },
+        "shatan_png":
+        {
+            "x": 1925,
+            "y": 474,
+            "w": 526,
+            "h": 104,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 526,
+            "sourceH": 104
+        },
+        "shu_png":
+        {
+            "x": 2887,
+            "y": 1,
+            "w": 337,
+            "h": 589,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 337,
+            "sourceH": 589
+        },
+        "sky_png":
+        {
+            "x": 4051,
+            "y": 515,
+            "w": 10,
+            "h": 664,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 10,
+            "sourceH": 664
+        },
+        "smallbait1_png":
+        {
+            "x": 3706,
+            "y": 748,
+            "w": 52,
+            "h": 52,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 52,
+            "sourceH": 52
+        },
+        "smallbait2_png":
+        {
+            "x": 3463,
+            "y": 544,
+            "w": 40,
+            "h": 40,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 40,
+            "sourceH": 40
+        },
+        "smallbait4_png":
+        {
+            "x": 1038,
+            "y": 845,
+            "w": 52,
+            "h": 52,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 52,
+            "sourceH": 52
+        },
+        "smallBoat_png":
+        {
+            "x": 3226,
+            "y": 1,
+            "w": 426,
+            "h": 300,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 426,
+            "sourceH": 300
+        },
+        "umbrella_png":
+        {
+            "x": 3839,
+            "y": 515,
+            "w": 210,
+            "h": 226,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 210,
+            "sourceH": 226
+        },
+        "waveBlue_png":
+        {
+            "x": 963,
+            "y": 504,
+            "w": 959,
+            "h": 50,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 959,
+            "sourceH": 50
+        },
+        "waveDep_png":
+        {
+            "x": 1925,
+            "y": 403,
+            "w": 960,
+            "h": 69,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 960,
+            "sourceH": 69
+        },
+        "waveLight_png":
+        {
+            "x": 963,
+            "y": 592,
+            "w": 2874,
+            "h": 55,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 2874,
+            "sourceH": 55
+        },
+        "yuanjing1_png":
+        {
+            "x": 1925,
+            "y": 228,
+            "w": 960,
+            "h": 173,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 960,
+            "sourceH": 173
+        },
+        "yuanjing2_png":
+        {
+            "x": 1925,
+            "y": 1,
+            "w": 960,
+            "h": 225,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 960,
+            "sourceH": 225
+        },
+        "fish10_01_png":
+        {
+            "x": 1902,
+            "y": 649,
+            "w": 139,
+            "h": 147,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 139,
+            "sourceH": 147
+        },
+        "fish10_02_png":
+        {
+            "x": 1479,
+            "y": 649,
+            "w": 139,
+            "h": 147,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 139,
+            "sourceH": 147
+        },
+        "fish10_03_png":
+        {
+            "x": 1620,
+            "y": 649,
+            "w": 139,
+            "h": 147,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 139,
+            "sourceH": 147
+        },
+        "fish10_04_png":
+        {
+            "x": 1761,
+            "y": 649,
+            "w": 139,
+            "h": 147,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 139,
+            "sourceH": 147
+        },
+        "fish11_01_png":
+        {
+            "x": 1,
+            "y": 643,
+            "w": 442,
+            "h": 205,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 442,
+            "sourceH": 205
+        },
+        "fish12_01_png":
+        {
+            "x": 445,
+            "y": 643,
+            "w": 335,
+            "h": 207,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 335,
+            "sourceH": 207
+        },
+        "fish13_01_png":
+        {
+            "x": 3655,
+            "y": 303,
+            "w": 407,
+            "h": 210,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 407,
+            "sourceH": 210
+        },
+        "fish14_01_png":
+        {
+            "x": 3454,
+            "y": 801,
+            "w": 101,
+            "h": 87,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 101,
+            "sourceH": 87
+        },
+        "fish14_02_png":
+        {
+            "x": 2516,
+            "y": 787,
+            "w": 101,
+            "h": 87,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 101,
+            "sourceH": 87
+        },
+        "fish14_03_png":
+        {
+            "x": 3248,
+            "y": 801,
+            "w": 101,
+            "h": 87,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 101,
+            "sourceH": 87
+        },
+        "fish14_04_png":
+        {
+            "x": 3351,
+            "y": 801,
+            "w": 101,
+            "h": 87,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 101,
+            "sourceH": 87
+        },
+        "fish15_01_png":
+        {
+            "x": 782,
+            "y": 649,
+            "w": 329,
+            "h": 194,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 329,
+            "sourceH": 194
+        },
+        "fish16_01_png":
+        {
+            "x": 3226,
+            "y": 303,
+            "w": 427,
+            "h": 239,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 427,
+            "sourceH": 239
+        },
+        "fish1_01_png":
+        {
+            "x": 82,
+            "y": 850,
+            "w": 79,
+            "h": 56,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 79,
+            "sourceH": 56
+        },
+        "fish1_02_png":
+        {
+            "x": 876,
+            "y": 845,
+            "w": 79,
+            "h": 56,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 79,
+            "sourceH": 56
+        },
+        "fish1_03_png":
+        {
+            "x": 957,
+            "y": 845,
+            "w": 79,
+            "h": 56,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 79,
+            "sourceH": 56
+        },
+        "fish1_04_png":
+        {
+            "x": 1,
+            "y": 850,
+            "w": 79,
+            "h": 56,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 79,
+            "sourceH": 56
+        },
+        "fish2_01_png":
+        {
+            "x": 423,
+            "y": 852,
+            "w": 82,
+            "h": 52,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 82,
+            "sourceH": 52
+        },
+        "fish2_02_png":
+        {
+            "x": 507,
+            "y": 852,
+            "w": 82,
+            "h": 52,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 82,
+            "sourceH": 52
+        },
+        "fish2_03_png":
+        {
+            "x": 255,
+            "y": 850,
+            "w": 82,
+            "h": 52,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 82,
+            "sourceH": 52
+        },
+        "fish2_04_png":
+        {
+            "x": 339,
+            "y": 850,
+            "w": 82,
+            "h": 52,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 82,
+            "sourceH": 52
+        },
+        "fish3_01_png":
+        {
+            "x": 2313,
+            "y": 844,
+            "w": 75,
+            "h": 64,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 75,
+            "sourceH": 64
+        },
+        "fish3_02_png":
+        {
+            "x": 2236,
+            "y": 844,
+            "w": 75,
+            "h": 64,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 75,
+            "sourceH": 64
+        },
+        "fish3_03_png":
+        {
+            "x": 2390,
+            "y": 844,
+            "w": 73,
+            "h": 64,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 73,
+            "sourceH": 64
+        },
+        "fish3_04_png":
+        {
+            "x": 3315,
+            "y": 544,
+            "w": 67,
+            "h": 44,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 67,
+            "sourceH": 44
+        },
+        "fish4_01_png":
+        {
+            "x": 2142,
+            "y": 844,
+            "w": 92,
+            "h": 81,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 92,
+            "sourceH": 81
+        },
+        "fish4_02_png":
+        {
+            "x": 2973,
+            "y": 805,
+            "w": 92,
+            "h": 81,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 92,
+            "sourceH": 81
+        },
+        "fish4_03_png":
+        {
+            "x": 3706,
+            "y": 842,
+            "w": 92,
+            "h": 81,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 92,
+            "sourceH": 81
+        },
+        "fish4_04_png":
+        {
+            "x": 3800,
+            "y": 842,
+            "w": 92,
+            "h": 81,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 92,
+            "sourceH": 81
+        },
+        "fish5_01_png":
+        {
+            "x": 163,
+            "y": 850,
+            "w": 90,
+            "h": 48,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 90,
+            "sourceH": 48
+        },
+        "fish5_02_png":
+        {
+            "x": 591,
+            "y": 852,
+            "w": 87,
+            "h": 48,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 87,
+            "sourceH": 48
+        },
+        "fish5_03_png":
+        {
+            "x": 3226,
+            "y": 544,
+            "w": 87,
+            "h": 38,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 87,
+            "sourceH": 38
+        },
+        "fish5_04_png":
+        {
+            "x": 3384,
+            "y": 544,
+            "w": 77,
+            "h": 31,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 77,
+            "sourceH": 31
+        },
+        "fish6_01_png":
+        {
+            "x": 2627,
+            "y": 649,
+            "w": 126,
+            "h": 154,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 126,
+            "sourceH": 154
+        },
+        "fish6_02_png":
+        {
+            "x": 2755,
+            "y": 649,
+            "w": 126,
+            "h": 154,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 126,
+            "sourceH": 154
+        },
+        "fish6_03_png":
+        {
+            "x": 2883,
+            "y": 649,
+            "w": 126,
+            "h": 154,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 126,
+            "sourceH": 154
+        },
+        "fish6_04_png":
+        {
+            "x": 3011,
+            "y": 649,
+            "w": 126,
+            "h": 154,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 126,
+            "sourceH": 154
+        },
+        "fish7_01_png":
+        {
+            "x": 3597,
+            "y": 748,
+            "w": 107,
+            "h": 109,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 107,
+            "sourceH": 109
+        },
+        "fish7_02_png":
+        {
+            "x": 3139,
+            "y": 779,
+            "w": 107,
+            "h": 109,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 107,
+            "sourceH": 109
+        },
+        "fish7_03_png":
+        {
+            "x": 2043,
+            "y": 787,
+            "w": 97,
+            "h": 109,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 97,
+            "sourceH": 109
+        },
+        "fish7_04_png":
+        {
+            "x": 782,
+            "y": 845,
+            "w": 92,
+            "h": 50,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 92,
+            "sourceH": 50
+        },
+        "fish8_01_png":
+        {
+            "x": 2043,
+            "y": 649,
+            "w": 144,
+            "h": 136,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 144,
+            "sourceH": 136
+        },
+        "fish8_02_png":
+        {
+            "x": 2189,
+            "y": 649,
+            "w": 144,
+            "h": 136,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 144,
+            "sourceH": 136
+        },
+        "fish8_03_png":
+        {
+            "x": 2335,
+            "y": 649,
+            "w": 144,
+            "h": 136,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 144,
+            "sourceH": 136
+        },
+        "fish8_04_png":
+        {
+            "x": 2481,
+            "y": 649,
+            "w": 144,
+            "h": 136,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 144,
+            "sourceH": 136
+        },
+        "fish9_01_png":
+        {
+            "x": 3775,
+            "y": 743,
+            "w": 155,
+            "h": 97,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 155,
+            "sourceH": 97
+        },
+        "fish9_02_png":
+        {
+            "x": 3618,
+            "y": 649,
+            "w": 155,
+            "h": 97,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 155,
+            "sourceH": 97
+        },
+        "fish9_03_png":
+        {
+            "x": 3283,
+            "y": 702,
+            "w": 155,
+            "h": 97,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 155,
+            "sourceH": 97
+        },
+        "fish9_04_png":
+        {
+            "x": 3440,
+            "y": 702,
+            "w": 155,
+            "h": 97,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 155,
+            "sourceH": 97
+        },
+        "cat_png":
+        {
+            "x": 3139,
+            "y": 649,
+            "w": 142,
+            "h": 128,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 142,
+            "sourceH": 128
+        },
+        "pole1_png":
+        {
+            "x": 1666,
+            "y": 798,
+            "w": 185,
+            "h": 55,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 185,
+            "sourceH": 55
+        },
+        "pole2_png":
+        {
+            "x": 2142,
+            "y": 787,
+            "w": 185,
+            "h": 55,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 185,
+            "sourceH": 55
+        },
+        "pole3_png":
+        {
+            "x": 2329,
+            "y": 787,
+            "w": 185,
+            "h": 55,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 185,
+            "sourceH": 55
+        },
+        "pole4_png":
+        {
+            "x": 1479,
+            "y": 798,
+            "w": 185,
+            "h": 55,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 185,
+            "sourceH": 55
+        },
+        "sell_up_png":
+        {
+            "x": 2619,
+            "y": 805,
+            "w": 134,
+            "h": 61,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 134,
+            "sourceH": 61
+        },
+        "shatanicn_png":
+        {
+            "x": 3932,
+            "y": 743,
+            "w": 105,
+            "h": 127,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 105,
+            "sourceH": 127
+        },
+        "thefishhook_png":
+        {
+            "x": 3556,
+            "y": 544,
+            "w": 22,
+            "h": 17,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 22,
+            "sourceH": 17
+        },
+        "use_doun_png":
+        {
+            "x": 3655,
+            "y": 515,
+            "w": 167,
+            "h": 58,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 167,
+            "sourceH": 58
+        },
+        "use_up_png":
+        {
+            "x": 1853,
+            "y": 798,
+            "w": 167,
+            "h": 58,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 167,
+            "sourceH": 58
+        },
+        "beach_png":
+        {
+            "x": 3505,
+            "y": 544,
+            "w": 49,
+            "h": 26,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 49,
+            "sourceH": 26
+        },
+        "sell_down_png":
+        {
+            "x": 2755,
+            "y": 805,
+            "w": 134,
+            "h": 61,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 134,
+            "sourceH": 61
+        }
+    }
+}

@@ -1,4 +1,4 @@
-!(function($){
+!(function($,window){
 var basic={};
 /*
 时间对比函数
@@ -760,4 +760,4 @@ basic.url = {
     }
 }
 window['basic'] = basic;
-})(jQuery)
+})(jQuery,window)

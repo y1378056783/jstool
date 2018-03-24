@@ -1,0 +1,611 @@
+{
+    "file": "assets.png",
+    "frames":
+    {
+        "allfish_bg_png":
+        {
+            "x": 1,
+            "y": 1,
+            "w": 801,
+            "h": 513,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 801,
+            "sourceH": 513
+        },
+        "bar-bottom_png":
+        {
+            "x": 1,
+            "y": 1225,
+            "w": 268,
+            "h": 25,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 268,
+            "sourceH": 25
+        },
+        "bar-top_png":
+        {
+            "x": 1,
+            "y": 1252,
+            "w": 260,
+            "h": 17,
+            "offX": 4,
+            "offY": 4,
+            "sourceW": 268,
+            "sourceH": 25
+        },
+        "fishlist_part1_png":
+        {
+            "x": 856,
+            "y": 704,
+            "w": 148,
+            "h": 68,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 148,
+            "sourceH": 68
+        },
+        "fishlist_part2_png":
+        {
+            "x": 838,
+            "y": 1322,
+            "w": 71,
+            "h": 46,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 71,
+            "sourceH": 46
+        },
+        "fishlist_part3_png":
+        {
+            "x": 1,
+            "y": 1302,
+            "w": 303,
+            "h": 4,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 303,
+            "sourceH": 4
+        },
+        "gold_png":
+        {
+            "x": 566,
+            "y": 1232,
+            "w": 47,
+            "h": 51,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 47,
+            "sourceH": 51
+        },
+        "lv_png":
+        {
+            "x": 347,
+            "y": 1225,
+            "w": 35,
+            "h": 21,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 35,
+            "sourceH": 21
+        },
+        "property1_png":
+        {
+            "x": 999,
+            "y": 954,
+            "w": 23,
+            "h": 22,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 23,
+            "sourceH": 22
+        },
+        "property2_png":
+        {
+            "x": 194,
+            "y": 1271,
+            "w": 26,
+            "h": 26,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 26,
+            "sourceH": 26
+        },
+        "property3_png":
+        {
+            "x": 222,
+            "y": 1271,
+            "w": 26,
+            "h": 22,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 26,
+            "sourceH": 22
+        },
+        "rod1_png":
+        {
+            "x": 817,
+            "y": 1089,
+            "w": 168,
+            "h": 99,
+            "offX": 0,
+            "offY": 26,
+            "sourceW": 171,
+            "sourceH": 132
+        },
+        "rod2_png":
+        {
+            "x": 804,
+            "y": 129,
+            "w": 154,
+            "h": 132,
+            "offX": 12,
+            "offY": 0,
+            "sourceW": 171,
+            "sourceH": 132
+        },
+        "rod3_png":
+        {
+            "x": 856,
+            "y": 466,
+            "w": 158,
+            "h": 107,
+            "offX": 8,
+            "offY": 19,
+            "sourceW": 171,
+            "sourceH": 132
+        },
+        "rod4_png":
+        {
+            "x": 804,
+            "y": 263,
+            "w": 164,
+            "h": 109,
+            "offX": 7,
+            "offY": 17,
+            "sourceW": 171,
+            "sourceH": 132
+        },
+        "rodfont1_png":
+        {
+            "x": 566,
+            "y": 1293,
+            "w": 118,
+            "h": 26,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 118,
+            "sourceH": 26
+        },
+        "rodfont2_png":
+        {
+            "x": 911,
+            "y": 1351,
+            "w": 94,
+            "h": 26,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 94,
+            "sourceH": 26
+        },
+        "rodfont3_png":
+        {
+            "x": 838,
+            "y": 1294,
+            "w": 142,
+            "h": 26,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 142,
+            "sourceH": 26
+        },
+        "rodfont4_png":
+        {
+            "x": 911,
+            "y": 1322,
+            "w": 94,
+            "h": 27,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 94,
+            "sourceH": 27
+        },
+        "rodlist_part3_png":
+        {
+            "x": 1,
+            "y": 1271,
+            "w": 191,
+            "h": 4,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 191,
+            "sourceH": 4
+        },
+        "shipicn1_png":
+        {
+            "x": 856,
+            "y": 575,
+            "w": 129,
+            "h": 127,
+            "offX": 23,
+            "offY": 0,
+            "sourceW": 174,
+            "sourceH": 127
+        },
+        "shipicn2_png":
+        {
+            "x": 804,
+            "y": 1,
+            "w": 174,
+            "h": 126,
+            "offX": 0,
+            "offY": 1,
+            "sourceW": 174,
+            "sourceH": 127
+        },
+        "shoprect_png":
+        {
+            "x": 961,
+            "y": 954,
+            "w": 36,
+            "h": 32,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 36,
+            "sourceH": 32
+        },
+        "shuxing_bg_png":
+        {
+            "x": 838,
+            "y": 1267,
+            "w": 159,
+            "h": 25,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 159,
+            "sourceH": 25
+        },
+        "shuxing_top_png":
+        {
+            "x": 566,
+            "y": 1321,
+            "w": 153,
+            "h": 19,
+            "offX": 3,
+            "offY": 3,
+            "sourceW": 159,
+            "sourceH": 25
+        },
+        "store_bg_png":
+        {
+            "x": 1,
+            "y": 516,
+            "w": 853,
+            "h": 479,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 853,
+            "sourceH": 479
+        },
+        "tittle_png":
+        {
+            "x": 1,
+            "y": 997,
+            "w": 552,
+            "h": 160,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 552,
+            "sourceH": 160
+        },
+        "allfish1_png":
+        {
+            "x": 347,
+            "y": 1248,
+            "w": 68,
+            "h": 68,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 68,
+            "sourceH": 70
+        },
+        "allfish2_png":
+        {
+            "x": 417,
+            "y": 1248,
+            "w": 68,
+            "h": 68,
+            "offX": 0,
+            "offY": 2,
+            "sourceW": 68,
+            "sourceH": 70
+        },
+        "btnrod1_png":
+        {
+            "x": 193,
+            "y": 1159,
+            "w": 190,
+            "h": 64,
+            "offX": 0,
+            "offY": 2,
+            "sourceW": 190,
+            "sourceH": 90
+        },
+        "btnrod2_png":
+        {
+            "x": 804,
+            "y": 374,
+            "w": 190,
+            "h": 90,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 190,
+            "sourceH": 90
+        },
+        "btnship1_png":
+        {
+            "x": 1,
+            "y": 1159,
+            "w": 190,
+            "h": 64,
+            "offX": 0,
+            "offY": 2,
+            "sourceW": 190,
+            "sourceH": 90
+        },
+        "btnship2_png":
+        {
+            "x": 817,
+            "y": 997,
+            "w": 190,
+            "h": 90,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 190,
+            "sourceH": 90
+        },
+        "buyrodbtn1_png":
+        {
+            "x": 856,
+            "y": 774,
+            "w": 167,
+            "h": 56,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 167,
+            "sourceH": 58
+        },
+        "buyrodbtn2_png":
+        {
+            "x": 856,
+            "y": 832,
+            "w": 167,
+            "h": 56,
+            "offX": 0,
+            "offY": 2,
+            "sourceW": 167,
+            "sourceH": 58
+        },
+        "musicoff1_png":
+        {
+            "x": 271,
+            "y": 1225,
+            "w": 74,
+            "h": 75,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 74,
+            "sourceH": 77
+        },
+        "musicoff2_png":
+        {
+            "x": 898,
+            "y": 1190,
+            "w": 74,
+            "h": 75,
+            "offX": 0,
+            "offY": 2,
+            "sourceW": 74,
+            "sourceH": 77
+        },
+        "musicon1_png":
+        {
+            "x": 762,
+            "y": 1251,
+            "w": 74,
+            "h": 75,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 74,
+            "sourceH": 77
+        },
+        "musicon2_png":
+        {
+            "x": 490,
+            "y": 1232,
+            "w": 74,
+            "h": 75,
+            "offX": 0,
+            "offY": 2,
+            "sourceW": 74,
+            "sourceH": 77
+        },
+        "nextpage1_png":
+        {
+            "x": 490,
+            "y": 1171,
+            "w": 134,
+            "h": 59,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 134,
+            "sourceH": 61
+        },
+        "nextpage2_png":
+        {
+            "x": 626,
+            "y": 1171,
+            "w": 134,
+            "h": 59,
+            "offX": 0,
+            "offY": 2,
+            "sourceW": 134,
+            "sourceH": 61
+        },
+        "prepage1_png":
+        {
+            "x": 762,
+            "y": 1190,
+            "w": 134,
+            "h": 59,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 134,
+            "sourceH": 61
+        },
+        "prepage2_png":
+        {
+            "x": 626,
+            "y": 1232,
+            "w": 134,
+            "h": 59,
+            "offX": 0,
+            "offY": 2,
+            "sourceW": 134,
+            "sourceH": 61
+        },
+        "scrollbar_png":
+        {
+            "x": 982,
+            "y": 1294,
+            "w": 32,
+            "h": 23,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 32,
+            "sourceH": 23
+        },
+        "scrollbtn_png":
+        {
+            "x": 974,
+            "y": 1224,
+            "w": 32,
+            "h": 23,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 32,
+            "sourceH": 23
+        },
+        "shop1_png":
+        {
+            "x": 856,
+            "y": 890,
+            "w": 103,
+            "h": 87,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 103,
+            "sourceH": 89
+        },
+        "shop2_png":
+        {
+            "x": 385,
+            "y": 1159,
+            "w": 103,
+            "h": 87,
+            "offX": 0,
+            "offY": 2,
+            "sourceW": 103,
+            "sourceH": 89
+        },
+        "start1_png":
+        {
+            "x": 555,
+            "y": 997,
+            "w": 260,
+            "h": 85,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 260,
+            "sourceH": 87
+        },
+        "start2_png":
+        {
+            "x": 555,
+            "y": 1084,
+            "w": 260,
+            "h": 85,
+            "offX": 0,
+            "offY": 2,
+            "sourceW": 260,
+            "sourceH": 87
+        },
+        "fishhook_png":
+        {
+            "x": 974,
+            "y": 1190,
+            "w": 25,
+            "h": 32,
+            "offX": 7,
+            "offY": 4,
+            "sourceW": 40,
+            "sourceH": 40
+        },
+        "smallbait_png":
+        {
+            "x": 804,
+            "y": 466,
+            "w": 40,
+            "h": 40,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 40,
+            "sourceH": 40
+        },
+        "shipfont1_png":
+        {
+            "x": 686,
+            "y": 1293,
+            "w": 71,
+            "h": 26,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 71,
+            "sourceH": 26
+        },
+        "shipfont2_png":
+        {
+            "x": 487,
+            "y": 1309,
+            "w": 71,
+            "h": 26,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 71,
+            "sourceH": 26
+        },
+        "closebtn2_png":
+        {
+            "x": 961,
+            "y": 890,
+            "w": 61,
+            "h": 62,
+            "offX": 0,
+            "offY": 2,
+            "sourceW": 61,
+            "sourceH": 64
+        },
+        "closebtn1_png":
+        {
+            "x": 960,
+            "y": 129,
+            "w": 61,
+            "h": 62,
+            "offX": 0,
+            "offY": 0,
+            "sourceW": 61,
+            "sourceH": 64
+        }
+    }
+}
