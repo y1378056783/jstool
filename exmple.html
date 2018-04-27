@@ -260,6 +260,7 @@
 <div class="main">  
     <div id="f1"></div>  
     <div id="f2"></div>  
+<<<<<<< HEAD
  </div> 
  <button id="chance">概率</button>
  <div class="webWrap">
@@ -270,9 +271,9 @@
  <button id="reload">刷新</button>
     <script type="text/javascript" src="js/function.js"></script><canvas id="myCanvas" width="400" height="400"></canvas>-->
  <div id="showCon"></div>
+ <canvas id="gc" width="400" height="400"></canvas>
 <script type="text/javascript" src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
-
-
+    <script type="text/javascript" src="js/snake.js"></script>
     <script type="text/javascript">
     /*var mod = require('./js/Touch.js');
 	    var p1 = new Promise(function (resolve, reject) {
@@ -326,33 +327,6 @@ var hookPlay=anime({
     autoplay: false
 });
 */
-var o = document.getElementById("hook");  
-var d = document.getElementById("mouse");  
-    
-    function impact(obj, dobj) {  
-        var o = {  
-            x: getDefaultStyle(obj, 'left'),  
-            y: getDefaultStyle(obj, 'top'),  
-            w: getDefaultStyle(obj, 'width'),  
-            h: getDefaultStyle(obj, 'height')  
-        },
-        d = {  
-            x: getDefaultStyle(dobj, 'left'),  
-            y: getDefaultStyle(dobj, 'top'),  
-            w: getDefaultStyle(dobj, 'width'),  
-            h: getDefaultStyle(dobj, 'height')  
-        }, px, py; 
-
-        px = o.x <= d.x ? d.x : o.x;  
-        py = o.y <= d.y ? d.y : o.y;  
-  
-        // 判断点是否都在两个对象中  
-        return (px >= o.x && px <= o.x + o.w && py >= o.y && py <= o.y + o.h && px >= d.x && px <= d.x + d.w && py >= d.y && py <= d.y + d.h) ? true : false;  
-    } 
-
-    function getDefaultStyle(obj, attribute) {  
-        return parseInt(obj.currentStyle ? obj.currentStyle[attribute] : document.defaultView.getComputedStyle(obj, false)[attribute]);  
-    }  
     function random(arr1, arr2) {
 	  var sum = 0,
 	    factor = 0,
@@ -369,22 +343,6 @@ var d = document.getElementById("mouse");
 	  };
 	  return null;
 	};
-	$(window).on('load',function(){
-		var flag=true;
-		$('.hook').on('webkitAnimationEnd',function(){
-			//console.log('over')
-			$('.hook').removeClass('hookMove');
-			flag=true;
-		})
-		$(".tap").on('touchstart',function(){
-			flag && $('.hook').addClass('hookMove'),flag=false;
-			if(impact(o, d)){
-				$('#mouse').removeClass('mouseMove');
-				console.log('抓住老鼠啦！');
-			}
-			//hookPlay.play()
-		})
-	})
 	if(window.navigator.onLine==true) {　
       navigator.geolocation.getCurrentPosition(showPos);
         console.log("首次 -- 连接")
@@ -444,62 +402,6 @@ for(var i=0;i<10e1;i++){
 		console.log('ok');
 	}
 }
-    function prizeRand(oArr) {
-    var sum = 0;    // 总和
-    var rand = 0;   // 每次循环产生的随机数
-    var result = 0; // 返回的对象的key
-
-
-    // 计算总和
-    for (var i in oArr) {
-        sum += oArr[i][0];
-        //console.log(oArr[i][0])
-    }
-
-    // 思路就是如果设置的数落在随机数内，则返回，否则减去本次的数
-    for (var i in oArr) {
-        rand = Math.floor(Math.random()*sum + 1);
-        if (oArr[i][0] >= rand) {
-            result = oArr[i][1];
-            break;
-        } else {
-            sum -= oArr[i][0];
-        }
-    }
-
-    return result;
-
-}
-var oArr = {'0':[1, 'Mac'], '3':[15, 'iPhone'], '2':[30, 'iPad'], '1':[50, 'iWatch']};
-//prizeRand(oArr)
-
-$("#chance").on('click',function(){
-})
-
-
-    var num = 10,tpl='',lt=20;
-    for(var i =0;i<num;i++){
-    	tpl+="<div class='fish' data-price="+i+" style='top:"+Math.random()*i*68+"px;left:"+Math.random()*i*52+"px'></div>"
-    }
-    $('.main').append(tpl);
-    $('#f1').animate({'height':510},2000,function(){
-    	if(impact(o, d)){
-    		$(this).animate({'height':200})
-    		$('#f2').animate({'top':0},function(){
-    			$(this).fadeOut();
-    		})
-    	}
-    })*/
-    
-		/*var input1 = document.getElementById('input1'),
-		    input2 = document.getElementById('input2'),
-		    user = {};
-		Object.defineProperty(user, 'name', {
-		  get: function() { return input1.value; }, 
-		  set: function(newValue) { input1.value = newValue; input2.value = newValue; },
-		  configurable: true
-		});
-		input1.onchange = function() { user.name = user.name } //sync both inputs.
     	basic.loadMore('#wrap','//api.midoogame.com/stat/gamelist');//cdn.bootcss.com/zepto/1.2.0/zepto.min.js
     	basic.scrollMenu("#nav",'on',function(index){
 			var typeId = index,$wrap=$('#wrap'),tpl="<p id='refresh' class='loading'>刷新数据中...</p>";
@@ -514,7 +416,7 @@ $("#chance").on('click',function(){
 		            $wrap.addClass("empty").html('');//没有该分类！
 		        }
 		    })
-    	});*/
+    	});
     	/*basic.setMoney();
     	$('.plus').on('click',function(){
     		basic.getMoneyVal(this);
