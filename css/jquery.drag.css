@@ -1,0 +1,67 @@
+/*滑动验证插件*/
+.ui-draglock-wrap {
+	background: #e8e8e8;
+	position: relative;
+}
+
+.ui-draglock-wrap .ui-draglock-bg {
+	width: 0;
+}
+
+.ui-draglock-wrap .ui-draglock-btn {
+	position: absolute;
+	top: 0;
+	left: 0;
+	cursor: move;
+	text-align: center;
+	border: 1px solid #ccc;
+	background: #fff;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.ui-draglock-wrap .ui-draglock-btn {
+	background: #fff url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAnUExURQAAAGBQUGBaWmJZWWJYWGNYWGNZWWJYWGJZWWBYWGNYWGNZWWRYWIqwlb0AAAANdFJOUwAQMMDQoFBgcCCw4ECQ8pPMAAAAP0lEQVQI12NgwATTGBgawAwRBYZwMIPRiYErAcxSFmA0AjN4HBikBcCsUgYmQxQGE0wKphhIQrSzwAyEW4EOACHhB32zIad6AAAAAElFTkSuQmCC) no-repeat center;
+}
+
+.ui-draglock-wrap .ui-draglock-btn.success {
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAwUExURQAAAIC/MHrBPHnBPHnCO3nCPHjDPHrFOnnCOXrBO3nCO3nCO3rDPHrCO3nBO3rCPBowj7gAAAAPdFJOUwAQ7/BwwEAwUM+g0H/g39MUR4UAAAB3SURBVAjXY2BAAJn5Pw+CaA79//8/NQAZ/f+B4AcDAyNQ4P/nTwIMLCCBhfsdGFiB9C92/QAG/s/Z/xcU/f/AwP9PcBe7/n8DoNREgaL//wOAin+KAzU6MDDa/38E1C/AwJAP0v8NaDKbPVAgAWSZSOxVRyQ3AAA6yzwT6f4FbQAAAABJRU5ErkJggg==);
+}
+
+.ui-draglock-wrap .ui-draglock-text {
+	width: 100%;
+	height: 100%;
+	font-family: "微软雅黑";
+	text-align: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: #666;
+}
+
+.ui-draglock-wrap .ui-draglock-no-select,
+.ui-draglock-wrap .ui-draglock-no-select.ui-draglock-textMsg {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+.ui-draglock-wrap .ui-draglock-no-select.ui-draglock-textMsg{
+	background: -webkit-gradient(linear,left top,right top,color-stop(0,#4d4d4d),color-stop(.4,#4d4d4d),color-stop(.5,#fff),color-stop(.6,#4d4d4d),color-stop(1,#4d4d4d));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	-webkit-animation: slidetounlock 3s infinite;
+	-webkit-text-size-adjust: none;
+}
+@-webkit-keyframes slidetounlock{
+	0%{
+		background-position:-200px 0
+	}
+	100%{
+		background-position:200px 0
+	}
+}
