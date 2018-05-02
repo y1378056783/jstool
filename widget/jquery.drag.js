@@ -89,7 +89,17 @@ if($_GET['act']=='verify'){
       this.key = "";
       this.draglockBtn_left = 0;
       this.maxLeft = this.opts.width - this.opts.height;
+      this.isMobile = $(window).width()<640 ? true : false;//pc端与移动端事件类型切换
       this.render();
+      if(this.isMobile){
+        this.eTypeStart = "touchstart";
+        this.eTypeMove = "touchmove";
+        this.eTypeUp = "touchend";
+      }else{
+        this.eTypeStart = "mousedown";
+        this.eTypeMove = "mousemove";
+        this.eTypeUp = "mouseup";
+      }
       this.eventBind()
     },
     render: function () {
@@ -143,23 +153,31 @@ if($_GET['act']=='verify'){
     },
     eventBind: function () {
       var This = this;
-      this.ele.on("mousedown",".ui-draglock-btn", function (element) {
+      this.ele.on(this.eTypeStart,".ui-draglock-btn", function (element) {//"mousedown"
         if (This.result) return;
-
         This.draglockMousedown(element);
       })
     },
     draglockMousedown: function (element) {
-      var This = this;
-      var clientX = element.clientX;
+      var This = this,
+          clientX = null;
+      if(this.isMobile){
+        clientX = element.originalEvent.touches[0].clientX;
+      }else{
+        clientX = element.clientX;
+      }
       var leftX = clientX - this.draglockBtn.offset().left;
       This.draglockMousemove(clientX, leftX);
       This.draglockMouseup();
     },
     draglockMousemove: function (i, e) {
       var This = this;
-      $(doc).on("mousemove.draglock", function (element) {
-        This.draglockBtn_left = element.clientX - i - e;
+      $(doc).on(this.eTypeMove+".draglock", function (element) {//"mousemove.draglock"
+        if(This.isMobile){
+          This.draglockBtn_left = element.originalEvent.touches[0].clientX - i - e;
+        }else{
+          This.draglockBtn_left = element.clientX - i - e;
+        }
         if (This.draglockBtn_left < 0) return;
 
         if (This.draglockBtn_left > This.maxLeft) {
@@ -172,7 +190,7 @@ if($_GET['act']=='verify'){
     },
     draglockMouseup: function () {
       var This = this;
-      $(doc).on("mouseup.draglock", function () {
+      $(doc).on(this.eTypeUp+".draglock", function () {//"mouseup.draglock"
         if (This.draglockBtn_left != This.maxLeft) {
           This.draglockBtn_left = 0
         } else {
@@ -186,7 +204,7 @@ if($_GET['act']=='verify'){
           width: This.draglockBtn_left
         }, This.opts.time);
 
-        $(this).off("mousemove.draglock mouseup.draglock");
+        $(this).off(This.eTypeMove+".draglock "+This.eTypeUp+".draglock");//"mousemove.draglock mouseup.draglock"
       })
     },
     getKey: function () {

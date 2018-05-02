@@ -1,4 +1,4 @@
-!(function($,window){
+;(function($,window){
 var basic={};
 /*
 时间对比函数
