@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>背景切换exmple</title>
+	<style type="text/css">
+#slideshow {
+  position:relative;
+  z-index:-1;
+}
+#slideshow img.active {
+    z-index:10;
+    opacity:1;
+}
+#slideshow img.last-active {
+    z-index:9;
+}
+#slideshow img {
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+h1{
+	text-align: center;
+	margin: 2em 0;
+}
+	</style>
+</head>
+<body>
+	<h1>hello</h1>
+	<div id="slideshow"></div>
+	<script type="text/javascript" src="//cdn.bootcss.com/jquery/1.10.0/jquery.min.js"></script>
+	<script type="text/javascript" src="./widget/bgSwitch.js"></script>
+    <script type="text/javascript">
+    $("#slideshow").bgSwitch();
+	/**/
+    </script>
+</div>
+</body>
+</html>

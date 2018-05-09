@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery Word Export Plugin Demo</title>
+<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div id="jquery-script-menu">
+<div class="jquery-script-center">
+<ul>
+<li><a href="http://www.jqueryscript.net/other/Export-Html-To-Word-Document-With-Images-Using-jQuery-Word-Export-Plugin.html">Download This Plugin</a></li>
+<li><a href="http://www.jqueryscript.net/">Back To jQueryScript.Net</a></li>
+</ul>
+
+<div class="jquery-script-clear"></div>
+</div>
+</div>
+<h1 style="margin-top:150px;">jQuery Word Export Plugin Demo</h1>
+<div id="page-content">
+<h1>Hello, world!</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula bibendum lacinia. Pellentesque placerat interdum nisl non semper. Integer ornare, nunc non varius mattis, nulla neque venenatis nibh, vitae cursus risus quam ut nulla. Aliquam erat volutpat. Aliquam erat volutpat. Etiam eu auctor risus, condimentum sodales nisi. Curabitur aliquam, lorem accumsan aliquam mattis, sem ipsum vulputate quam, at interdum nisl turpis pharetra odio. Vivamus diam eros, mattis eu dui nec, blandit pulvinar felis.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula bibendum lacinia. Pellentesque placerat interdum nisl non semper. Integer ornare, nunc non varius mattis, nulla neque venenatis nibh, vitae cursus risus quam ut nulla. Aliquam erat volutpat. Aliquam erat volutpat. Etiam eu auctor risus, condimentum sodales nisi. Curabitur aliquam, lorem accumsan aliquam mattis, sem ipsum vulputate quam, at interdum nisl turpis pharetra odio. Vivamus diam eros, mattis eu dui nec, blandit pulvinar felis.</p>
+<table cellspacing="0" cellpadding="0" border="0">
+					<tbody><tr>
+					  <th style="width:110px;">姓&nbsp;&nbsp;&nbsp;名：</th>
+					  <td>江湖人</td>
+					  <th>性&nbsp;&nbsp;&nbsp;别：</th>
+					  <td>男</td>
+					  <th>年&nbsp;&nbsp;&nbsp;龄：</th>
+					  <td>31岁</td>
+					  <td width="160" rowspan="4"><img width="145" height="145" class="highslide" src="1.jpg"></td>
+					</tr>
+					<tr>
+					  <th>学&nbsp;&nbsp;&nbsp;历：</th>
+					  <td>小学/初中</td>
+					  <th>工作年限：</th>
+					  <td>未知</td>
+                      					  <th>期望月薪：</th>
+					  <td>面议</td>
+                      					  </tr>
+					<tr>
+					  <th>期望职位：</th>
+					  <td colspan="5"><a target="_blank" href="/yewuyuan/dianhuaxiaoshou/">电话销售</a></td>
+					  </tr>
+					  					  <tr>
+					  <th>现居住地址：</th>
+					  <td colspan="5">南昌县 &nbsp; 小蓝经济技术开发区</td>
+					  </tr>
+					                                              <tr>
+                            <th>期望工作区域：</th>
+                            <td colspan="5">东湖区 &nbsp;</td>
+                        </tr>
+                                        					   					  <tr>
+					  <th>求职状态：</th>
+					  <td colspan="5">在职有好的机会可以考虑</td>
+					  </tr>
+					  					<tr><th>联系方式：</th><td colspan="5">
+																	<div id="linkmsga"><a class="tijiao_div fl mr10" href="/qiuzhi/t6500168/#no_invite"><span>您还没有收到面试邀请，点击去查找适合你的工作</span></a></div>
+																</td></tr>
+				</tbody></table>
+</div>
+<a class="word-export" href="javascript:void(0)"> Export as .doc </a> 
+<script src="//cdn.bootcss.com/jquery/1.10.0/jquery.min.js"></script> 
+<script src="FileSaver.js"></script> 
+<script src="jquery.wordexport.js"></script> 
+<script type="text/javascript">
+        $("a.word-export").click(function(event) {
+            $("#page-content").wordExport();
+        });
+    </script>
+</body>
+
+</html>

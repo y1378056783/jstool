@@ -8,9 +8,10 @@ Learn how to use Hexi to build a simple game prototype
 var thingsToLoad = ["img/resource.json"];
 
 var win=window.innerWidth,hei=window.innerHeight;
-//console.log(win);
+
 //Create a new Hexi instance, and start it
 var g = hexi(win, hei, setup, thingsToLoad,load);
+console.log(g);
 //Set the background color and scale the canvas
 //g.backgroundColor = "black";
 g.scaleToWindow();
