@@ -736,6 +736,128 @@ basic.diffNum = function(num,link){
         return (num[k]==link) ? true : false;
     }
 }
+/**[异步请求方法]
+*支持jsonp跨域
+ * @author yuyingping 2018-07-07
+new Fetch({
+  type:'POST',
+  //jsonp:true,
+  url:'//bd/test.php',
+  data:'act=init&name=jack&age=10&callback',
+  succ:function(e){}
+})
+new Fetch({
+  type:'GET',
+  //jsonp:true,
+  url:'//bd/test.php?&name=jack&age=10',
+  succ:function(e){}
+})
+*/
+basic.Fetch=function (arg){
+  var self=this;
+  this.suffix=+new Date();
+  this.fetch=window.fetch||new XMLHttpRequest();
+  this.arg=arg||{};
+  this.urls=this.arg.jsonp?this.arg.url+'&callback=jsonp'+this.suffix:this.arg.url;
+  (typeof this.fetch === 'object')?this.httpRequest(self):this.httpFetch(self);
+  return this;
+}
+basic.Fetch.prototype={
+  httpRequest:function(self){
+    var parme=null;
+    this.fetch.onreadystatechange=function (){
+        if(self.fetch.status==200&&self.fetch.readyState==4){
+          self.arg.jsonp?self.jsonpCallback(self):self.arg['succ'](JSON.parse(self.fetch.response))
+        }else{
+          typeof self.arg['error']=='function' && self.arg['error'](self.fetch.statusText);
+        }
+    };
+    this.fetch.open(this.arg.type,this.urls,true);
+    if(this.arg.type=='POST'){
+      this.fetch.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+      parme=this.arg.data;
+    }
+    this.fetch.send(parme);/**/
+  },
+  jsonpCallback:function (self){
+    var script=document.createElement('script');
+        script.src=this.urls;
+        document.head.appendChild(script);
+        document.head.removeChild(script);
+        window['jsonp'+this.suffix]=function(e){
+          self.arg['succ'](e)
+        };
+  },
+  httpFetch:function(self){
+    var parm={};
+    if(this.arg.jsonp) parm.mode='no-cors';
+    parm.method=this.arg.type;
+    if(this.arg.type=='POST'){
+      parm.headers={"Content-Type": "application/x-www-form-urlencoded"};
+      parm.body=this.arg.data;
+    }
+    fetch(this.urls,parm).then(function(e){
+      self.arg.jsonp ? self.jsonpCallback(self) : e.json().then(function(res){
+          self.arg['succ'](JSON.parse(JSON.stringify(res)));
+        })
+    }).catch(function(err){
+      typeof self.arg['error']=='function' && self.arg['error'](err)
+    })
+  }
+}
+/**
+ * [悬浮球效果]
+ * @author yuyingping 2018-07-07
+ * @param  {[type]} el [dom节点]
+ * @return {[type]}    [description]
+ * css:
+ * #rate{
+  position: fixed;
+  left: 1em;
+  top: 1em;
+  z-index: 100;
+  width: 3em;
+  height: 3em;
+  background: red;
+  border-radius: 50%;
+  transition: all .1s ease-out;
+}
+ * 示例：basic.sphere('#rate')
+ */
+basic.sphere=function(el){
+  var beginX=beginY=endX=endY=0,
+      rate=document.querySelector(el);
+  rate.ontouchstart=start;
+  rate.ontouchmove=move;
+  rate.ontouchend=end;
+
+  function start(e){
+    beginX=e.touches[0].pageX;
+    beginY=e.touches[0].pageY;
+    return false;
+  }
+  function move(e){
+    endX=e.touches[0].pageX-beginX;
+    endY=e.touches[0].pageY-beginY;
+    this.style.left=(beginX+endX)-(this.offsetWidth*.5)+'px';
+    this.style.top=(beginY+endY)-(this.offsetHeight*.5)+'px';
+    return false;
+    //console.log()
+  }
+  function end(e){
+    var left = parseInt(this.style.left) || 0,
+      width = parseInt(this.offsetWidth) || 0,
+      windowWith = (document.documentElement || document.body).offsetWidth;
+    if (left > (windowWith - width) / 2) {
+      left = windowWith - width ;//+10
+    } else {
+      left = 5;
+    }
+    this.style.left=left+'px';
+    this.style.top=this.style.top+endY+'px';
+    //console.log('X:'+endX+'Y:'+endY)
+  }
+}
 
 /*
 阻止频繁操作

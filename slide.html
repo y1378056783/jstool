@@ -2,8 +2,13 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--<meta name="x5-orientation" content="portrait">
+  <meta name="full-screen" content="yes">
+  <meta name="browsermode" content="application">-->
 	<title>背景切换exmple</title>
 	<style type="text/css">
+  body{word-break:break-all; }
 #slideshow {
   position:relative;
   z-index:-1;
@@ -31,16 +36,103 @@ h1{
 	text-align: center;
 	margin: 2em 0;
 }
-	</style>
+button{
+  width: 200px;
+  line-height: 50px;
+  display: block;
+  font-size: 2em;
+}
+#rate{
+  position: fixed;
+  left: 1em;
+  top: 1em;
+  z-index: 100;
+  width: 3em;
+  height: 3em;
+  background: red;
+  border-radius: 50%;
+  transition: all .1s ease-out;/**/
+}
+  </style>
 </head>
 <body>
-	<h1>hello</h1>
+<div id="content"></div>
+ <!-- <button onclick="send()">send</button>
+  
+<p id="rate"></p>
+<button onclick="stora({link:'jacklink',id:'1',imgurl:'imgurl',name:'jackname'})">jack1</button>
+<button onclick="stora({link:'jacklink',id:'2',imgurl:'imgurl',name:'jackname'})">jack2</button>
+<button onclick="stora({link:'jacklink',id:'3',imgurl:'imgurl',name:'jackname'})">jack3</button>
+<button onclick="stora({link:'jacklink',id:'4',imgurl:'imgurl',name:'jackname'})">jack4</button>
+<button onclick="stora({'link':'jacklink','id':'5','imgurl':'imgurl','name':'jackname'})">jack5</button>
+<h1>hello</h1>
 	<div id="slideshow"></div>
-	<script type="text/javascript" src="//cdn.bootcss.com/jquery/1.10.0/jquery.min.js"></script>
-	<script type="text/javascript" src="./widget/bgSwitch.js"></script>
+  <script type="text/javascript" src="./widget/bgSwitch.js"></script>
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/eruda/1.4.4/eruda.min.js"></script>
     <script type="text/javascript">
+        eruda.init();
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/1.10.0/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/function.js"></script>-->
+    <script type="text/javascript">
+    /*var stora=function(arg){
+        var data={},isCac=true,temp=localStorage.playgame?JSON.parse(localStorage.playgame):[];
+        if(arg){
+            if(localStorage.playgame){
+                console.log('temp有值');
+                temp.forEach(function(v){
+                    if(v.id==arg.id){
+                        isCac=false;
+                    }
+                })
+                
+                if(temp.length>3) temp.pop();
+            }
+            if(isCac){
+                data.id=arg.id;
+                data.imgurl=arg.imgurl;
+                data.name=arg.name;
+                data.link=arg.link;
+                temp.unshift(data);
+                localStorage.playgame=JSON.stringify(temp);
+            }
+            //window.location.reload();
+            //window.location.href=arg.link;
+        }else{
+            return (temp.length!=0)?temp:null;
+        }
+
+    }
+    function poll(fnlist){
+      var toAdd = Array.prototype.slice.call(arguments,2);
+      let id=0;
+      return function(arg){
+        let fn=fnlist[id++ % fnlist.length];
+        console.log(fnlist);
+        return fn.apply(this,arg);
+      }
+    }
+    function setState(id){
+      console.log(id);
+    }
+    poll(setState.bind(null,'home'),setState.bind(null,'cate'))();
     $("#slideshow").bgSwitch();
-	/**/
+	
+ var basFetch=new basic.Fetch({
+  type:'POST',
+  //jsonp:true,
+  url:'//bd/test.php',
+  data:'act=init&name=jack&age=10&callback',
+  succ:function(e){
+    console.log(e)
+    document.getElementById('content').innerText=e.name+'\n'+e.age;
+  }
+})*/
+
+ console.log();
+
+
     </script>
 </div>
 </body>
