@@ -44,7 +44,10 @@
 		}
 		.snav li{
 			display:inline-block;
-			padding:15px 1rem;
+			/*padding:15px 1rem;*/
+			width: 3.5em;
+			line-height: 2;
+			text-align: center;
 			box-sizing:border-box;
 		}
 		.snav li.on{
@@ -225,11 +228,17 @@
 	</style>
 </head>
 <body>
-<div class="score"></div>
-<div class="hook" id="hook"></div>
-<div class="mouse mouseMove" id="mouse"></div>	
-<div class="tap lt">左按钮</div>
-<div class="tap rt">右按钮</div>
+<ul id="nav" class="snav" mark>
+	<li i="1" class="on">角色</li>
+	<li i="2">格斗</li>
+	<li i="3">休闲</li>
+	<li i="4">竞速</li>
+	<li i="5">策略</li>
+	<li i="6">射击</li>
+	<li i="7">其它</li>
+	<li i="8">回合</li>
+	<li i="9">卡牌</li>
+</ul>
 <!--	<div class="fixed">
 		<ul class="col-m cc" id="wrap">
 	        <p id="refresh" class="loading">刷新数据中...</p>
@@ -240,17 +249,7 @@
 <div class="plusNum"><span class='reduce' data-opt='0'>-</span><input type='number' readonly class='product' value="1" data-total='100' data-def='100' data-max='5' data-min='1'/><span class='plus' data-opt='1'>+</span></div>
 <div class="plusNum"><span class='reduce' data-opt='0'>-</span><input type='number' readonly class='product' value="1" data-total='50' data-def='50' data-max='5' data-min='1'/><span class='plus' data-opt='1'>+</span></div>
 <p id="money"></p>
-<ul id="nav" class="snav" mark>
-		<li i="1" class="on">角色</li>
-		<li i="2">格斗</li>
-		<li i="3">休闲</li>
-		<li i="4">竞速</li>
-		<li i="5">策略</li>
-		<li i="6">射击</li>
-		<li i="7">其它</li>
-		<li i="8">回合</li>
-		<li i="9">卡牌</li>
-	</ul>
+
    
 
   
@@ -268,15 +267,26 @@
  </div>
 <script type="text/javascript" src="//animejs.com/anime.min.js"></script>
  <button id="reload">刷新</button>
-    <script type="text/javascript" src="js/function.js"></script><canvas id="myCanvas" width="400" height="400"></canvas>-->
+    <script type="text/javascript" src="js/function.js"></script><canvas id="myCanvas" width="400" height="400"></canvas>
  <div id="showCon"></div>
- <canvas id="gc" width="400" height="400"></canvas>
+ <canvas id="gc" width="400" height="400"></canvas>-->
 <script type="text/javascript" src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/function.js"></script>
     <script type="text/javascript">
-    var arr=[39,1,5,2,7,9,3,0,134,12,34,1,3,9,134];
-    var qarr=basic.quickSort(arr);
-    console.log(basic.deleteRepetion(qarr))
+    basic.scrollMenu("#nav",'on',function(index){
+			/*var typeId = index,$wrap=$('#wrap'),tpl="<p id='refresh' class='loading'>刷新数据中...</p>";
+		    $.getJSON('test.json?v=2&type='+typeId,function(res){//请求数据
+		        if (res.code > 0) {
+		            res.data.forEach(function(i,e){
+		                tpl+="<li><img src='"+i.imgurl+"'/></li>";
+		            })
+		            tpl+="<p id='loading' class='loading'>加载数据中...</p>";
+		            $wrap.removeClass("empty").html(tpl);
+		        }else{
+		            $wrap.addClass("empty").html('');//没有该分类！
+		        }
+		    })*/
+    	});
 
     /*var mod = require('./js/Touch.js');
 	    var p1 = new Promise(function (resolve, reject) {
@@ -343,20 +353,7 @@ function WebSocketTest(){
  //WebSocketTest()
 /* 
     	basic.loadMore('#wrap','//api.midoogame.com/stat/gamelist');//cdn.bootcss.com/zepto/1.2.0/zepto.min.js
-    	basic.scrollMenu("#nav",'on',function(index){
-			var typeId = index,$wrap=$('#wrap'),tpl="<p id='refresh' class='loading'>刷新数据中...</p>";
-		    $.getJSON('test.json?v=2&type='+typeId,function(res){//请求数据
-		        if (res.code > 0) {
-		            res.data.forEach(function(i,e){
-		                tpl+="<li><img src='"+i.imgurl+"'/></li>";
-		            })
-		            tpl+="<p id='loading' class='loading'>加载数据中...</p>";
-		            $wrap.removeClass("empty").html(tpl);
-		        }else{
-		            $wrap.addClass("empty").html('');//没有该分类！
-		        }
-		    })
-    	});
+    	
     	/*basic.setMoney();
     	$('.plus').on('click',function(){
     		basic.getMoneyVal(this);

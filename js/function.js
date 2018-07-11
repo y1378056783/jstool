@@ -260,7 +260,7 @@ basic.scrollMenu("#nav",'on',function(index){
 </ul>
 */
 basic.scrollMenu = function(obj,active,fn){
-    var $nav = $(obj);
+    var $nav = $(obj),num=0;;
     $(obj+" li").on('touchstart',function(e){
         var $this=$(this),
             data = $this.attr('i'),
@@ -268,7 +268,7 @@ basic.scrollMenu = function(obj,active,fn){
             cenLeft = ($nav.width() - $this.width()) / 2, //居中
             sLeft = liOffset-cenLeft;
         $this.addClass(active).siblings().removeClass(active);
-        //console.log(e);
+        console.log(sLeft);
         //$nav.scrollLeft(sLeft);
         $nav.animate({scrollLeft: sLeft}, 280);
         fn(data);
@@ -639,9 +639,15 @@ basic.makeSalt = function (len) {
     }
     return salt;
 }
+basic.generateRandomAlphaNum=function(len) {
+    var rdmString = "";
+    for (; rdmString.length < len; rdmString += Math.random().toString(36).substr(2));
+    return rdmString.substr(0, len);
+}
 basic.rand = function (max,min){
     return Math.random()*(max-min+1) + min | 0;
 }
+
 /*去除重复*/
 basic.deleteRepetion = function (arr){
  var arrTable = {},arrData = [];
@@ -652,6 +658,12 @@ basic.deleteRepetion = function (arr){
          }
      }
     return arrData;
+}
+basic.simplifyRepetion = function (arr){
+    var data=arr.filter(function(x, index,self) {
+        return self.indexOf(x)===index;
+    }); 
+    return data;
 }
 /*快速排序*/
 basic.quickSort = function (arr){
@@ -827,9 +839,12 @@ basic.Fetch.prototype={
 basic.sphere=function(el){
   var beginX=beginY=endX=endY=0,
       rate=document.querySelector(el);
-  rate.ontouchstart=start;
+  rate.addEventListener('touchstart',start);
+  rate.addEventListener('touchmove',move);
+  rate.addEventListener('touchend',end);
+  /*rate.ontouchstart=start;
   rate.ontouchmove=move;
-  rate.ontouchend=end;
+  rate.ontouchend=end;*/
 
   function start(e){
     beginX=e.touches[0].pageX;

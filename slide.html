@@ -53,12 +53,71 @@ button{
   border-radius: 50%;
   transition: all .1s ease-out;/**/
 }
+#content{width:200px;height: 200px;background: red;}
+.wrap,.circle,.percent{
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+  }
+  .wrap{
+    top:50px;
+    left:50px;
+    background-color: #ccc;
+  }
+  .circle{
+    box-sizing: border-box;
+    border:20px solid #ccc;
+    clip:rect(0,200px,200px,100px);
+  }
+  .clip-auto{
+    clip:rect(auto, auto, auto, auto);
+  }
+  .percent{
+    box-sizing: border-box;
+    top:-20px;
+    left:-20px;
+  }
+  .left{
+    transition:transform ease;
+    border:20px solid blue;
+    clip: rect(0,100px,200px,0);
+  }
+  .right{
+    border:20px solid blue;
+    clip: rect(0,200px,200px,100px);
+  }
+  .wth0{
+    width:0;
+  }
+  .num{
+    position: absolute;
+    box-sizing: border-box;
+    width: 160px;
+    height: 160px;
+    line-height: 160px;
+    text-align: center;
+    font-size: 40px;
+    left: 20px;
+    top: 20px;
+    border-radius: 50%;
+    background-color: #fff;
+    z-index: 1;
+
   </style>
 </head>
 <body>
-<div id="content"></div>
- <!-- <button onclick="send()">send</button>
-  
+
+
+
+ <div id="content"></div>
+<!-- <button onclick="send()">send</button>
+  <div class="wrap">
+  <div class="circle">
+    <div class="percent left"></div>
+    <div class="percent right wth0"></div>
+  </div>
+  <div class="num"><span>0</span>%</div>
 <p id="rate"></p>
 <button onclick="stora({link:'jacklink',id:'1',imgurl:'imgurl',name:'jackname'})">jack1</button>
 <button onclick="stora({link:'jacklink',id:'2',imgurl:'imgurl',name:'jackname'})">jack2</button>
@@ -72,10 +131,41 @@ button{
   <script type="text/javascript" src="//cdn.bootcss.com/eruda/1.4.4/eruda.min.js"></script>
     <script type="text/javascript">
         eruda.init();
-    </script>
+    </script>-->
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/1.10.0/jquery.min.js"></script>
-    <script type="text/javascript" src="./js/function.js"></script>-->
+    <script type="text/javascript" src="./js/function.js"></script>
     <script type="text/javascript">
+    var percent=0;
+    /*var percent=30;
+    var deg=percent*3.6;//(18/5)*percent
+    if(percent>50){
+      $('.circle').addClass('clip-auto');
+      $('.right').removeClass('wth0');
+    }
+    $('.num>span').text(percent);
+    $('.left').css("-webkit-transform","rotate("+deg+"deg)");
+  var loading=setInterval(function(){
+    if(percent>100){
+      clearInterval(loading)
+      percent=0;
+      $('.circle').removeClass('clip-auto');
+      $('.right').addClass('wth0');
+    }else if(percent>50){
+      $('.circle').addClass('clip-auto');
+      $('.right').removeClass('wth0');
+    }
+    var deg=(18/5)*percent;//percent*3.6
+    $('.left').css("-webkit-transform","rotate("+deg+"deg)");
+    $('.num>span').text(percent);
+    percent++;
+  },500);*/
+document.getElementById('content').addEventListener('click',a)
+function a(){
+  console.log('a')
+}
+function b(){
+  console.log('b')
+}
     /*var stora=function(arg){
         var data={},isCac=true,temp=localStorage.playgame?JSON.parse(localStorage.playgame):[];
         if(arg){
@@ -128,11 +218,20 @@ button{
     console.log(e)
     document.getElementById('content').innerText=e.name+'\n'+e.age;
   }
-})*/
-
- console.log();
-
-
+})
+function a(){
+  this.age=100;
+  return [].slice.call(arguments);
+}
+function b(){
+  var obj=a.bind(this,0,1),
+      name=new obj();
+  console.log(name);
+}
+//b.prototype=new a();
+b();*/
+var arr = [1, 2, 2, 3, 4, 5, 5, 6, 7, 7,'jack','lee','jack','amy','lee','tom'];
+console.log(basic.simplifyRepetion(arr))
     </script>
 </div>
 </body>

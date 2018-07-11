@@ -23,14 +23,24 @@ new TouchAngle({
             this.endX = null;
             this.endY = null;
             this.obj = $(opt.obj) || $(document);
+            this.childNode=opt.targetNode||'li';
+            this.last = this.obj.find(this.childNode+':last');
             this.handleInit();
     };
     TouchAngle.prototype = {
+        isInViewport : function (el) {
+            if(el.length==0) return false;
+            var rect = el.getBoundingClientRect();
+            return rect.bottom > 0 &&
+                rect.right > 0 &&
+                rect.left < (window.innerWidth || document.documentElement.clientWidth) &&
+                rect.top < (window.innerHeight || document.documentElement.clientHeight);
+        },
         handleDefault : function(){
             console.log("默认操作");
         },
-        handleUp : function(){
-            (typeof this.callback['up'] == 'function') && this.callback['up']()
+        handleUp : function(dom){
+            (typeof this.callback['up'] == 'function' && this.isInViewport(this.last)) && this.callback['up'](dom)
             //console.log("向上");
         },
         handleDown : function(){
@@ -77,7 +87,7 @@ new TouchAngle({
                 self.startX = erEv.touches[0].pageX;
                 self.startY = erEv.touches[0].pageY;  
             }).on('touchend',function (ev) {
-                var erEv = ev.originalEvent;
+                var erEv = ev.originalEvent,domObj=this;
                 self.endX = erEv.changedTouches[0].pageX;
                 self.endY = erEv.changedTouches[0].pageY;
                 var direction = self.getSlideDirection(self.startX, self.startY,self.endX,self.endY);
@@ -86,7 +96,7 @@ new TouchAngle({
                         //没有滑动
                         break;
                     case 1:
-                        self.handleUp();
+                        self.handleUp(domObj);
                         break;
                     case 2:
                         self.handleDown();
