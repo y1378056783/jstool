@@ -51,9 +51,9 @@ button{
   height: 3em;
   background: red;
   border-radius: 50%;
-  transition: all .1s ease-out;/**/
+  transition: all .1s ease-out;
 }
-#content{width:200px;height: 200px;background: red;}
+/*#content{width:200px;height: 200px;background: red;}*/
 .wrap,.circle,.percent{
     position: absolute;
     width: 200px;
@@ -103,21 +103,25 @@ button{
     border-radius: 50%;
     background-color: #fff;
     z-index: 1;
-
+  }
   </style>
 </head>
 <body>
 
 
-
- <div id="content"></div>
-<!-- <button onclick="send()">send</button>
-  <div class="wrap">
+<div class="wrap">
   <div class="circle">
     <div class="percent left"></div>
     <div class="percent right wth0"></div>
   </div>
-  <div class="num"><span>0</span>%</div>
+  <div class="num">
+  <span>0</span>%
+  </div>
+</div>
+ 
+<!-- <div id="content"></div><button onclick="send()">send</button>
+  
+  
 <p id="rate"></p>
 <button onclick="stora({link:'jacklink',id:'1',imgurl:'imgurl',name:'jackname'})">jack1</button>
 <button onclick="stora({link:'jacklink',id:'2',imgurl:'imgurl',name:'jackname'})">jack2</button>
@@ -131,20 +135,13 @@ button{
   <script type="text/javascript" src="//cdn.bootcss.com/eruda/1.4.4/eruda.min.js"></script>
     <script type="text/javascript">
         eruda.init();
-    </script>-->
+    </script>
+    <script type="text/javascript" src="//unpkg.com/flyio/dist/fly.min.js"></script>-->
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/1.10.0/jquery.min.js"></script>
     <script type="text/javascript" src="./js/function.js"></script>
     <script type="text/javascript">
     var percent=0;
-    /*var percent=30;
-    var deg=percent*3.6;//(18/5)*percent
-    if(percent>50){
-      $('.circle').addClass('clip-auto');
-      $('.right').removeClass('wth0');
-    }
-    $('.num>span').text(percent);
-    $('.left').css("-webkit-transform","rotate("+deg+"deg)");
-  var loading=setInterval(function(){
+    var loading=setInterval(function(){
     if(percent>100){
       clearInterval(loading)
       percent=0;
@@ -158,14 +155,16 @@ button{
     $('.left').css("-webkit-transform","rotate("+deg+"deg)");
     $('.num>span').text(percent);
     percent++;
-  },500);*/
-document.getElementById('content').addEventListener('click',a)
-function a(){
-  console.log('a')
-}
-function b(){
-  console.log('b')
-}
+  },200);
+    /*var percent=30;
+    var deg=percent*3.6;//(18/5)*percent
+    if(percent>50){
+      $('.circle').addClass('clip-auto');
+      $('.right').removeClass('wth0');
+    }
+    $('.num>span').text(percent);
+    $('.left').css("-webkit-transform","rotate("+deg+"deg)");
+  */
     /*var stora=function(arg){
         var data={},isCac=true,temp=localStorage.playgame?JSON.parse(localStorage.playgame):[];
         if(arg){
@@ -229,9 +228,9 @@ function b(){
   console.log(name);
 }
 //b.prototype=new a();
-b();*/
+b();
 var arr = [1, 2, 2, 3, 4, 5, 5, 6, 7, 7,'jack','lee','jack','amy','lee','tom'];
-console.log(basic.simplifyRepetion(arr))
+console.log(basic.simplifyRepetion(arr))*/
     </script>
 </div>
 </body>

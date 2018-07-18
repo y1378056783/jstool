@@ -260,7 +260,7 @@ basic.scrollMenu("#nav",'on',function(index){
 </ul>
 */
 basic.scrollMenu = function(obj,active,fn){
-    var $nav = $(obj),num=0;;
+    var $nav = $(obj);
     $(obj+" li").on('touchstart',function(e){
         var $this=$(this),
             data = $this.attr('i'),
