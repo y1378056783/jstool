@@ -2,6 +2,7 @@
 *滑动验证插件
 *此插件适用于pc端
 前端示例
+<link rel="stylesheet" type="text/css" href="jquery.drag.css">
 <div class="box" data-draglock='false' title="draglock值为true时禁用此功能"></div>
 <input type="button" name="verify" value="提交" id="verify">
 <p id="txt"></p>

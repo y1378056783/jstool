@@ -206,6 +206,13 @@ basic.isInViewport = function (el) {
         rect.left < (window.innerWidth || document.documentElement.clientWidth) &&
         rect.top < (window.innerHeight || document.documentElement.clientHeight);
 }
+basic.checkInView = function(t, e) {
+    if (!t)
+        return;
+    var i = t.getBoundingClientRect()
+      , a = e || 0;
+    return i.top < window.innerHeight + a && i.bottom >= 0
+}
 /**水平滑动菜单
  * @author yuyingping 2018-02-28
  * @param  {string} [外层容器id]
@@ -659,6 +666,17 @@ basic.deleteRepetion = function (arr){
      }
     return arrData;
 }
+/*字符串去重*/
+basic.uniqueStr=function (str){  
+    var newStr="";  
+    for(var i=0;i<str.length;i++){  
+        if(newStr.indexOf(str[i])==-1){  
+            newStr+=str[i];  
+        }  
+    }  
+    return newStr;  
+} 
+/*数组去重*/
 basic.simplifyRepetion = function (arr){
     var data=arr.filter(function(x, index,self) {
         return self.indexOf(x)===index;
@@ -873,7 +891,17 @@ basic.sphere=function(el){
     //console.log('X:'+endX+'Y:'+endY)
   }
 }
-
+/*
+生成uuid
+ */
+basic.uuid=function() {
+    var t = (new Date).getTime();
+    return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(e) {
+        var i = (t + 16 * Math.random()) % 16 | 0;
+        return t = Math.floor(t / 16),
+        ("x" === e ? i : 7 & i | 8).toString(16)
+    })
+}
 /*
 阻止频繁操作
 调用示例

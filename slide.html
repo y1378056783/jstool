@@ -104,12 +104,14 @@ button{
     background-color: #fff;
     z-index: 1;
   }
+  #main{width:100px;height: 100px;position: fixed;top:20px;left:20px;background: red;}
   </style>
 </head>
 <body>
 
-
-<div class="wrap">
+<!--<div id="main">  
+</div>
+ <div class="wrap">
   <div class="circle">
     <div class="percent left"></div>
     <div class="percent right wth0"></div>
@@ -119,16 +121,16 @@ button{
   </div>
 </div>
  
-<!-- <div id="content"></div><button onclick="send()">send</button>
+<div id="content"></div><button onclick="send()">send</button>
   
   
-<p id="rate"></p>
-<button onclick="stora({link:'jacklink',id:'1',imgurl:'imgurl',name:'jackname'})">jack1</button>
-<button onclick="stora({link:'jacklink',id:'2',imgurl:'imgurl',name:'jackname'})">jack2</button>
-<button onclick="stora({link:'jacklink',id:'3',imgurl:'imgurl',name:'jackname'})">jack3</button>
-<button onclick="stora({link:'jacklink',id:'4',imgurl:'imgurl',name:'jackname'})">jack4</button>
-<button onclick="stora({'link':'jacklink','id':'5','imgurl':'imgurl','name':'jackname'})">jack5</button>
-<h1>hello</h1>
+<p id="rate"></p>-->
+<button onclick="stora({link:'http://dd.myapp.com/16891/74755A3C1DA7E8D8D5E8E8A6E399A7CF.apk?fsname=com.tencent.tmgp.dwrg_1.5.5_60.apk',id:'1',imgurl:'imgurl',name:'jackname'})">jack1</button>
+<button onclick="stora({link:'http://dd.myapp.com/16891/74755A3C1DA7E8D8D5E8E8A6E399A7CF.apk?fsname=com.tencent.tmgp.dwrg_1.5.5_60.apk',id:'2',imgurl:'imgurl',name:'jackname'})">jack2</button>
+<button onclick="stora({link:'http://dd.myapp.com/16891/74755A3C1DA7E8D8D5E8E8A6E399A7CF.apk?fsname=com.tencent.tmgp.dwrg_1.5.5_60.apk',id:'3',imgurl:'imgurl',name:'jackname'})">jack3</button>
+<button onclick="stora({link:'http://dd.myapp.com/16891/74755A3C1DA7E8D8D5E8E8A6E399A7CF.apk?fsname=com.tencent.tmgp.dwrg_1.5.5_60.apk',id:'4',imgurl:'imgurl',name:'jackname'})">jack4</button>
+<button onclick="stora({link:'http://dd.myapp.com/16891/74755A3C1DA7E8D8D5E8E8A6E399A7CF.apk?fsname=com.tencent.tmgp.dwrg_1.5.5_60.apk',id:'5',imgurl:'imgurl',name:'jackname'})">jack5</button>
+<!--<h1>hello</h1>
 	<div id="slideshow"></div>
   <script type="text/javascript" src="./widget/bgSwitch.js"></script>
   
@@ -136,10 +138,35 @@ button{
     <script type="text/javascript">
         eruda.init();
     </script>
-    <script type="text/javascript" src="//unpkg.com/flyio/dist/fly.min.js"></script>-->
+    <script type="text/javascript" src="//unpkg.com/flyio/dist/fly.min.js"></script>
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/1.10.0/jquery.min.js"></script>
-    <script type="text/javascript" src="./js/function.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/zepto/1.1.2/zepto.min.js"></script>
+    <script type="text/javascript" src="./widget/touch.js"></script>-->
     <script type="text/javascript">
+    /*console.log(touch);
+    var beginX=beginY=endX=endY=0;
+    touch.on('#main','drag',function(e){
+      var $self=$(this),w=$self.width()*.5,h=$self.height()*.5;
+      console.log(e.position.x)
+      console.log(e.position.y)
+
+      endX=(e.position.x)-w;
+      endY=(e.position.y)-h;
+      $self.css({'left':endX,'top':endY})
+      //console.log('拖动')
+    })//滑动向下
+    touch.on('#main','tap',function(e){
+      $self.css({'left':endX,'top':endY})
+    })
+    touch.on('#main','swipedown',function(){
+      console.log('滑动向下')
+    })//滑动向下
+    mTouch('#main').on('swipeup',function(){
+      console.log('滑动向上')
+    })//滑动向下
+    mTouch('#main').on('swipedown',function(){
+      console.log('滑动向下')
+    })//滑动向下
     var percent=0;
     var loading=setInterval(function(){
     if(percent>100){
@@ -156,7 +183,7 @@ button{
     $('.num>span').text(percent);
     percent++;
   },200);
-    /*var percent=30;
+    var percent=30;
     var deg=percent*3.6;//(18/5)*percent
     if(percent>50){
       $('.circle').addClass('clip-auto');
@@ -165,7 +192,7 @@ button{
     $('.num>span').text(percent);
     $('.left').css("-webkit-transform","rotate("+deg+"deg)");
   */
-    /*var stora=function(arg){
+   var stora=function(arg){
         var data={},isCac=true,temp=localStorage.playgame?JSON.parse(localStorage.playgame):[];
         if(arg){
             if(localStorage.playgame){
@@ -187,13 +214,13 @@ button{
                 localStorage.playgame=JSON.stringify(temp);
             }
             //window.location.reload();
-            //window.location.href=arg.link;
+            window.location.href=arg.link;
         }else{
             return (temp.length!=0)?temp:null;
         }
 
     }
-    function poll(fnlist){
+     /*function poll(fnlist){
       var toAdd = Array.prototype.slice.call(arguments,2);
       let id=0;
       return function(arg){
