@@ -83,6 +83,43 @@ basic.format = function (now,type){
 
     return  rst
 }
+basic.formatNum = function(t) {
+    return parseInt(t) < 0 || null == t || void 0 == t ? "--" : -1 != String(t).indexOf(".") || -1 != String(t).indexOf("-") ? t : 0 === parseInt(t) ? 0 : (t = parseInt(t)) >= 1e4 && t < 1e8 ? (t / 1e4).toFixed(1) + "万" : t >= 1e8 ? (t / 1e8).toFixed(1) + "亿" : t
+}
+;
+function o(t) {
+    return t < 10 ? "0" + t : t
+}
+basic.formatDate = function(t) {
+    if (t) {
+        var e = new Date(t);
+        return e.getFullYear() + "-" + (o(e.getMonth() + 1) + "-") + o(e.getDate())
+    }
+}
+,
+basic.formatDateTime = function(t) {
+    if (t) {
+        var e = new Date(t);
+        return e.getFullYear() + "-" + (o(e.getMonth() + 1) + "-") + o(e.getDate()) + " " + (o(e.getHours()) + ":") + (o(e.getMinutes()) + ":") + o(e.getSeconds())
+    }
+}
+,
+basic.formatDuration = function(t) {
+    if (-1 != String(t).indexOf(":"))
+        return t;
+    var e = void 0
+      , i = void 0
+      , a = void 0
+      , n = void 0;
+    return t < 60 ? "00:" + (n = t < 10 ? "0" + t : t) : t < 3600 ? (a = t % 60,
+    i = parseInt(t / 60),
+    n = a < 10 ? "0" + a : a,
+    (i < 10 ? "0" + i : i) + ":" + n) : (a = t % 60,
+    i = parseInt(t % 3600 / 60),
+    e = parseInt(t / 3600),
+    n = a < 10 ? "0" + a : a,
+    e + ":" + (i < 10 ? "0" + i : i) + ":" + n)
+}
 /*
 倒计时
 参数说明
