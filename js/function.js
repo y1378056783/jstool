@@ -658,6 +658,30 @@ basic.setRandom = function(obj){
         $obj.text(Math.ceil(Math.random()*190000)+10000);
     },200);
 }
+
+/* 数组随机混合
+*var arr = [2, 11, 37, 42];
+*arr = shuffle(arr);
+*/
+basic.shuffle=function (array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
 /*
 从数组随机抽取n个数据
 调用示例
