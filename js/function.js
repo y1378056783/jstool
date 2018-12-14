@@ -789,28 +789,22 @@ var data=[
         [10,'韶关','苍石寨']
     ];
 var dataNum = [2,6,10,9,5,4];
-basic.setValByNum(data,false);
+basic.setValByNum(data,dataNum);
 */
 
-basic.setValByNum = function(strid,reorder){ 
-    var html='',self=this,link=[];
-    reorder && strid.reverse();
-    //console.log(arr);
-    for(var i=0;i<strid.length;i++){ 
-        link=strid[i]; 
-        if(self.diffNum(dataNum,link[0])){
-            html+='<tr><td>'+link[0]+'</td><td>'+link[1]+'</td><td>'+link[2]+'</td></tr>'
+basic.setValByNum = function(data,diff){ 
+    var str='';
+    data.map(function(el,i){
+      diff.map(function(sl){
+        if(el[0]===sl){
+          str += el[0]+'-'+el[1]+'-'+el[2]+'\n';       
         }
-    }
-    return html;
-    //document.getElementById('content').innerHTML = html;
+      })
+    })
+    return str
+    //document.getElementById('content').innerHTML = str;
 }
 
-basic.diffNum = function(num,link){
-    for(var k=0;k<num.length;k++){
-        return (num[k]==link) ? true : false;
-    }
-}
 /**[异步请求方法]
 *支持jsonp跨域
  * @author yuyingping 2018-07-07
