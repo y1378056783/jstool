@@ -273,6 +273,14 @@
 <script type="text/javascript" src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/function.js"></script>
     <script type="text/javascript">
+    new basic.Fetch({
+	  type:'POST',
+	  //jsonp:true,
+	  url:'/stat/downstatistics',
+	  data:'gameid=1580&appid=tt201800619',
+	  succ:function(e){}
+	})
+    //$.post('/stat/downstatistics',{gameid:1580,appid:'tt201800619'})
     basic.scrollMenu("#nav",'on',function(index){
 			/*var typeId = index,$wrap=$('#wrap'),tpl="<p id='refresh' class='loading'>刷新数据中...</p>";
 		    $.getJSON('test.json?v=2&type='+typeId,function(res){//请求数据

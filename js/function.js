@@ -86,7 +86,7 @@ basic.format = function (now,type){
 basic.formatNum = function(t) {
     return parseInt(t) < 0 || null == t || void 0 == t ? "--" : -1 != String(t).indexOf(".") || -1 != String(t).indexOf("-") ? t : 0 === parseInt(t) ? 0 : (t = parseInt(t)) >= 1e4 && t < 1e8 ? (t / 1e4).toFixed(1) + "万" : t >= 1e8 ? (t / 1e8).toFixed(1) + "亿" : t
 }
-;
+
 function o(t) {
     return t < 10 ? "0" + t : t
 }
@@ -96,14 +96,16 @@ basic.formatDate = function(t) {
         return e.getFullYear() + "-" + (o(e.getMonth() + 1) + "-") + o(e.getDate())
     }
 }
-,
+
 basic.formatDateTime = function(t) {
     if (t) {
         var e = new Date(t);
         return e.getFullYear() + "-" + (o(e.getMonth() + 1) + "-") + o(e.getDate()) + " " + (o(e.getHours()) + ":") + (o(e.getMinutes()) + ":") + o(e.getSeconds())
     }
 }
-,
+basic.formatCurrentTime=function (t) {
+    return t <= 0 ? "今日" : t > 0 && t <= 864e5 ? "昨日" : t > 864e5 && t <= 6048e5 ? "近1周" : t > 6048e5 && t <= 2592e6 ? "1周前" : t > 2592e6 && t <= 7776e6 ? "1个月前" : "last"
+}
 basic.formatDuration = function(t) {
     if (-1 != String(t).indexOf(":"))
         return t;
@@ -691,7 +693,13 @@ basic.generateRandomAlphaNum=function(len) {
 basic.rand = function (max,min){
     return Math.random()*(max-min+1) + min | 0;
 }
-
+//手机号中间4位星号代替
+basic.replaceMobile=function (mobile, front_len, end_len) {
+    var symbol = '', mobile_len = mobile.length;
+    var len = mobile_len - front_len - end_len;
+    for(var i=0; i<len; i++) {  symbol += '*'; }
+    return mobile.substr(0,front_len) + symbol + mobile.substr(mobile_len-end_len);
+}
 /*去除重复*/
 basic.deleteRepetion = function (arr){
  var arrTable = {},arrData = [];
