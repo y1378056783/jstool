@@ -954,6 +954,16 @@ basic.sphere=function(el){
     //console.log('X:'+endX+'Y:'+endY)
   }
 }
+/**
+ * 字符串转换成dom元素
+ */
+basic.domToString=function(node) {  
+    let i, a = document.createElement("div"),
+        b = document.createDocumentFragment();
+        a.innerHTML = node;
+    while (i = a.firstChild) b.appendChild(i);
+    return b;
+}
 /*
 生成uuid
  */
