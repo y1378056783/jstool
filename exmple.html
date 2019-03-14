@@ -273,13 +273,21 @@
 <script type="text/javascript" src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/function.js"></script>
     <script type="text/javascript">
-    new basic.Fetch({
-	  type:'POST',
-	  //jsonp:true,
-	  url:'/stat/downstatistics',
-	  data:'gameid=1580&appid=tt201800619',
-	  succ:function(e){}
-	})
+    function Book(name,age){
+		this.name=name;
+		this.age=age;
+	}
+	Book.prototype.getSummary=function(){
+		return `name:${this.name}-age:${this.age}`
+	}
+
+	function Magazine(name,age,weight) {
+		Book.call(this,name,age)
+		this.weight=weight;
+	}
+	Magazine.prototype=Book.prototype;
+	const box=new Magazine('jack',10,50)
+	console.dir(box)
     //$.post('/stat/downstatistics',{gameid:1580,appid:'tt201800619'})
     basic.scrollMenu("#nav",'on',function(index){
 			/*var typeId = index,$wrap=$('#wrap'),tpl="<p id='refresh' class='loading'>刷新数据中...</p>";
