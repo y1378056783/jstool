@@ -320,8 +320,58 @@ basic.scrollMenu = function(obj,active,fn){
         fn(data);
     })
 }
-
-
+/*
+*vue版水平滑动菜单
+*menu方法直接绑定到对应的菜单中
+*例如:
+*css:
+*class-menu{
+   display: inline;
+   white-space: nowrap;
+   overflow: scroll hidden;
+}
+*html:
+*<ul class="class-menu f-w100 f-fl f-tac f-pk bg-w" ref="menus">
+    <li class="f-ib f-fs2" @click="menu">
+    </li>
+</ul>
+ */
+basic.getStep = function(star, end, callback, t, rate) {//执行一定范围的步长
+  var diff = end - star; // 差值
+  if (t === 0 || diff === 0) {
+    callback && callback(end);
+    return;
+  }
+  t = t || 300; // 时长 300ms
+  rate = rate || 30; // 周期 30ms
+  var count = t / rate; // 次数
+  var step = diff / count; // 步长
+  var i = 0; // 计数
+  var timer = setInterval(function () {
+    if (i < count - 1) {
+      star += step;
+      callback && callback(star, timer);
+      i++;
+    } else {
+      callback && callback(end, timer); // 最后一次直接设置end,避免计算误差
+      clearInterval(timer);
+    }
+  }, rate);
+}
+basic.menu = function({target}){
+  let {$refs:{menus}}=this,
+      mLeft=menus.scrollLeft,
+      mWidth=menus.offsetWidth,
+      liLeft=target.offsetLeft,
+      liWidth=target.offsetWidth,
+      end=liLeft+liWidth/2-mWidth/2;//居中计算
+      //console.log(menus)
+  this.getStep(mLeft,end,(s)=>{
+    //console.log(s|0)
+    menus.scrollLeft = s|0//加｜表示保留整数
+  })
+  //this.getData()请求数据
+}
 /**移动端监测用户手指滑动方向的方法
  * @author yuyingping 2018-02-28
  * @param  {string} [obj]   [外层容器id]
