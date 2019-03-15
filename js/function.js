@@ -368,7 +368,11 @@ basic.menu = function({target}){
       //console.log(menus)
   this.getStep(mLeft,end,(s)=>{
     //console.log(s|0)
-    menus.scrollLeft = s|0//加｜表示保留整数
+    if(menus.scrollLeft){//判断兼容性
+      menus.scrollLeft = num//加｜表示保留整数
+    }else{
+      menus.scrollTo(num,0)
+    }
   })
   //this.getData()请求数据
 }
