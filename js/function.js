@@ -326,13 +326,13 @@ basic.scrollMenu = function(obj,active,fn){
 *例如:
 *css:
 *class-menu{
-   display: inline;
+   display: flex;
    white-space: nowrap;
-   overflow: scroll hidden;
+   overflow-x: scroll;
 }
 *html:
-*<ul class="class-menu f-w100 f-fl f-tac f-pk bg-w" ref="menus">
-    <li class="f-ib f-fs2" @click="menu">
+*<ul class="class-menu f-tac f-pk" ref="menus">
+    <li @click="menu">
     </li>
 </ul>
  */
