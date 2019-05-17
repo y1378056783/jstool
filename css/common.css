@@ -1,55 +1,36 @@
-/* font */
-@font-face {
-  font-family: 'iconfont';  /* project id 517360 */
-  src: url('//at.alicdn.com/t/font_517360_3pde2fodcygmn29.eot');
-  src: url('//at.alicdn.com/t/font_517360_3pde2fodcygmn29.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_517360_3pde2fodcygmn29.woff') format('woff'),
-  url('//at.alicdn.com/t/font_517360_3pde2fodcygmn29.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_517360_3pde2fodcygmn29.svg#iconfont') format('svg');
+/* 响应式根字体 */
+html {
+  font-size: 16px;
 }
-.md-icon,.main-sidebar li:before{font-family:'iconfont';}
-.md-icon:before{margin-right:5px;display:inline-block;}
-.icon-signup:before{content: '\e622';}
-.icon-game:before{content: '\e63c';}
-.icon-appindex:before{content: '\e631';}
-.icon-wallet:before{content: '\e608';}
-.icon-member:before{content:'\e618';}
-.icon-search:before{content: '\e67f';}
-.icon-sdk:before{content: '\e710';}
-.icon-app:before{content: '\e952';}
-.icon-payment:before{content: '\e63d';}
-.icon-manage:before{content: '\e63b';}
-.icon-managenode:before{content: '\e609';}
-.icon-manageadminlog:before{content: '\e728';}
-.icon-managepermissions:before{content: '\e60a';}
-.icon-manageadmin:before{content: '\e62f';}
-.icon-sdkgamerecharge:before{content: '\e671';}
-.icon-sdkagent:before{content: '\e702';}
-.icon-sdkapp:before{content: '\e6b4';}
-.icon-date:before{content: '\e9c9';}
-.icon-sdklibao:before{content:'\e61f';}
-.icon-sdkgamemib:before{content: '\e620';}
-.icon-lottery:before{content: '\e61e';}
-.c-icon-verify:before{content: '\e621';}
-.c-icon-username:before{content: '\e624';}
-.c-icon-password:before{content: '\e623';}
-.c-icon-weixin:before{content:'\e62e';}
-.c-icon-phone:before{content:'\e625';}
-.c-icon-email:before{content:'\e629';}
-.c-icon-mobile:before{content:'\e626';}
-.c-icon-signup:before{content:'\e62a'}
-.c-icon-user:before{content: '\e607'}
-.c-icon-card:before{content: '\e62b'}
-.c-icon-dmoney:before{content:'\e627';}
-.c-icon-menu:before{content:'\e60b';}
-.c-icon-edit:before{content:'\e602';}
-.c-icon-cash:before{content:'\e634';}
-.c-icon-jmoney:before{content:'\e630';}
-.c-icon-play:before{content:'\e632';}
-.c-icon-ncash:before{content:'\e633';}
-.c-icon-server:before{content:'\e635';}
-.c-icon-backtop:before{content:'\e60c';}
-.c-icon-qq:before{content:'\e636';}
+
+@media screen and (min-width: 375px) {
+  html {
+      /* iPhone6的375px尺寸作为16px基准，414px正好18px大小, 600 20px */
+      font-size: calc(100% + 2 * (100vw - 375px) / 39);
+      font-size: calc(16px + 2 * (100vw - 375px) / 39);
+  }
+}
+@media screen and (min-width: 414px) {
+  html {
+      /* 414px-1000px每100像素宽字体增加1px(18px-22px) */
+      font-size: calc(112.5% + 4 * (100vw - 414px) / 586);
+      font-size: calc(18px + 4 * (100vw - 414px) / 586);
+  }
+}
+@media screen and (min-width: 600px) {
+  html {
+      /* 600px-1000px每100像素宽字体增加1px(20px-24px) */
+      font-size: calc(125% + 4 * (100vw - 600px) / 400);
+      font-size: calc(20px + 4 * (100vw - 600px) / 400);
+  }
+}
+@media screen and (min-width: 1000px) {
+  html {
+      /* 1000px往后是每100像素0.5px增加 */
+      font-size: calc(137.5% + 6 * (100vw - 1000px) / 1000);
+      font-size: calc(22px + 6 * (100vw - 1000px) / 1000);
+  }
+}
 
 /* common */
 body,html,.h-100{height:100%;}
