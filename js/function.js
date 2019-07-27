@@ -182,7 +182,7 @@ basic.debounce = function(func, wait, immediate) {
  *                                如果想忽略结尾边界上的调用，传入{trailing: false}
  * @return {function}             返回客户调用函数
  */
-const throttle = function(func, wait, options) {
+basic.throttle = function(func, wait, options) {
     let context, args, result;
     let timeout = null;
     // 上次执行时间点
