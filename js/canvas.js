@@ -13,7 +13,7 @@ let innerWidth=window.innerWidth,
     canvas.width=innerWidth;
     canvas.height=innerHeight;
     var yImg = new Image();
-        yImg.src = './md_static/img/favicon.ico';
+        yImg.src = './img/mouse.png';
 //alert(innerWidth+'-'+innerHeight)
 window.addEventListener('mousemove',function (event) {
     mouse.x=event.x;
@@ -36,19 +36,19 @@ function Circle(x,y,dx,dy,radius) {
     this.draw=function(){
         /*yImg.onload=function(){
             console.log('改变this指针',this)
-        }.call(this)*/
-        context.drawImage(yImg,this.x,this.y,this.radius,this.radius);
-        //context.beginPath();
+        }.call(this)
+        context.drawImage(yImg,this.x,this.y,this.radius,this.radius);*/
+        context.beginPath();
         context.arc(this.x,this.y,this.radius,0,Math.PI * 2,false);
         context.strokeStyle=this.color;//随机颜色
         
         //context.save();
-        //context.globalAlpha=.3;
-        //context.fillStyle=this.color;
-        //context.restore();
-        //context.stroke();
-        //context.fill();
-        //context.closePath();
+        context.globalAlpha=.3;
+        context.fillStyle=this.color;
+        context.restore();
+        context.stroke();
+        context.fill();
+        context.closePath();
     }
     this.update=function(){
         if(this.x + this.radius > innerWidth || this.x - this.radius < 0){

@@ -5,13 +5,17 @@ Learn how to use Hexi to build a simple game prototype
 */
 
 //An array that contains all the files you want to load
-var thingsToLoad = ["img/resource.json"];
+var thingsToLoad = [
+  "img/resource.json",
+  "img/music.wav",
+  "img/font.fnt"//位图文字
+];
 
 var win=window.innerWidth,hei=window.innerHeight;
 
 //Create a new Hexi instance, and start it
 var g = hexi(win, hei, setup, thingsToLoad,load);
-console.log(g);
+//console.log(g);
 //Set the background color and scale the canvas
 //g.backgroundColor = "black";
 g.scaleToWindow();
@@ -31,17 +35,23 @@ var bg = undefined,
     scoreDisplay = undefined,
     scoreNum = undefined,
     ws = undefined,
+    disko = undefined,
+    music = undefined,
     gameOverScene = undefined;
 function load(){
   g.loadingBar()
 }
 //The `setup` function runs once and is used to initializes your game
 function setup() {
-
+  
 
   //The dungeon background
   bg = g.sprite("bg.png");//游戏背景
+  
+  
+  disko=g.bitmapText("12345\n6789",'50 font','center','0xFF9999',20,200)//位图字体
 
+  music = g.sound("img/music.wav");//音效
   var buttonFrames = ["up.png", "down.png"];
   player = g.button(buttonFrames);
   //The player sprite
@@ -141,7 +151,12 @@ function setup() {
   gameOverScene.visible = false;//游戏结束层默认隐藏
 
   //g.arrowControl(player, 3);允许键盘控制
+  music.loop = true;//循环播放
+  music.play();//播放
+  music.pause();//暂停
+  console.log('message',g.stage);
   player.press = function () {
+    gameScene.addChild(disko);
     //console.log("The pointer was pressed");
       /*if (hook.pickedUp) {//播放音效
         console.log('老鼠被抓住啦！')
@@ -195,7 +210,7 @@ function setup() {
      // 浏览器不支持 WebSocket
      alert("您的浏览器不支持 WebSocket!");
   }*/
-  ajax()
+  //ajax()
   var hookSlide=g.slide(hook, hook.x, -g.randomInt(0,300), 80, "smoothstep",true);
   hookSlide.onComplete=function(){
     /*console.log(this);
@@ -242,7 +257,6 @@ function play() {
   //Move the player
   //g.move(player);//人物移动
   //
-  
   if(mouse.x>g.canvas.width){
     mouse.x=-177;
     //console.log('出屏幕了')

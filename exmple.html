@@ -228,7 +228,7 @@
 	</style>
 </head>
 <body>
-<ul id="nav" class="snav" mark>
+<!--<ul id="nav" class="snav" mark>
 	<li i="1" class="on">角色</li>
 	<li i="2">格斗</li>
 	<li i="3">休闲</li>
@@ -239,7 +239,7 @@
 	<li i="8">回合</li>
 	<li i="9">卡牌</li>
 </ul>
-<!--	<div class="fixed">
+	<div class="fixed">
 		<ul class="col-m cc" id="wrap">
 	        <p id="refresh" class="loading">刷新数据中...</p>
 	        <li class="place"></li>
@@ -269,28 +269,32 @@
  <button id="reload">刷新</button>
     <script type="text/javascript" src="js/function.js"></script><canvas id="myCanvas" width="400" height="400"></canvas>
  <div id="showCon"></div>
- <canvas id="gc" width="400" height="400"></canvas>-->
+ <canvas id="canvas" width="400" height="400"></canvas>-->
+ <select name="family" id="test">
+	 <option value="0">jack</option>
+	 <option value="1">amy</option>
+	 <option value="2">lee</option>
+ </select>
+ <input type="text" id="input" onchange="inputHandler(this,'test')" data-source='[{"val":0,"txt":"jack"},{"val":1,"txt":"amy"},{"val":2,"txt":"lee"}]' placeholder="模糊搜索"/>
 <script type="text/javascript" src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="js/function.js"></script>
-    <script type="text/javascript">
-    function Book(name,age){
-		this.name=name;
-		this.age=age;
+    <!--<script type="text/javascript" src="js/canvas.js"></script>-->
+	<script type="text/javascript">
+	//var	oldContent=$test.html();
+	function inputHandler(obj,select) {
+		var ht='',
+			$this=$(obj), 
+			val=$this.val(),
+			source=$this.data('source');
+			source.forEach(el=>{
+				if(el.txt.indexOf(val)!=-1){
+					ht+='<option value="'+el.val+'">'+el.txt+'</option>';
+				}
+			})
+			$('#'+select).html(ht||'<option>无匹配结果</option>');
 	}
-	Book.prototype.getSummary=function(){
-		return `name:${this.name}-age:${this.age}`
-	}
-
-	function Magazine(name,age,weight) {
-		Book.call(this,name,age)
-		this.weight=weight;
-	}
-	Magazine.prototype=Book.prototype;
-	const box=new Magazine('jack',10,50)
-	console.dir(box)
     //$.post('/stat/downstatistics',{gameid:1580,appid:'tt201800619'})
-    basic.scrollMenu("#nav",'on',function(index){
-			/*var typeId = index,$wrap=$('#wrap'),tpl="<p id='refresh' class='loading'>刷新数据中...</p>";
+    /*basic.scrollMenu("#nav",'on',function(index){
+			var typeId = index,$wrap=$('#wrap'),tpl="<p id='refresh' class='loading'>刷新数据中...</p>";
 		    $.getJSON('test.json?v=2&type='+typeId,function(res){//请求数据
 		        if (res.code > 0) {
 		            res.data.forEach(function(i,e){
@@ -301,8 +305,8 @@
 		        }else{
 		            $wrap.addClass("empty").html('');//没有该分类！
 		        }
-		    })*/
-    	});
+		    })
+    	});*/
 
     /*var mod = require('./js/Touch.js');
 	    var p1 = new Promise(function (resolve, reject) {

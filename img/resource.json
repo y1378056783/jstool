@@ -10,7 +10,7 @@
 },
 "down.png":
 {
-	"frame": {"x":1188,"y":1,"w":117,"h":117},
+	"frame": {"x":1188,"y":202,"w":117,"h":117},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":117,"h":117},
@@ -26,23 +26,23 @@
 },
 "mouse.png":
 {
-	"frame": {"x":1188,"y":239,"w":100,"h":52},
-	"rotated": false,
+	"frame": {"x":1137,"y":402,"w":100,"h":52},
+	"rotated": true,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":13,"w":100,"h":52},
 	"sourceSize": {"w":100,"h":74}
 },
 "score.png":
 {
-	"frame": {"x":1137,"y":402,"w":199,"h":87},
-	"rotated": false,
+	"frame": {"x":1188,"y":1,"w":199,"h":87},
+	"rotated": true,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":199,"h":87},
 	"sourceSize": {"w":199,"h":87}
 },
 "up.png":
 {
-	"frame": {"x":1188,"y":120,"w":117,"h":117},
+	"frame": {"x":1191,"y":321,"w":117,"h":117},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":117,"h":117},
@@ -53,8 +53,8 @@
 	"version": "1.0",
 	"image": "resource.png",
 	"format": "RGBA8888",
-	"size": {"w":1337,"h":503},
+	"size": {"w":1309,"h":503},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:c0325600d158026b6fe429cba5610fd9:c829fe4bafa4148ada12a19c4593d785:584fd468a0107534842846beb7b9f9fa$"
+	"smartupdate": "$TexturePacker:SmartUpdate:e7358bf19d4100d0cad91d398abda189:c829fe4bafa4148ada12a19c4593d785:584fd468a0107534842846beb7b9f9fa$"
 }
 }
