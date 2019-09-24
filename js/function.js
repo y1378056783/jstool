@@ -122,6 +122,42 @@ basic.formatDuration = function(t) {
     n = a < 10 ? "0" + a : a,
     e + ":" + (i < 10 ? "0" + i : i) + ":" + n)
 }
+/*
+时间对比
+ */
+basic.dateFormat=function(t, e) {
+    if (t) {
+        if ("number" != typeof t)
+            try {
+                t = Number(t)
+            } catch (n) {
+                throw Error("Expected to be a number.", n)
+            }
+        var r = new Date(t)
+          , e = e || "YYYY年MM月DD日"
+          , o = +new Date
+          , u = o - t
+          , i = r.getFullYear()
+          , a = r.getMonth() + 1
+          , l = r.getDate()
+          , s = r.getHours()
+          , c = r.getMinutes()
+          , f = (r.getSeconds(),
+        1e3)
+          , p = 60 * f
+          , g = 60 * p
+          , d = 24 * g
+          , m = ["YYYY", "MM", "DD", "H", "M", "S"]
+          , v = [i, a, l, s, c];
+        if (u > 3 * d) {
+            366 * d > u && (e = "MM月DD日");
+            for (var h = 0; h < m.length - 1; h++)
+                e = e.replace(m[h], v[h]);
+            return e
+        }
+        return parseInt(u / d, 10) >= 1 && parseInt(u / d, 10) < 3 ? parseInt(u / d, 10) + "天前" : parseInt(u / g, 10) >= 1 ? parseInt(u / g, 10) + "小时前" : parseInt(u / p, 10) >= 1 ? parseInt(u / p, 10) + "分钟前" : "刚刚"
+    }
+}
 /**
  * 防拌函数：n秒内函数只会执行一次，如果n秒内高频事件再次被触发，则重新计算时间
  * 主要应用场景：文本输入的验证
@@ -867,6 +903,17 @@ basic.generateRandomAlphaNum=function(len) {
 }
 basic.rand = function (max,min){
     return Math.random()*(max-min+1) + min | 0;
+}
+//计算百分比
+basic.getPercent = function (curNum, totalNum, isHasPercentStr) {
+    curNum = parseFloat(curNum);
+    totalNum = parseFloat(totalNum);
+    if (isNaN(curNum) || isNaN(totalNum)) {
+        return '-';
+    }
+    return isHasPercentStr ?
+        totalNum <= 0 ? '0%' : (Math.round(curNum / totalNum * 10000) / 100.00 + '%') :
+        totalNum <= 0 ? 0 : (Math.round(curNum / totalNum * 10000) / 100.00);
 }
 //手机号中间4位星号代替
 basic.replaceMobile=function (mobile, front_len, end_len) {

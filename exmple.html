@@ -80,6 +80,9 @@
 			color: gray;
 		}
     .main{position:relative;margin-top:300px;}  
+	body{
+		height:2000px;
+	}
     .fish{
     	position:absolute;
     	background:#FFFF00;
@@ -224,7 +227,9 @@
 
     .lt{left:0;background-color:blue;}
     .rt{right:0;background-color:pink;}
-
+	#test{
+		margin:20% auto;
+	}
 	</style>
 </head>
 <body>
@@ -279,6 +284,14 @@
 <script type="text/javascript" src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
     <!--<script type="text/javascript" src="js/canvas.js"></script>-->
 	<script type="text/javascript">
+	//let ofTop=0;
+	$(window).scroll(function(ev){
+		let sTop=ev.target.documentElement.scrollTop,
+			testTop=$('#test').offset().top,
+			x=Math.abs(testTop-sTop);
+			sTop+=(x/25);
+		console.log(ev)
+	})
 	//var	oldContent=$test.html();
 	function inputHandler(obj,select) {
 		var ht='',
